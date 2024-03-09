@@ -20,11 +20,11 @@ $ python --version
 
 ### 必要なライブラリのダウンロード
 
-preprocessingディレクトリにいることを確認した上でセットアップを行なってください
+data_managementディレクトリにいることを確認した上でセットアップを行なってください
 
 ```sh
 $ pwd
-// ~/ucllm_redo_dev/preprocessing
+// ~/ucllm_redo_dev/data_management
 $ sudo apt-get install git-lfs
 $ sudo apt-get install wget
 $ ./bin/setup
