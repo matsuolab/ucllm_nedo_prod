@@ -1,0 +1,1 @@
+../common/upload_tokenizer_and_model_to_huggingface_hub.py

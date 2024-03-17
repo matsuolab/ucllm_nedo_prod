@@ -1,0 +1,29 @@
+ninja==1.11.1
+packaging
+pip>=23.1
+protobuf<3.21.0
+pybind11
+regex
+six
+wheel
+
+# Hugging Face
+accelerate>=0.23.0
+peft>=0.5.0
+tokenizers>=0.14.0
+transformers>=4.34.0
+trl>=0.7.2
+
+# Logging
+tensorboard
+chardet
+wandb
+
+# Pre-training & Fine-tuning
+bitsandbytes
+nltk
+sentencepiece
+
+# Tensor operation
+einops
+numpy

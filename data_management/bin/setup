@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Create a virtual environment named 'venv'
+# python3 -m venv venv
+
+# Activate the virtual environment
+# Note: The activation command differs between operating systems
+# For Unix or MacOS, use:
+activate_command="source venv/bin/activate"
+# For Windows, use:
+# activate_command="venv\\Scripts\\activate"
+
+# Execute the activation command
+# ${activate_command}
+
+pip install --upgrade pip
+
+# Install required packages using pip
+pip install -r requirements.txt
+
+python -m  unidic download
