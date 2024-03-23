@@ -3,7 +3,7 @@
 ## 前提
 
 * 計算環境: g2, 2 node, 8 GPU (Nvidia L4 24GB)
-  * 例: `$ srun --partition=g2 --nodes=2 --gpus-per-node=8 --time=05:00:00 -c 48 --pty bash -i`
+  * 例: `$ srun --partition=g2 --nodes=2 --gpus-per-node=8 --time=05:00:00 -c 12 --pty bash -i`
 
 ## Step 0. 環境構築
 
