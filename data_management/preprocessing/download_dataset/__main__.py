@@ -5,7 +5,7 @@ import pathlib
 
 import preprocessing
 
-from preprocessing.download_dataset import c4, wikipedia, redpajama, redpajama_v2
+from preprocessing.download_dataset import c4, wikipedia, redpajama, redpajama_v2, culturaX
 
 ROOT_PATH = pathlib.Path(preprocessing.__path__[0]).resolve().parent
 SCRIPT_PATH = os.path.join(ROOT_PATH, "scripts")
@@ -37,6 +37,9 @@ def main():
         redpajama.download_dataset(split=args.split, output_base=args.output_base)
     elif args.dataset == "redpajama_v2":
         redpajama_v2.download_dataset(snapshot=args.snapshot, language=args.language, partition=args.partition, output_base=args.output_base)
+        elif args.dataset == "culturax":
+        culturaX.download_dataset(language=args.language, index_from=args.index_from,
+                            index_to=args.index_to, output_base=args.output_base)
 
 
 if __name__ == "__main__":
