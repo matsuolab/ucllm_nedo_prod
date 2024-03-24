@@ -32,6 +32,18 @@ After:
     └── requirements.txt
 ```
 
+### Step 0-0. このgitレポジトリのクローン
+
+```sh
+$ cd ~/
+
+# このレポジトリをucllm_nedo_devという名前でクローンする。
+$ git clone https://github.com/matsuolab/ucllm_nedo_prod.git ucllm_nedo_dev
+
+# ~/ucllm_nedo_dev/train以下のファイル一覧が表示されるか確認。
+$ ls ~/ucllm_nedo_dev/train/
+```
+
 ### Step 0-1. Python仮想環境作成前における下準備
 
 ```sh
