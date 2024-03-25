@@ -58,7 +58,7 @@ Create a job script to launch in the background:
 #SBATCH --nodes=1
 #SBATCH --job-name=example
 #SBATCH --output=example.out
-#SBATCH --gpus-per-node=2
+#SBATCH --gpus-per-node=1
 
 # Command(s) goes here
 nvidia-smi
