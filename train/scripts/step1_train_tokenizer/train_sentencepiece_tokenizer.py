@@ -15,7 +15,7 @@ def parse_arguments():
     parser.add_argument("--vocab_size", type=int, required=True)
     parser.add_argument("--character_coverage", type=float, default=0.9995)
     parser.add_argument("--model_type", type=str, default="unigram", choices=["unigram", "bpe", "word", "char"])
-    parser.add_argument("--num_threads", type=int, default=16)
+    parser.add_argument("--num_threads", type=int, default=8)
     parser.add_argument("--train_extremely_large_corpus", type=bool, default=True)
     args = parser.parse_args()
     print(f"{args = }")
@@ -48,6 +48,7 @@ def main():
         split_digits=True,
         allow_whitespace_only_pieces=True,
         remove_extra_whitespaces=False,
+        pretokenization_delimiter="||||",
     )
 
 
