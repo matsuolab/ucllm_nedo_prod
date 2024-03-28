@@ -235,7 +235,7 @@ num_workers=0
 
 # If either arxiv_text_document.bin or arxiv_text_document.idx doesn't exist yet,
 # then downloads arxiv.jsonl and preprocesses the data.
-data_path="/persistentshare/storage/team_nakamura/member/horie/dataset/train/jawiki"
+data_path="${megatron_deepspeed_dir}/dataset/jawiki_text_document"
 if [ ! -f "${data_path}.bin" ] || [ ! -f "${data_path}.idx" ]; then
 #    echo "Either ${data_path}.bin or ${data_path}.idx doesn't exist yet, so download arxiv.jsonl and preprocess the data."
 #    wget https://data.together.xyz/redpajama-data-1T/v1.0.0/arxiv/arxiv_024de5df-1b7f-447c-8c3a-51407d8d6732.jsonl \

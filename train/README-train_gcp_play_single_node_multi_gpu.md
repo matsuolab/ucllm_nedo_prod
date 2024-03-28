@@ -149,14 +149,14 @@ $ conda install pytorch==2.2.0 torchvision==0.17.0 torchaudio==2.2.0 pytorch-cud
 # apexがインストールされていることを確認。
 (.venv_train) $ pip list | grep "apex"
 
-# apex_C.cpython-311-x86_64-linux-gnu.soが作成されていることを確認。
-(.venv_train) $ find cd /persistentshare/storage/team_nakamura/member/horie/apex/build/lib.linux-x86_64-cpython-311/ -name apex_C.cpython-311-x86_64-linux-gnu.so
+# apex_C.cpython-39-x86_64-linux-gnu.soが作成されていることを確認。
+(.venv_train) $ find /persistentshare/storage/team_nakamura/member/horie/apex/build/lib.linux-x86_64-cpython-39/ -name apex_C.cpython-39-x86_64-linux-gnu.so
 ```
 
 ### Step 0-6. Flash Attention 2のインストール
 
 ```sh
-(.venv_train) $ cd cd /persistentshare/storage/team_nakamura/member/horie
+(.venv_train) $ cd /persistentshare/storage/team_nakamura/member/horie
 
 # Flash Attention 2のインストールに必要なninjaを念のため再インストール。
 (.venv_train) $ pip uninstall ninja -y && pip install ninja==1.11.1
@@ -171,13 +171,13 @@ $ conda install pytorch==2.2.0 torchvision==0.17.0 torchaudio==2.2.0 pytorch-cud
 ### Step 0-7. llm-jp-sftのインストール
 
 ```sh
-(.venv_train) $ cd cd /persistentshare/storage/team_nakamura/member/horie
+(.venv_train) $ cd /persistentshare/storage/team_nakamura/member/horie
 
 # llm-jp-sftのレポジトリをクローン。
 (.venv_train) $ git clone https://github.com/hotsuyuki/llm-jp-sft
 
 # mainブランチではエラーが起きる場合があるため、指定のタグにチェックアウト。
-(.venv_train) $ cd cd /persistentshare/storage/team_nakamura/member/horie/llm-jp-sft/ && git fetch origin && git checkout refs/tags/ucllm_nedo_dev_v20240208.1.0
+(.venv_train) $ cd /persistentshare/storage/team_nakamura/member/horie/llm-jp-sft/ && git fetch origin && git checkout refs/tags/ucllm_nedo_dev_v20240208.1.0
 ```
 
 ## Step 1. トークナイザーの学習
@@ -215,7 +215,7 @@ $ conda install pytorch==2.2.0 torchvision==0.17.0 torchaudio==2.2.0 pytorch-cud
 (.venv_train) $ bash ./gcp_node-1_gpu/dataset-arxiv_tokenizer-sentencepiece_model-gpt_0.125B/zero-0_dp-1_pp-1_tp-1_flashattn2-on.sh \
     --input_tokenizer_file ~/ucllm_nedo_dev/train/output/step1_train_tokenizer/botchan/botchan.model \
     --output_model_dir ~/ucllm_nedo_dev/train/output/step2_pretrain_model/ \
-    --save_interval 1000
+    --save_interval 200
 ```
 
 ### Step 2. でのトラブルシューティング
