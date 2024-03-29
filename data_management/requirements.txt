@@ -41,5 +41,6 @@ tzdata==2024.1
 unidic==1.1.0
 urllib3==2.2.1
 wasabi==0.10.1
+wikiextractor==3.0.6
 xxhash==3.4.1
 yarl==1.9.4

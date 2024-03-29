@@ -12,6 +12,7 @@ def process_json_lines(lines: list[str], output_base: str, stats: list[dict]):
     cleaner = Compose([
         document_filters.JSONLoader(),
         document_filters.DocumentNormalizer(),
+        document_filters.DocumentLengthFilter(min_doc_len=20,max_doc_len=1000),
         document_filters.DiscardBBSComments(),
         document_filters.DiscardAds(),
         document_filters.DiscardDiscriminationContentJa(),
@@ -23,7 +24,7 @@ def process_json_lines(lines: list[str], output_base: str, stats: list[dict]):
         custom_token_filters.RemoveDate(),
         tokenization.MergeTokens(),
         document_filters.MaskPersonalInformation(),
-        document_filters.JSONDumper(dump_reason=True),
+        document_filters.JSONDumper(dump_reason=False),
     ])
 
     with open(os.path.join(output_base, "rejected.filtering.jsonl"), "w") as rejected:
