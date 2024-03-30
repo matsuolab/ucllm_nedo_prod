@@ -244,7 +244,7 @@ if [ ! -f "${data_path}.bin" ] || [ ! -f "${data_path}.idx" ]; then
     python ${megatron_deepspeed_dir}/tools/preprocess_data.py \
         --tokenizer-type SentencePieceTokenizer \
         --tokenizer-model ${input_tokenizer_file} \
-        --input /persistentshare/storage/team_nakamura/member/horie/dataset/train/jawiki.jsonl \
+        --input /persistentshare/storage/team_nakamura/member/horie/dataset/filter/results.filtering.jsonl \
         --output-prefix ${megatron_deepspeed_dir}/dataset/jawiki \
         --dataset-impl mmap \
         --workers $(grep -c ^processor /proc/cpuinfo) \

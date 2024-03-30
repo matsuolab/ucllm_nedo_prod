@@ -223,7 +223,7 @@ $ conda install pytorch==2.2.0 torchvision==0.17.0 torchaudio==2.2.0 pytorch-cud
 ##### 1. "ImportError: cannot import name 'helpers' from 'megatron.data' (Megatron-DeepSpeed/megatron/data/__init__.py)" というエラーが出た場合
 
 原因: <br/>
-`~/ucllm_nedo_dev/train/Megatron-DeepSpeed/megatron/data/helpers.cpython-311-x86_64-linux-gnu.so` が正しく作成されていないことが原因と考えられます。
+`~/ucllm_nedo_dev/train/Megatron-DeepSpeed/megatron/data/helpers.cpython-39-x86_64-linux-gnu.so` が正しく作成されていないことが原因と考えられます。
 
 解決策: <br/>
 `~/ucllm_nedo_dev/train/Megatron-DeepSpeed/megatron/data/Makefile` 内に記載されている `python3-config` のパスを `$ which python3-config` で出力された絶対パスに変更してから、 `~/ucllm_nedo_dev/train/Megatron-DeepSpeed/megatron/data/` にて `make` コマンドを実行してみて下さい。
@@ -243,10 +243,10 @@ LIBEXT = $(shell /absolute/path/to/python3-config --extension-suffix)
 """
 
 # ~/ucllm_nedo_dev/train/Megatron-DeepSpeed/megatron/data/にてmakeコマンドを実行。
-(.venv_train) $ cd ~/ucllm_nedo_dev/train/Megatron-DeepSpeed/megatron/data/ && make
+(.venv_train) $ cd /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/megatron/data/ && make
 
 # helpers.cpython-311-x86_64-linux-gnu.soが作成されていることを確認。
-(.venv_train) $ find ~/ucllm_nedo_dev/train/Megatron-DeepSpeed/megatron/data/ -name helpers.cpython-311-x86_64-linux-gnu.so
+(.venv_train) $ find /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/megatron/data/ -name helpers.cpython-39-x86_64-linux-gnu.so
 ```
 
 参考リンク: <br/>
@@ -278,9 +278,9 @@ LIBEXT = $(shell /absolute/path/to/python3-config --extension-suffix)
 
 # 変換スクリプトを実行。
 (.venv_train) $ bash ./convert_tokenizer_and_pretrained_model_to_huggingface_transformers.sh \
-    --input_tokenizer_file ~/ucllm_nedo_dev/train/output/step1_train_tokenizer/botchan/botchan.model \
-    --input_model_dir ~/ucllm_nedo_dev/train/output/step2_pretrain_model/checkpoint/gpt_0.125B_${YOUR_JOBNAME}/global_step1000/ \
-    --output_tokenizer_and_model_dir ~/ucllm_nedo_dev/train/output/step3_upload_pretrained_model/gpt_0.125B_global_step1000/
+    --input_tokenizer_file /persistentshare/storage/team_nakamura/member/horie/tokenizer/JINIAC_V0_1.model \
+    --input_model_dir /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1000 \
+    --output_tokenizer_and_model_dir /persistentshare/storage/team_nakamura/member/horie/output/step3_upload_pretrained_model/gpt_0.1119B_global_step1000
 ```
 
 ### Step 3-2. トークナイザーと事前学習済みモデルのHuggingFace Hubへのアップロード
@@ -297,9 +297,9 @@ LIBEXT = $(shell /absolute/path/to/python3-config --extension-suffix)
 
 # アップロードスクリプトを実行。
 (.venv_train) $ python ./upload_tokenizer_and_pretrained_model_to_huggingface_hub.py \
-    --input_tokenizer_and_model_dir ~/ucllm_nedo_dev/train/output/step3_upload_pretrained_model/gpt_0.125B_global_step1000/ \
-    --output_model_name gpt_0.125B_global_step1000 \
-    --test_prompt_text "Once upon a time,"
+    --input_tokenizer_and_model_dir /persistentshare/storage/team_nakamura/member/horie/output/step3_upload_pretrained_model/gpt_0.1119B_global_step1000 \
+    --output_model_name gpt_0.1119B_global_step1000 \
+    --test_prompt_text "官民共創とは、,"
 ```
 
 ## Step 4. モデルのファインチューニング
