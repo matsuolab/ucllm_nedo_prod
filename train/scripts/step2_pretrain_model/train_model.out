@@ -8,19 +8,227 @@ input_tokenizer_file = /persistentshare/storage/team_nakamura/member/horie/token
 output_model_dir = /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b
 save_interval = 200
 
-Both /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/dataset/jawiki_text_document.bin and /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/dataset/jawiki_text_document.idx already exist.
+[2024-03-30 09:24:01,532] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Opening /persistentshare/storage/team_nakamura/member/horie/dataset/filter/results.filtering.jsonl
+Time to startup: 0.5991082191467285
+Processed 1000 documents (7687.4087026009565 docs/s, 6.734525033586446 MB/s).
+Processed 2000 documents (10318.801787084965 docs/s, 9.031539687850577 MB/s).
+Processed 3000 documents (12421.666349122046 docs/s, 10.870288781329561 MB/s).
+Processed 4000 documents (12890.924527939453 docs/s, 11.277395263066905 MB/s).
+Processed 5000 documents (13266.37997674598 docs/s, 11.601764167808492 MB/s).
+Processed 6000 documents (13433.41509308067 docs/s, 11.743658370587843 MB/s).
+Processed 7000 documents (13441.829545891562 docs/s, 11.744064286093627 MB/s).
+Processed 8000 documents (14016.047612344355 docs/s, 12.242741753240704 MB/s).
+Processed 9000 documents (14272.537848067812 docs/s, 12.461415784858959 MB/s).
+Processed 10000 documents (14634.7781425158 docs/s, 12.773028739867355 MB/s).
+Processed 11000 documents (14623.410912025325 docs/s, 12.763746052735423 MB/s).
+Processed 12000 documents (14717.234829434208 docs/s, 12.845891941079186 MB/s).
+Processed 13000 documents (14604.86579293461 docs/s, 12.746921447148853 MB/s).
+Processed 14000 documents (14787.632938905836 docs/s, 12.904125837372508 MB/s).
+Processed 15000 documents (14977.984601243337 docs/s, 13.071939347725218 MB/s).
+Processed 16000 documents (14766.04065603608 docs/s, 12.89060513187457 MB/s).
+Processed 17000 documents (14779.497415775635 docs/s, 12.902026649587052 MB/s).
+Processed 18000 documents (14886.116801763521 docs/s, 12.99610739657746 MB/s).
+Processed 19000 documents (14877.669599133309 docs/s, 12.990295659323333 MB/s).
+Processed 20000 documents (14930.110504710796 docs/s, 13.035796207727783 MB/s).
+Processed 21000 documents (14792.186306841473 docs/s, 12.914124242739257 MB/s).
+Processed 22000 documents (14744.169302463815 docs/s, 12.871964891901026 MB/s).
+Processed 23000 documents (14898.472037390042 docs/s, 13.007026153910067 MB/s).
+Processed 24000 documents (15003.24036130006 docs/s, 13.100689074209953 MB/s).
+Processed 25000 documents (14945.80702506067 docs/s, 13.051682090305755 MB/s).
+Processed 26000 documents (14989.68870375889 docs/s, 13.088287106426169 MB/s).
+Processed 27000 documents (14856.349442484521 docs/s, 12.972177487698662 MB/s).
+Processed 28000 documents (14972.052715062324 docs/s, 13.072015208601957 MB/s).
+Processed 29000 documents (14943.725947610696 docs/s, 13.048921779701123 MB/s).
+Processed 30000 documents (14961.567894816695 docs/s, 13.065935043297651 MB/s).
+Processed 31000 documents (15011.492575498823 docs/s, 13.109838930302882 MB/s).
+Processed 32000 documents (15079.786250354755 docs/s, 13.171191390691721 MB/s).
+Processed 33000 documents (15090.184579215602 docs/s, 13.179712618026276 MB/s).
+Processed 34000 documents (14986.870361344083 docs/s, 13.08838182410904 MB/s).
+Processed 35000 documents (15003.345588396864 docs/s, 13.10270307394522 MB/s).
+Processed 36000 documents (15142.512764512705 docs/s, 13.225187033844449 MB/s).
+Processed 37000 documents (15108.7376807065 docs/s, 13.197230781512712 MB/s).
+Processed 38000 documents (15139.499811116675 docs/s, 13.226403238781485 MB/s).
+Processed 39000 documents (15069.62640047426 docs/s, 13.167498448843622 MB/s).
+Processed 40000 documents (15148.3037495113 docs/s, 13.237622423209825 MB/s).
+Processed 41000 documents (15177.121005895697 docs/s, 13.263781262802677 MB/s).
+Processed 42000 documents (15119.049378466108 docs/s, 13.21159324613312 MB/s).
+Processed 43000 documents (15050.834840947567 docs/s, 13.152142011127207 MB/s).
+Processed 44000 documents (15002.961662120779 docs/s, 13.110400140217804 MB/s).
+Processed 45000 documents (15073.451094137592 docs/s, 13.172985841981658 MB/s).
+Processed 46000 documents (15119.609791816769 docs/s, 13.213768941047325 MB/s).
+Processed 47000 documents (15184.387922139264 docs/s, 13.269646581368672 MB/s).
+Processed 48000 documents (15192.646975481643 docs/s, 13.276956160929025 MB/s).
+Processed 49000 documents (15223.207379223539 docs/s, 13.30428541937598 MB/s).
+Processed 50000 documents (15232.259136205386 docs/s, 13.311975820740999 MB/s).
+Processed 51000 documents (15295.127720797596 docs/s, 13.36653942267355 MB/s).
+Processed 52000 documents (15168.698084541933 docs/s, 13.256872096585573 MB/s).
+Processed 53000 documents (15186.895845224883 docs/s, 13.272331638712771 MB/s).
+Processed 54000 documents (15265.232077714158 docs/s, 13.34113429661858 MB/s).
+Processed 55000 documents (15258.495244525675 docs/s, 13.335822368455865 MB/s).
+Processed 56000 documents (15191.442122591196 docs/s, 13.277247784224512 MB/s).
+Processed 57000 documents (15247.702388217736 docs/s, 13.325578035889436 MB/s).
+Processed 58000 documents (15254.566218349251 docs/s, 13.332498752769428 MB/s).
+Processed 59000 documents (15203.358177090686 docs/s, 13.287500109050075 MB/s).
+Processed 60000 documents (15215.489992265839 docs/s, 13.298067765572195 MB/s).
+Processed 61000 documents (15221.607626136998 docs/s, 13.303330753291041 MB/s).
+Processed 62000 documents (15233.567186996486 docs/s, 13.313044315192037 MB/s).
+Processed 63000 documents (15207.989063003413 docs/s, 13.289989372180528 MB/s).
+Processed 64000 documents (15184.353583534732 docs/s, 13.269101970339552 MB/s).
+Processed 65000 documents (15173.266354144114 docs/s, 13.258323765275268 MB/s).
+Processed 66000 documents (15187.4690571245 docs/s, 13.270526318561512 MB/s).
+Processed 67000 documents (15137.216524321493 docs/s, 13.225974713774484 MB/s).
+Processed 68000 documents (15132.15332540823 docs/s, 13.220454112086074 MB/s).
+Processed 69000 documents (14998.028952027882 docs/s, 13.102899649228709 MB/s).
+Processed 70000 documents (15074.19387300355 docs/s, 13.169328256596986 MB/s).
+Processed 71000 documents (15118.42496776372 docs/s, 13.207603776859907 MB/s).
+Processed 72000 documents (15149.490749371074 docs/s, 13.233829684725531 MB/s).
+Processed 73000 documents (15174.393460024088 docs/s, 13.255935900290662 MB/s).
+Processed 74000 documents (15165.993181182408 docs/s, 13.24883113837118 MB/s).
+Processed 75000 documents (15159.647639278293 docs/s, 13.242662320203973 MB/s).
+Processed 76000 documents (15132.433566365844 docs/s, 13.21891267086627 MB/s).
+Processed 77000 documents (15179.060432663377 docs/s, 13.259301927942829 MB/s).
+Processed 78000 documents (15192.438231150896 docs/s, 13.271214721385114 MB/s).
+Processed 79000 documents (15219.989166179354 docs/s, 13.29511440438354 MB/s).
+Processed 80000 documents (15226.365041434747 docs/s, 13.30139555820967 MB/s).
+Processed 81000 documents (15251.158015772044 docs/s, 13.32335876445278 MB/s).
+Processed 82000 documents (15209.690462239223 docs/s, 13.286955014317144 MB/s).
+Processed 83000 documents (15251.761296055587 docs/s, 13.323478571812542 MB/s).
+Processed 84000 documents (15087.302350970182 docs/s, 13.179319163612456 MB/s).
+Processed 85000 documents (15162.101177373093 docs/s, 13.245108483309904 MB/s).
+Processed 86000 documents (15196.056433036081 docs/s, 13.274242684096604 MB/s).
+Processed 87000 documents (15219.476989403094 docs/s, 13.29519949179495 MB/s).
+Processed 88000 documents (15221.745915003232 docs/s, 13.297189283359758 MB/s).
+Processed 89000 documents (15235.854268567437 docs/s, 13.308864305725164 MB/s).
+Processed 90000 documents (15223.066116897302 docs/s, 13.298341396451557 MB/s).
+Processed 91000 documents (15255.407006593074 docs/s, 13.327022292869524 MB/s).
+Processed 92000 documents (15220.535710235648 docs/s, 13.296689751334444 MB/s).
+Processed 93000 documents (15230.72428570034 docs/s, 13.305808693614987 MB/s).
+Processed 94000 documents (15243.866006171247 docs/s, 13.317158974749978 MB/s).
+Processed 95000 documents (15205.432085856783 docs/s, 13.284039651158642 MB/s).
+Processed 96000 documents (15258.017188125601 docs/s, 13.329667951945034 MB/s).
+Processed 97000 documents (15247.685174601222 docs/s, 13.320318047276848 MB/s).
+Processed 98000 documents (15243.12432548616 docs/s, 13.31422675264942 MB/s).
+Processed 99000 documents (15272.369289979317 docs/s, 13.340243700373483 MB/s).
+Processed 100000 documents (15269.34052733873 docs/s, 13.337410929841992 MB/s).
+Processed 101000 documents (15251.046495230563 docs/s, 13.320988626356499 MB/s).
+Processed 102000 documents (15259.63348188641 docs/s, 13.328432538242357 MB/s).
+Processed 103000 documents (15264.530112880548 docs/s, 13.331497924370542 MB/s).
+Processed 104000 documents (15240.675163398533 docs/s, 13.310140752270366 MB/s).
+Processed 105000 documents (15254.356980739483 docs/s, 13.322338190390864 MB/s).
+Processed 106000 documents (15224.614417784363 docs/s, 13.297120770159722 MB/s).
+Processed 107000 documents (15223.945573652954 docs/s, 13.29618064935976 MB/s).
+Processed 108000 documents (15221.307479496918 docs/s, 13.294062523563575 MB/s).
+Processed 109000 documents (15219.90169532208 docs/s, 13.292786579242563 MB/s).
+Processed 110000 documents (15236.392835577011 docs/s, 13.307436887435907 MB/s).
+Processed 111000 documents (15187.677999049203 docs/s, 13.264282112135172 MB/s).
+Processed 112000 documents (15224.67784549061 docs/s, 13.296892530920859 MB/s).
+Processed 113000 documents (15250.672780711748 docs/s, 13.319039026461839 MB/s).
+Processed 114000 documents (15242.18224397066 docs/s, 13.311599729463191 MB/s).
+Processed 115000 documents (15221.804377809543 docs/s, 13.293920350646378 MB/s).
+Processed 116000 documents (15222.724401221862 docs/s, 13.294869410985052 MB/s).
+Processed 117000 documents (15217.724412745174 docs/s, 13.290892007132335 MB/s).
+Processed 118000 documents (15242.594199486266 docs/s, 13.312703781992361 MB/s).
+Processed 119000 documents (15254.92848152599 docs/s, 13.323486909600364 MB/s).
+Processed 120000 documents (15246.893437367886 docs/s, 13.31680571289328 MB/s).
+Processed 121000 documents (15233.578596241303 docs/s, 13.3055391116446 MB/s).
+Processed 122000 documents (15247.431681041084 docs/s, 13.318178583819993 MB/s).
+Processed 123000 documents (15241.932114381101 docs/s, 13.312854423718235 MB/s).
+Processed 124000 documents (15227.479548128656 docs/s, 13.300361239074531 MB/s).
+Processed 125000 documents (15214.82221684192 docs/s, 13.289100281960934 MB/s).
+Processed 126000 documents (15237.950774436753 docs/s, 13.308955486393799 MB/s).
+Processed 127000 documents (15248.740814355733 docs/s, 13.31860481320288 MB/s).
+Processed 128000 documents (15210.447245092566 docs/s, 13.285057836970813 MB/s).
+Processed 129000 documents (15223.293907972578 docs/s, 13.295987544626167 MB/s).
+Processed 130000 documents (15236.719436352101 docs/s, 13.307775324948631 MB/s).
+Processed 131000 documents (15246.007978036578 docs/s, 13.315866867496172 MB/s).
+Processed 132000 documents (15237.413493362174 docs/s, 13.307901651486356 MB/s).
+Processed 133000 documents (15209.030063222548 docs/s, 13.28310958202341 MB/s).
+Processed 134000 documents (15207.76551915972 docs/s, 13.281818708225348 MB/s).
+Processed 135000 documents (15215.525563462877 docs/s, 13.288585157571347 MB/s).
+Processed 136000 documents (15215.27900365049 docs/s, 13.288287439059566 MB/s).
+Processed 137000 documents (15206.928172956936 docs/s, 13.280786909659035 MB/s).
+Processed 138000 documents (15178.110147418169 docs/s, 13.255353222926345 MB/s).
+Processed 139000 documents (15189.019354262186 docs/s, 13.265238649853382 MB/s).
+Processed 140000 documents (15174.944745558738 docs/s, 13.253059190399552 MB/s).
+Processed 141000 documents (15178.073547318614 docs/s, 13.255949385963595 MB/s).
+Processed 142000 documents (15149.141978892374 docs/s, 13.230299699797852 MB/s).
+Processed 143000 documents (15112.990406117911 docs/s, 13.197845830157421 MB/s).
+Processed 144000 documents (15087.411646382994 docs/s, 13.175116208184676 MB/s).
+Processed 145000 documents (15108.415450441627 docs/s, 13.193046006986387 MB/s).
+Processed 146000 documents (15114.09345484007 docs/s, 13.197535159975537 MB/s).
+Processed 147000 documents (15122.121785134463 docs/s, 13.203870065103619 MB/s).
+Processed 148000 documents (15132.99078430135 docs/s, 13.212485689642055 MB/s).
+Processed 149000 documents (15127.019402676766 docs/s, 13.20658762598582 MB/s).
+Processed 150000 documents (15137.979139398845 docs/s, 13.216185015381946 MB/s).
+Processed 151000 documents (15125.502330632631 docs/s, 13.205114251843975 MB/s).
+Processed 152000 documents (15114.837989129328 docs/s, 13.195578472608915 MB/s).
+Processed 153000 documents (15088.96053037797 docs/s, 13.173075079115357 MB/s).
+Processed 154000 documents (15092.459628161942 docs/s, 13.175889452234099 MB/s).
+Processed 155000 documents (15104.39122414533 docs/s, 13.186641378571524 MB/s).
+Processed 156000 documents (15108.68315243139 docs/s, 13.190388643825745 MB/s).
+Processed 157000 documents (15109.991821400854 docs/s, 13.191495440895057 MB/s).
+Processed 158000 documents (15085.636810408929 docs/s, 13.170268116620822 MB/s).
+Processed 159000 documents (13992.37267588052 docs/s, 12.216250945526511 MB/s).
+Processed 160000 documents (14042.573929565182 docs/s, 12.260133386831752 MB/s).
+Processed 161000 documents (14093.158695354186 docs/s, 12.304177740987205 MB/s).
+Processed 162000 documents (14141.902204691272 docs/s, 12.346691714316101 MB/s).
+Processed 163000 documents (14191.358578867164 docs/s, 12.389930993749253 MB/s).
+Processed 164000 documents (14240.34300414274 docs/s, 12.432776624009144 MB/s).
+Processed 165000 documents (14289.859046511512 docs/s, 12.476219446724933 MB/s).
+Processed 166000 documents (14339.034551836941 docs/s, 12.519300916977697 MB/s).
+Processed 167000 documents (14390.061605473102 docs/s, 12.564196592685452 MB/s).
+Processed 168000 documents (14436.574627007098 docs/s, 12.604911638751208 MB/s).
+Processed 169000 documents (14486.878559884 docs/s, 12.648743396994712 MB/s).
+Processed 170000 documents (14535.852228201273 docs/s, 12.69182820299327 MB/s).
+Processed 171000 documents (14584.227798198526 docs/s, 12.734108617327427 MB/s).
+Processed 172000 documents (14610.350500228415 docs/s, 12.757321591807806 MB/s).
+Processed 173000 documents (14608.446387133681 docs/s, 12.755743433971613 MB/s).
+Processed 174000 documents (14616.339113519625 docs/s, 12.762824769974712 MB/s).
+Processed 175000 documents (14600.705951001 docs/s, 12.749193965972268 MB/s).
+Processed 176000 documents (14607.168130874337 docs/s, 12.755042205894846 MB/s).
+Processed 177000 documents (14613.346313319507 docs/s, 12.76039229236684 MB/s).
+Processed 178000 documents (14630.181901654112 docs/s, 12.775063137679393 MB/s).
+Processed 179000 documents (14624.855008935068 docs/s, 12.770589140290497 MB/s).
+Processed 180000 documents (14616.168404806693 docs/s, 12.762911556926703 MB/s).
+Processed 181000 documents (14633.71981782974 docs/s, 12.77849831784387 MB/s).
+Processed 182000 documents (14646.03562614983 docs/s, 12.789564768134099 MB/s).
+Processed 183000 documents (14650.309102129075 docs/s, 12.793556455198319 MB/s).
+Processed 184000 documents (14656.517905709534 docs/s, 12.79889028930213 MB/s).
+Processed 185000 documents (14656.745830414688 docs/s, 12.799167061381038 MB/s).
+Processed 186000 documents (14665.20231551153 docs/s, 12.80672406971318 MB/s).
+Processed 187000 documents (14667.673541603299 docs/s, 12.809032177590836 MB/s).
+Processed 188000 documents (14667.042396917941 docs/s, 12.80835305638145 MB/s).
+Processed 189000 documents (14663.027734073412 docs/s, 12.804800348631979 MB/s).
+Processed 190000 documents (14664.376358894968 docs/s, 12.805986877469785 MB/s).
+Processed 191000 documents (14656.509875962349 docs/s, 12.799041053142284 MB/s).
+Processed 192000 documents (14681.717413722803 docs/s, 12.82121399322692 MB/s).
+Processed 193000 documents (14692.100865226994 docs/s, 12.830222252552195 MB/s).
+Processed 194000 documents (14702.25785397133 docs/s, 12.838898775477032 MB/s).
+Processed 195000 documents (14690.874374080438 docs/s, 12.82909139478164 MB/s).
+Processed 196000 documents (14712.1664726779 docs/s, 12.848048472053467 MB/s).
+Processed 197000 documents (14699.63679023854 docs/s, 12.837316778213797 MB/s).
+Processed 198000 documents (14701.089527942033 docs/s, 12.838653352810347 MB/s).
+Processed 199000 documents (14704.281471292617 docs/s, 12.841351910270651 MB/s).
+Processed 200000 documents (14691.02673797241 docs/s, 12.830023970487257 MB/s).
+Processed 201000 documents (14698.825478460829 docs/s, 12.837003330295541 MB/s).
+Processed 202000 documents (14700.766244900275 docs/s, 12.83904505421459 MB/s).
+Processed 203000 documents (14707.70942208959 docs/s, 12.845044461157853 MB/s).
+Processed 204000 documents (14701.322653046109 docs/s, 12.83924369488441 MB/s).
+Processed 205000 documents (14701.49738475185 docs/s, 12.83927621904011 MB/s).
+Processed 206000 documents (14725.846657257413 docs/s, 12.86022882033446 MB/s).
 
-[2024-03-28 20:57:32,275] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
-[2024-03-28 20:57:35,294] [WARNING] [runner.py:203:fetch_hostfile] Unable to find hostfile, will proceed with training with local resources only.
+[2024-03-30 09:24:21,826] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-30 09:24:24,126] [WARNING] [runner.py:203:fetch_hostfile] Unable to find hostfile, will proceed with training with local resources only.
 Detected CUDA_VISIBLE_DEVICES=0: setting --include=localhost:0
-[2024-03-28 20:57:35,303] [INFO] [runner.py:570:main] cmd = /home/ext_u10bei_github_io_gmail_com/miniconda3/envs/.venv_train/bin/python -u -m deepspeed.launcher.launch --world_info=eyJsb2NhbGhvc3QiOiBbMF19 --master_addr=127.0.0.1 --master_port=8131 --enable_each_rank_log=None /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/pretrain_gpt.py --override-opt_param-scheduler --adam-beta1 0.9 --adam-beta2 0.95 --tensor-model-parallel-size 1 --init-method-std 0.02 --lr-decay-tokens 300000000000 --lr-warmup-tokens 3000000000 --micro-batch-size 1 --exit-duration-in-mins 30000000 --global-batch-size 256 --num-layers 12 --hidden-size 768 --num-attention-heads 12 --seq-length 2048 --max-position-embeddings 2048 --train-tokens 300000000000 --train-samples 292968750 --lr 6.0e-4 --min-lr 1.0e-6 --lr-decay-style cosine --split 949,50,1 --log-interval 10 --eval-interval 100 --eval-iters 10 --save-interval 200 --weight-decay 0.1 --clip-grad 1.0 --hysteresis 2 --num-workers 0 --fp16 --seed 1234 --load /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase --save /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase --no-async-tensor-model-parallel-allreduce --use-flash-attn-v2 --tensorboard-queue-size 1 --log-timers-to-tensorboard --log-batch-size-to-tensorboard --log-validation-ppl-to-tensorboard --tensorboard-dir /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/tensorboard/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase_mlpre-g2-ghpc-2_2024.03.28_20.57.30 --log-optimizer-states-to-tensorboard --tokenizer-type SentencePieceTokenizer --tokenizer-model /persistentshare/storage/team_nakamura/member/horie/tokenizer/JINIAC_V0_1.model --data-path /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/dataset/jawiki_text_document --data-impl mmap --deepspeed --deepspeed_config /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/deepspeed_config/ds_config_gbs256_mbs1_log10_zero0.json --zero-stage 0 --pipeline-model-parallel-size 1
-[2024-03-28 20:57:37,039] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
-[2024-03-28 20:57:39,319] [INFO] [launch.py:145:main] WORLD INFO DICT: {'localhost': [0]}
-[2024-03-28 20:57:39,319] [INFO] [launch.py:151:main] nnodes=1, num_local_procs=1, node_rank=0
-[2024-03-28 20:57:39,319] [INFO] [launch.py:162:main] global_rank_mapping=defaultdict(<class 'list'>, {'localhost': [0]})
-[2024-03-28 20:57:39,319] [INFO] [launch.py:163:main] dist_world_size=1
-[2024-03-28 20:57:39,319] [INFO] [launch.py:165:main] Setting CUDA_VISIBLE_DEVICES=0
-[2024-03-28 20:57:41,701] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-30 09:24:24,135] [INFO] [runner.py:570:main] cmd = /home/ext_u10bei_github_io_gmail_com/miniconda3/envs/.venv_train/bin/python -u -m deepspeed.launcher.launch --world_info=eyJsb2NhbGhvc3QiOiBbMF19 --master_addr=127.0.0.1 --master_port=8131 --enable_each_rank_log=None /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/pretrain_gpt.py --override-opt_param-scheduler --adam-beta1 0.9 --adam-beta2 0.95 --tensor-model-parallel-size 1 --init-method-std 0.02 --lr-decay-tokens 300000000000 --lr-warmup-tokens 3000000000 --micro-batch-size 1 --exit-duration-in-mins 30000000 --global-batch-size 256 --num-layers 12 --hidden-size 768 --num-attention-heads 12 --seq-length 2048 --max-position-embeddings 2048 --train-tokens 300000000000 --train-samples 292968750 --lr 6.0e-4 --min-lr 1.0e-6 --lr-decay-style cosine --split 949,50,1 --log-interval 10 --eval-interval 100 --eval-iters 10 --save-interval 200 --weight-decay 0.1 --clip-grad 1.0 --hysteresis 2 --num-workers 0 --fp16 --seed 1234 --load /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase --save /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase --no-async-tensor-model-parallel-allreduce --use-flash-attn-v2 --tensorboard-queue-size 1 --log-timers-to-tensorboard --log-batch-size-to-tensorboard --log-validation-ppl-to-tensorboard --tensorboard-dir /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/tensorboard/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase_mlpre-g2-ghpc-3_2024.03.30_09.23.58 --log-optimizer-states-to-tensorboard --tokenizer-type SentencePieceTokenizer --tokenizer-model /persistentshare/storage/team_nakamura/member/horie/tokenizer/JINIAC_V0_1.model --data-path /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/dataset/jawiki_text_document --data-impl mmap --deepspeed --deepspeed_config /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/deepspeed_config/ds_config_gbs256_mbs1_log10_zero0.json --zero-stage 0 --pipeline-model-parallel-size 1
+[2024-03-30 09:24:25,961] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-30 09:24:28,188] [INFO] [launch.py:145:main] WORLD INFO DICT: {'localhost': [0]}
+[2024-03-30 09:24:28,188] [INFO] [launch.py:151:main] nnodes=1, num_local_procs=1, node_rank=0
+[2024-03-30 09:24:28,188] [INFO] [launch.py:162:main] global_rank_mapping=defaultdict(<class 'list'>, {'localhost': [0]})
+[2024-03-30 09:24:28,188] [INFO] [launch.py:163:main] dist_world_size=1
+[2024-03-30 09:24:28,188] [INFO] [launch.py:165:main] Setting CUDA_VISIBLE_DEVICES=0
+[2024-03-30 09:24:30,555] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
 --------------------------------------------------
 DeepSpeed C++/CUDA extension op report
 --------------------------------------------------
@@ -66,7 +274,7 @@ torch hip version ................ None
 nvcc version ..................... 11.8
 deepspeed wheel compiled w. ...... torch 2.2, cuda 11.8
 shared memory (/dev/shm) size .... 188.94 GB
-**** Git info for Megatron: git_hash=15f6e97 git_branch=u-10bei ****
+**** Git info for Megatron: git_hash=0fbbf83 git_branch=u-10bei ****
 using world size: 1, data-parallel-size: 1, sequence-parallel size: 1, tensor-model-parallel size: 1, pipeline-model-parallel size: 1 
 WARNING: overriding default arguments for tokenizer_type:GPT2BPETokenizer                        with tokenizer_type:SentencePieceTokenizer
 using torch.float16 for parameters ...
@@ -326,7 +534,7 @@ using torch.float16 for parameters ...
   swin_backbone_type .............................. tiny
   synchronize_each_layer .......................... False
   tensor_model_parallel_size ...................... 1
-  tensorboard_dir ................................. /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/tensorboard/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase_mlpre-g2-ghpc-2_2024.03.28_20.57.30
+  tensorboard_dir ................................. /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/tensorboard/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase_mlpre-g2-ghpc-3_2024.03.30_09.23.58
   tensorboard_log_interval ........................ 1
   tensorboard_queue_size .......................... 1
   test_data_path .................................. None
@@ -389,8 +597,8 @@ setting number of micro-batches to constant 256
  > padded vocab (size: 32771) with 125 dummy tokens (new size: 32896)
 > setting tensorboard ...
 > initializing torch distributed ...
-[2024-03-28 20:57:45,247] [INFO] [comm.py:637:init_distributed] cdb=None
-[2024-03-28 20:57:45,247] [INFO] [comm.py:668:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+[2024-03-30 09:24:34,358] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-30 09:24:34,358] [INFO] [comm.py:668:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
 > initialized tensor model parallel with size 1
 > initialized pipeline model parallel with size 1
 > setting random seeds to 1234 ...
@@ -399,7 +607,7 @@ setting number of micro-batches to constant 256
 make: Entering directory '/persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/megatron/data'
 make: Nothing to be done for 'default'.
 make: Leaving directory '/persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/megatron/data'
->>> done with dataset index builder. Compilation time: 0.044 seconds
+>>> done with dataset index builder. Compilation time: 0.051 seconds
 > compiling and loading fused kernels ...
 Detected CUDA files, patching ldflags
 Emitting ninja build file /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/megatron/fused_kernels/build/build.ninja...
@@ -419,19 +627,19 @@ Building extension module scaled_softmax_cuda...
 Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
 ninja: no work to do.
 Loading extension module scaled_softmax_cuda...
->>> done with compiling and loading fused kernels. Compilation time: 1.665 seconds
+>>> done with compiling and loading fused kernels. Compilation time: 1.882 seconds
 [rank0]:[W init.cpp:767] Warning: nvfuser is no longer supported in torch script, use _jit_set_nvfuser_enabled is deprecated and a no-op (function operator())
 /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/megatron/training.py:136: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /opt/conda/conda-bld/pytorch_1704987277512/work/torch/csrc/tensor/python_tensor.cpp:83.)
   start_time_tensor = get_accelerator().DoubleTensor([_TRAIN_START_TIME])
-time to initialize megatron (seconds): 3.198
-[after megatron is initialized] datetime: 2024-03-28 20:57:47 
+time to initialize megatron (seconds): 3.546
+[after megatron is initialized] datetime: 2024-03-30 09:24:36 
 building GPT model ...
-[2024-03-28 20:57:47,218] [INFO] [utils.py:795:see_memory_usage] Before Building Model
-[2024-03-28 20:57:47,219] [INFO] [utils.py:796:see_memory_usage] MA 0.0 GB         Max_MA 0.2 GB         CA 0.0 GB         Max_CA 0 GB 
-[2024-03-28 20:57:47,219] [INFO] [utils.py:803:see_memory_usage] CPU Virtual Memory:  used = 9.62 GB, percent = 2.5%
+[2024-03-30 09:24:36,566] [INFO] [utils.py:795:see_memory_usage] Before Building Model
+[2024-03-30 09:24:36,567] [INFO] [utils.py:796:see_memory_usage] MA 0.0 GB         Max_MA 0.2 GB         CA 0.0 GB         Max_CA 0 GB 
+[2024-03-30 09:24:36,567] [INFO] [utils.py:803:see_memory_usage] CPU Virtual Memory:  used = 8.24 GB, percent = 2.2%
 SEED_LAYERS=False BASE_SEED=1234 SEED_FN=None
 Using topology: {ProcessCoord(pipe=0, data=0, model=0): 0}
-[2024-03-28 20:57:47,223] [INFO] [module.py:375:_partition_layers] Partitioning pipeline stages with method type:transformer
+[2024-03-30 09:24:36,570] [INFO] [module.py:375:_partition_layers] Partitioning pipeline stages with method type:transformer
 stage=0 layers=17
      0: _to_float16
      1: EmbeddingPipe
@@ -451,34 +659,32 @@ stage=0 layers=17
     15: EmbeddingPipe
     16: float16_to_fp32
   loss: CrossEntropy
-[2024-03-28 20:57:47,391] [INFO] [utils.py:795:see_memory_usage] After Building Model
-[2024-03-28 20:57:47,391] [INFO] [utils.py:796:see_memory_usage] MA 0.23 GB         Max_MA 0.25 GB         CA 0.26 GB         Max_CA 0 GB 
-[2024-03-28 20:57:47,392] [INFO] [utils.py:803:see_memory_usage] CPU Virtual Memory:  used = 9.64 GB, percent = 2.6%
+[2024-03-30 09:24:36,746] [INFO] [utils.py:795:see_memory_usage] After Building Model
+[2024-03-30 09:24:36,747] [INFO] [utils.py:796:see_memory_usage] MA 0.23 GB         Max_MA 0.25 GB         CA 0.26 GB         Max_CA 0 GB 
+[2024-03-30 09:24:36,748] [INFO] [utils.py:803:see_memory_usage] CPU Virtual Memory:  used = 8.25 GB, percent = 2.2%
  > number of parameters on (tensor, pipeline) model parallel rank (0, 0): 111892992
 setting training iterations to 1144409
 > learning rate decay style: cosine
 DeepSpeed is enabled.
-[2024-03-28 20:57:47,394] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed info: version=0.12.4, git-hash=unknown, git-branch=unknown
+[2024-03-30 09:24:36,750] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed info: version=0.12.4, git-hash=unknown, git-branch=unknown
 wandb: Currently logged in as: u10bei-github-io. Use `wandb login --relogin` to force relogin
-wandb: wandb version 0.16.5 is available!  To upgrade, please run:
-wandb:  $ pip install wandb --upgrade
-wandb: Tracking run with wandb version 0.16.4
-wandb: Run data is saved locally in /home/ext_u10bei_github_io_gmail_com/ucllm_nedo_dev/train/scripts/step2_pretrain_model/wandb/run-20240328_205748-4guq5kw0
+wandb: Tracking run with wandb version 0.16.5
+wandb: Run data is saved locally in /home/ext_u10bei_github_io_gmail_com/ucllm_nedo_dev/train/scripts/step2_pretrain_model/wandb/run-20240330_092438-r212abm9
 wandb: Run `wandb offline` to turn off syncing.
-wandb: Syncing run balmy-puddle-18
+wandb: Syncing run youthful-hill-27
 wandb: ⭐️ View project at https://wandb.ai/u10bei-github-io/my_project
-wandb: 🚀 View run at https://wandb.ai/u10bei-github-io/my_project/runs/4guq5kw0
-[2024-03-28 20:57:53,212] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
-[2024-03-28 20:57:53,213] [INFO] [logging.py:96:log_dist] [Rank 0] Using client Optimizer as basic optimizer
-[2024-03-28 20:57:53,213] [INFO] [logging.py:96:log_dist] [Rank 0] Removing param_group that has no 'params' in the basic Optimizer
-[2024-03-28 20:57:53,217] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Basic Optimizer = FusedAdam
-[2024-03-28 20:57:53,217] [INFO] [logging.py:96:log_dist] [Rank 0] Creating fp16 optimizer with dynamic loss scale
-[2024-03-28 20:57:53,240] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Final Optimizer = FusedAdam
-[2024-03-28 20:57:53,241] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed using client LR scheduler
-[2024-03-28 20:57:53,241] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed LR Scheduler = <megatron.optimizer_param_scheduler.OptimizerParamScheduler object at 0x7f3d8da8beb0>
-[2024-03-28 20:57:53,241] [INFO] [logging.py:96:log_dist] [Rank 0] step=0, skipped=0, lr=[0.0, 0.0], mom=[(0.9, 0.95), (0.9, 0.95)]
-[2024-03-28 20:57:53,242] [INFO] [config.py:979:print] DeepSpeedEngine configuration:
-[2024-03-28 20:57:53,242] [INFO] [config.py:983:print]   activation_checkpointing_config  {
+wandb: 🚀 View run at https://wandb.ai/u10bei-github-io/my_project/runs/r212abm9/workspace
+[2024-03-30 09:24:42,809] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2024-03-30 09:24:42,811] [INFO] [logging.py:96:log_dist] [Rank 0] Using client Optimizer as basic optimizer
+[2024-03-30 09:24:42,811] [INFO] [logging.py:96:log_dist] [Rank 0] Removing param_group that has no 'params' in the basic Optimizer
+[2024-03-30 09:24:42,815] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Basic Optimizer = FusedAdam
+[2024-03-30 09:24:42,815] [INFO] [logging.py:96:log_dist] [Rank 0] Creating fp16 optimizer with dynamic loss scale
+[2024-03-30 09:24:42,837] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Final Optimizer = FusedAdam
+[2024-03-30 09:24:42,838] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed using client LR scheduler
+[2024-03-30 09:24:42,838] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed LR Scheduler = <megatron.optimizer_param_scheduler.OptimizerParamScheduler object at 0x7f39a9ddbee0>
+[2024-03-30 09:24:42,838] [INFO] [logging.py:96:log_dist] [Rank 0] step=0, skipped=0, lr=[0.0, 0.0], mom=[(0.9, 0.95), (0.9, 0.95)]
+[2024-03-30 09:24:42,838] [INFO] [config.py:979:print] DeepSpeedEngine configuration:
+[2024-03-30 09:24:42,839] [INFO] [config.py:983:print]   activation_checkpointing_config  {
     "partition_activations": false, 
     "contiguous_memory_optimization": false, 
     "cpu_checkpointing": false, 
@@ -486,10 +692,10 @@ wandb: 🚀 View run at https://wandb.ai/u10bei-github-io/my_project/runs/4guq5k
     "synchronize_checkpoint_boundary": false, 
     "profile": false
 }
-[2024-03-28 20:57:53,242] [INFO] [config.py:983:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
-[2024-03-28 20:57:53,243] [INFO] [config.py:983:print]   amp_enabled .................. False
-[2024-03-28 20:57:53,243] [INFO] [config.py:983:print]   amp_params ................... False
-[2024-03-28 20:57:53,243] [INFO] [config.py:983:print]   autotuning_config ............ {
+[2024-03-30 09:24:42,839] [INFO] [config.py:983:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2024-03-30 09:24:42,839] [INFO] [config.py:983:print]   amp_enabled .................. False
+[2024-03-30 09:24:42,839] [INFO] [config.py:983:print]   amp_params ................... False
+[2024-03-30 09:24:42,840] [INFO] [config.py:983:print]   autotuning_config ............ {
     "enabled": false, 
     "start_step": null, 
     "end_step": null, 
@@ -514,31 +720,31 @@ wandb: 🚀 View run at https://wandb.ai/u10bei-github-io/my_project/runs/4guq5k
     "min_train_micro_batch_size_per_gpu": 1, 
     "num_tuning_micro_batch_sizes": 3
 }
-[2024-03-28 20:57:53,243] [INFO] [config.py:983:print]   bfloat16_enabled ............. False
-[2024-03-28 20:57:53,243] [INFO] [config.py:983:print]   checkpoint_parallel_write_pipeline  False
-[2024-03-28 20:57:53,243] [INFO] [config.py:983:print]   checkpoint_tag_validation_enabled  True
-[2024-03-28 20:57:53,243] [INFO] [config.py:983:print]   checkpoint_tag_validation_fail  False
-[2024-03-28 20:57:53,243] [INFO] [config.py:983:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f3d70087ac0>
-[2024-03-28 20:57:53,243] [INFO] [config.py:983:print]   communication_data_type ...... None
-[2024-03-28 20:57:53,244] [INFO] [config.py:983:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
-[2024-03-28 20:57:53,244] [INFO] [config.py:983:print]   curriculum_enabled_legacy .... False
-[2024-03-28 20:57:53,244] [INFO] [config.py:983:print]   curriculum_params_legacy ..... False
-[2024-03-28 20:57:53,244] [INFO] [config.py:983:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
-[2024-03-28 20:57:53,244] [INFO] [config.py:983:print]   data_efficiency_enabled ...... False
-[2024-03-28 20:57:53,244] [INFO] [config.py:983:print]   dataloader_drop_last ......... False
-[2024-03-28 20:57:53,244] [INFO] [config.py:983:print]   disable_allgather ............ False
-[2024-03-28 20:57:53,244] [INFO] [config.py:983:print]   dump_state ................... False
-[2024-03-28 20:57:53,244] [INFO] [config.py:983:print]   dynamic_loss_scale_args ...... {'init_scale': 2048, 'scale_window': 500, 'delayed_shift': 2, 'consecutive_hysteresis': False, 'min_scale': 1}
-[2024-03-28 20:57:53,244] [INFO] [config.py:983:print]   eigenvalue_enabled ........... False
-[2024-03-28 20:57:53,244] [INFO] [config.py:983:print]   eigenvalue_gas_boundary_resolution  1
-[2024-03-28 20:57:53,244] [INFO] [config.py:983:print]   eigenvalue_layer_name ........ bert.encoder.layer
-[2024-03-28 20:57:53,244] [INFO] [config.py:983:print]   eigenvalue_layer_num ......... 0
-[2024-03-28 20:57:53,245] [INFO] [config.py:983:print]   eigenvalue_max_iter .......... 100
-[2024-03-28 20:57:53,245] [INFO] [config.py:983:print]   eigenvalue_stability ......... 1e-06
-[2024-03-28 20:57:53,245] [INFO] [config.py:983:print]   eigenvalue_tol ............... 0.01
-[2024-03-28 20:57:53,245] [INFO] [config.py:983:print]   eigenvalue_verbose ........... False
-[2024-03-28 20:57:53,245] [INFO] [config.py:983:print]   elasticity_enabled ........... False
-[2024-03-28 20:57:53,245] [INFO] [config.py:983:print]   flops_profiler_config ........ {
+[2024-03-30 09:24:42,840] [INFO] [config.py:983:print]   bfloat16_enabled ............. False
+[2024-03-30 09:24:42,840] [INFO] [config.py:983:print]   checkpoint_parallel_write_pipeline  False
+[2024-03-30 09:24:42,840] [INFO] [config.py:983:print]   checkpoint_tag_validation_enabled  True
+[2024-03-30 09:24:42,840] [INFO] [config.py:983:print]   checkpoint_tag_validation_fail  False
+[2024-03-30 09:24:42,840] [INFO] [config.py:983:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f3974012e50>
+[2024-03-30 09:24:42,840] [INFO] [config.py:983:print]   communication_data_type ...... None
+[2024-03-30 09:24:42,840] [INFO] [config.py:983:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2024-03-30 09:24:42,840] [INFO] [config.py:983:print]   curriculum_enabled_legacy .... False
+[2024-03-30 09:24:42,841] [INFO] [config.py:983:print]   curriculum_params_legacy ..... False
+[2024-03-30 09:24:42,841] [INFO] [config.py:983:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2024-03-30 09:24:42,841] [INFO] [config.py:983:print]   data_efficiency_enabled ...... False
+[2024-03-30 09:24:42,841] [INFO] [config.py:983:print]   dataloader_drop_last ......... False
+[2024-03-30 09:24:42,841] [INFO] [config.py:983:print]   disable_allgather ............ False
+[2024-03-30 09:24:42,841] [INFO] [config.py:983:print]   dump_state ................... False
+[2024-03-30 09:24:42,841] [INFO] [config.py:983:print]   dynamic_loss_scale_args ...... {'init_scale': 2048, 'scale_window': 500, 'delayed_shift': 2, 'consecutive_hysteresis': False, 'min_scale': 1}
+[2024-03-30 09:24:42,841] [INFO] [config.py:983:print]   eigenvalue_enabled ........... False
+[2024-03-30 09:24:42,841] [INFO] [config.py:983:print]   eigenvalue_gas_boundary_resolution  1
+[2024-03-30 09:24:42,841] [INFO] [config.py:983:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2024-03-30 09:24:42,841] [INFO] [config.py:983:print]   eigenvalue_layer_num ......... 0
+[2024-03-30 09:24:42,841] [INFO] [config.py:983:print]   eigenvalue_max_iter .......... 100
+[2024-03-30 09:24:42,841] [INFO] [config.py:983:print]   eigenvalue_stability ......... 1e-06
+[2024-03-30 09:24:42,842] [INFO] [config.py:983:print]   eigenvalue_tol ............... 0.01
+[2024-03-30 09:24:42,842] [INFO] [config.py:983:print]   eigenvalue_verbose ........... False
+[2024-03-30 09:24:42,842] [INFO] [config.py:983:print]   elasticity_enabled ........... False
+[2024-03-30 09:24:42,842] [INFO] [config.py:983:print]   flops_profiler_config ........ {
     "enabled": false, 
     "recompute_fwd_factor": 0.0, 
     "profile_step": 1, 
@@ -547,23 +753,23 @@ wandb: 🚀 View run at https://wandb.ai/u10bei-github-io/my_project/runs/4guq5k
     "detailed": true, 
     "output_file": null
 }
-[2024-03-28 20:57:53,245] [INFO] [config.py:983:print]   fp16_auto_cast ............... False
-[2024-03-28 20:57:53,245] [INFO] [config.py:983:print]   fp16_enabled ................. True
-[2024-03-28 20:57:53,245] [INFO] [config.py:983:print]   fp16_master_weights_and_gradients  False
-[2024-03-28 20:57:53,245] [INFO] [config.py:983:print]   global_rank .................. 0
-[2024-03-28 20:57:53,245] [INFO] [config.py:983:print]   grad_accum_dtype ............. None
-[2024-03-28 20:57:53,245] [INFO] [config.py:983:print]   gradient_accumulation_steps .. 256
-[2024-03-28 20:57:53,246] [INFO] [config.py:983:print]   gradient_clipping ............ 1.0
-[2024-03-28 20:57:53,246] [INFO] [config.py:983:print]   gradient_predivide_factor .... 1.0
-[2024-03-28 20:57:53,246] [INFO] [config.py:983:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
-[2024-03-28 20:57:53,246] [INFO] [config.py:983:print]   initial_dynamic_scale ........ 2048
-[2024-03-28 20:57:53,246] [INFO] [config.py:983:print]   load_universal_checkpoint .... False
-[2024-03-28 20:57:53,246] [INFO] [config.py:983:print]   loss_scale ................... 0
-[2024-03-28 20:57:53,246] [INFO] [config.py:983:print]   memory_breakdown ............. False
-[2024-03-28 20:57:53,246] [INFO] [config.py:983:print]   mics_hierarchial_params_gather  False
-[2024-03-28 20:57:53,246] [INFO] [config.py:983:print]   mics_shard_size .............. -1
-[2024-03-28 20:57:53,246] [INFO] [config.py:983:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=True, group=None, team=None, project='my_project') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=True
-[2024-03-28 20:57:53,247] [INFO] [config.py:983:print]   nebula_config ................ {
+[2024-03-30 09:24:42,842] [INFO] [config.py:983:print]   fp16_auto_cast ............... False
+[2024-03-30 09:24:42,842] [INFO] [config.py:983:print]   fp16_enabled ................. True
+[2024-03-30 09:24:42,842] [INFO] [config.py:983:print]   fp16_master_weights_and_gradients  False
+[2024-03-30 09:24:42,842] [INFO] [config.py:983:print]   global_rank .................. 0
+[2024-03-30 09:24:42,842] [INFO] [config.py:983:print]   grad_accum_dtype ............. None
+[2024-03-30 09:24:42,842] [INFO] [config.py:983:print]   gradient_accumulation_steps .. 256
+[2024-03-30 09:24:42,842] [INFO] [config.py:983:print]   gradient_clipping ............ 1.0
+[2024-03-30 09:24:42,843] [INFO] [config.py:983:print]   gradient_predivide_factor .... 1.0
+[2024-03-30 09:24:42,843] [INFO] [config.py:983:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2024-03-30 09:24:42,843] [INFO] [config.py:983:print]   initial_dynamic_scale ........ 2048
+[2024-03-30 09:24:42,843] [INFO] [config.py:983:print]   load_universal_checkpoint .... False
+[2024-03-30 09:24:42,843] [INFO] [config.py:983:print]   loss_scale ................... 0
+[2024-03-30 09:24:42,843] [INFO] [config.py:983:print]   memory_breakdown ............. False
+[2024-03-30 09:24:42,843] [INFO] [config.py:983:print]   mics_hierarchial_params_gather  False
+[2024-03-30 09:24:42,843] [INFO] [config.py:983:print]   mics_shard_size .............. -1
+[2024-03-30 09:24:42,843] [INFO] [config.py:983:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=True, group=None, team=None, project='my_project') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=True
+[2024-03-30 09:24:42,843] [INFO] [config.py:983:print]   nebula_config ................ {
     "enabled": false, 
     "persistent_storage_path": null, 
     "persistent_time_interval": 100, 
@@ -571,32 +777,32 @@ wandb: 🚀 View run at https://wandb.ai/u10bei-github-io/my_project/runs/4guq5k
     "enable_nebula_load": true, 
     "load_path": null
 }
-[2024-03-28 20:57:53,247] [INFO] [config.py:983:print]   optimizer_legacy_fusion ...... False
-[2024-03-28 20:57:53,247] [INFO] [config.py:983:print]   optimizer_name ............... None
-[2024-03-28 20:57:53,247] [INFO] [config.py:983:print]   optimizer_params ............. None
-[2024-03-28 20:57:53,247] [INFO] [config.py:983:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0, 'pipe_partitioned': True, 'grad_partitioned': True}
-[2024-03-28 20:57:53,247] [INFO] [config.py:983:print]   pld_enabled .................. False
-[2024-03-28 20:57:53,247] [INFO] [config.py:983:print]   pld_params ................... False
-[2024-03-28 20:57:53,247] [INFO] [config.py:983:print]   prescale_gradients ........... True
-[2024-03-28 20:57:53,247] [INFO] [config.py:983:print]   scheduler_name ............... None
-[2024-03-28 20:57:53,247] [INFO] [config.py:983:print]   scheduler_params ............. None
-[2024-03-28 20:57:53,247] [INFO] [config.py:983:print]   seq_parallel_communication_data_type  torch.float32
-[2024-03-28 20:57:53,247] [INFO] [config.py:983:print]   sparse_attention ............. None
-[2024-03-28 20:57:53,248] [INFO] [config.py:983:print]   sparse_gradients_enabled ..... False
-[2024-03-28 20:57:53,248] [INFO] [config.py:983:print]   steps_per_print .............. 10
-[2024-03-28 20:57:53,248] [INFO] [config.py:983:print]   train_batch_size ............. 256
-[2024-03-28 20:57:53,248] [INFO] [config.py:983:print]   train_micro_batch_size_per_gpu  1
-[2024-03-28 20:57:53,248] [INFO] [config.py:983:print]   use_data_before_expert_parallel_  False
-[2024-03-28 20:57:53,248] [INFO] [config.py:983:print]   use_node_local_storage ....... False
-[2024-03-28 20:57:53,248] [INFO] [config.py:983:print]   wall_clock_breakdown ......... False
-[2024-03-28 20:57:53,248] [INFO] [config.py:983:print]   weight_quantization_config ... None
-[2024-03-28 20:57:53,248] [INFO] [config.py:983:print]   world_size ................... 1
-[2024-03-28 20:57:53,248] [INFO] [config.py:983:print]   zero_allow_untested_optimizer  False
-[2024-03-28 20:57:53,248] [INFO] [config.py:983:print]   zero_config .................. stage=0 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 use_multi_rank_bucket_allreduce=True allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True pipeline_loading_checkpoint=False override_module_apply=True
-[2024-03-28 20:57:53,248] [INFO] [config.py:983:print]   zero_enabled ................. False
-[2024-03-28 20:57:53,249] [INFO] [config.py:983:print]   zero_force_ds_cpu_optimizer .. True
-[2024-03-28 20:57:53,249] [INFO] [config.py:983:print]   zero_optimization_stage ...... 0
-[2024-03-28 20:57:53,249] [INFO] [config.py:969:print_user_config]   json = {
+[2024-03-30 09:24:42,844] [INFO] [config.py:983:print]   optimizer_legacy_fusion ...... False
+[2024-03-30 09:24:42,844] [INFO] [config.py:983:print]   optimizer_name ............... None
+[2024-03-30 09:24:42,844] [INFO] [config.py:983:print]   optimizer_params ............. None
+[2024-03-30 09:24:42,844] [INFO] [config.py:983:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0, 'pipe_partitioned': True, 'grad_partitioned': True}
+[2024-03-30 09:24:42,844] [INFO] [config.py:983:print]   pld_enabled .................. False
+[2024-03-30 09:24:42,844] [INFO] [config.py:983:print]   pld_params ................... False
+[2024-03-30 09:24:42,844] [INFO] [config.py:983:print]   prescale_gradients ........... True
+[2024-03-30 09:24:42,844] [INFO] [config.py:983:print]   scheduler_name ............... None
+[2024-03-30 09:24:42,844] [INFO] [config.py:983:print]   scheduler_params ............. None
+[2024-03-30 09:24:42,844] [INFO] [config.py:983:print]   seq_parallel_communication_data_type  torch.float32
+[2024-03-30 09:24:42,844] [INFO] [config.py:983:print]   sparse_attention ............. None
+[2024-03-30 09:24:42,844] [INFO] [config.py:983:print]   sparse_gradients_enabled ..... False
+[2024-03-30 09:24:42,844] [INFO] [config.py:983:print]   steps_per_print .............. 10
+[2024-03-30 09:24:42,845] [INFO] [config.py:983:print]   train_batch_size ............. 256
+[2024-03-30 09:24:42,845] [INFO] [config.py:983:print]   train_micro_batch_size_per_gpu  1
+[2024-03-30 09:24:42,845] [INFO] [config.py:983:print]   use_data_before_expert_parallel_  False
+[2024-03-30 09:24:42,845] [INFO] [config.py:983:print]   use_node_local_storage ....... False
+[2024-03-30 09:24:42,845] [INFO] [config.py:983:print]   wall_clock_breakdown ......... False
+[2024-03-30 09:24:42,845] [INFO] [config.py:983:print]   weight_quantization_config ... None
+[2024-03-30 09:24:42,845] [INFO] [config.py:983:print]   world_size ................... 1
+[2024-03-30 09:24:42,845] [INFO] [config.py:983:print]   zero_allow_untested_optimizer  False
+[2024-03-30 09:24:42,845] [INFO] [config.py:983:print]   zero_config .................. stage=0 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 use_multi_rank_bucket_allreduce=True allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True pipeline_loading_checkpoint=False override_module_apply=True
+[2024-03-30 09:24:42,845] [INFO] [config.py:983:print]   zero_enabled ................. False
+[2024-03-30 09:24:42,845] [INFO] [config.py:983:print]   zero_force_ds_cpu_optimizer .. True
+[2024-03-30 09:24:42,845] [INFO] [config.py:983:print]   zero_optimization_stage ...... 0
+[2024-03-30 09:24:42,846] [INFO] [config.py:969:print_user_config]   json = {
     "train_batch_size": 256, 
     "train_micro_batch_size_per_gpu": 1, 
     "steps_per_print": 10, 
@@ -619,15 +825,85 @@ wandb: 🚀 View run at https://wandb.ai/u10bei-github-io/my_project/runs/4guq5k
     }, 
     "wall_clock_breakdown": false
 }
-[2024-03-28 20:57:53,249] [INFO] [engine.py:99:__init__] CONFIG: micro_batches=256 micro_batch_size=1
-[2024-03-28 20:57:53,249] [INFO] [engine.py:139:__init__] is_pipe_partitioned= False is_grad_partitioned= False
-[2024-03-28 20:57:53,322] [INFO] [engine.py:158:__init__] RANK=0 STAGE=0 LAYERS=17 [0, 17) STAGE_PARAMS=111892992 (111.893M) TOTAL_PARAMS=111892992 (111.893M) UNIQUE_PARAMS=111892992 (111.893M)
-[2024-03-28 20:57:53,323] [WARNING] [engine.py:2703:load_checkpoint] Unable to find latest file at /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/latest, if trying to load latest checkpoint please ensure this file exists or pass an explicit checkpoint tag when loading a checkpoint.
-WARNING: could not find the metadata file /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase 
-    will not load any checkpoints and will start from random
+[2024-03-30 09:24:42,846] [INFO] [engine.py:99:__init__] CONFIG: micro_batches=256 micro_batch_size=1
+[2024-03-30 09:24:42,846] [INFO] [engine.py:139:__init__] is_pipe_partitioned= False is_grad_partitioned= False
+[2024-03-30 09:24:42,905] [INFO] [engine.py:158:__init__] RANK=0 STAGE=0 LAYERS=17 [0, 17) STAGE_PARAMS=111892992 (111.893M) TOTAL_PARAMS=111892992 (111.893M) UNIQUE_PARAMS=111892992 (111.893M)
+[2024-03-30 09:24:42,908] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/mp_rank_00_model_states.pt...
+[2024-03-30 09:24:43,697] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/mp_rank_00_model_states.pt.
+[2024-03-30 09:24:43,772] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/mp_rank_00_model_states.pt...
+[2024-03-30 09:24:44,555] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/mp_rank_00_model_states.pt.
+[2024-03-30 09:24:44,556] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_01-model_00-model_states.pt...
+[2024-03-30 09:24:44,590] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_01-model_00-model_states.pt.
+[2024-03-30 09:24:44,593] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_01-model_00-model_states.pt...
+[2024-03-30 09:24:44,624] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_01-model_00-model_states.pt.
+[2024-03-30 09:24:44,636] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_02-model_00-model_states.pt...
+[2024-03-30 09:24:44,648] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_02-model_00-model_states.pt.
+[2024-03-30 09:24:44,649] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_02-model_00-model_states.pt...
+[2024-03-30 09:24:44,655] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_02-model_00-model_states.pt.
+[2024-03-30 09:24:44,662] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_03-model_00-model_states.pt...
+[2024-03-30 09:24:44,673] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_03-model_00-model_states.pt.
+[2024-03-30 09:24:44,673] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_03-model_00-model_states.pt...
+[2024-03-30 09:24:44,679] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_03-model_00-model_states.pt.
+[2024-03-30 09:24:44,683] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_04-model_00-model_states.pt...
+[2024-03-30 09:24:44,689] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_04-model_00-model_states.pt.
+[2024-03-30 09:24:44,690] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_04-model_00-model_states.pt...
+[2024-03-30 09:24:44,696] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_04-model_00-model_states.pt.
+[2024-03-30 09:24:44,701] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_05-model_00-model_states.pt...
+[2024-03-30 09:24:44,707] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_05-model_00-model_states.pt.
+[2024-03-30 09:24:44,707] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_05-model_00-model_states.pt...
+[2024-03-30 09:24:44,713] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_05-model_00-model_states.pt.
+[2024-03-30 09:24:44,718] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_06-model_00-model_states.pt...
+[2024-03-30 09:24:44,724] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_06-model_00-model_states.pt.
+[2024-03-30 09:24:44,724] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_06-model_00-model_states.pt...
+[2024-03-30 09:24:44,730] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_06-model_00-model_states.pt.
+[2024-03-30 09:24:44,734] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_07-model_00-model_states.pt...
+[2024-03-30 09:24:44,740] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_07-model_00-model_states.pt.
+[2024-03-30 09:24:44,741] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_07-model_00-model_states.pt...
+[2024-03-30 09:24:44,746] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_07-model_00-model_states.pt.
+[2024-03-30 09:24:44,751] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_08-model_00-model_states.pt...
+[2024-03-30 09:24:44,758] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_08-model_00-model_states.pt.
+[2024-03-30 09:24:44,758] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_08-model_00-model_states.pt...
+[2024-03-30 09:24:44,764] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_08-model_00-model_states.pt.
+[2024-03-30 09:24:44,769] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_09-model_00-model_states.pt...
+[2024-03-30 09:24:44,775] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_09-model_00-model_states.pt.
+[2024-03-30 09:24:44,776] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_09-model_00-model_states.pt...
+[2024-03-30 09:24:44,781] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_09-model_00-model_states.pt.
+[2024-03-30 09:24:44,786] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_10-model_00-model_states.pt...
+[2024-03-30 09:24:44,792] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_10-model_00-model_states.pt.
+[2024-03-30 09:24:44,792] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_10-model_00-model_states.pt...
+[2024-03-30 09:24:44,798] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_10-model_00-model_states.pt.
+[2024-03-30 09:24:44,802] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_11-model_00-model_states.pt...
+[2024-03-30 09:24:44,808] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_11-model_00-model_states.pt.
+[2024-03-30 09:24:44,808] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_11-model_00-model_states.pt...
+[2024-03-30 09:24:44,814] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_11-model_00-model_states.pt.
+[2024-03-30 09:24:44,819] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_12-model_00-model_states.pt...
+[2024-03-30 09:24:44,825] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_12-model_00-model_states.pt.
+[2024-03-30 09:24:44,825] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_12-model_00-model_states.pt...
+[2024-03-30 09:24:44,831] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_12-model_00-model_states.pt.
+[2024-03-30 09:24:44,836] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_13-model_00-model_states.pt...
+[2024-03-30 09:24:44,842] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_13-model_00-model_states.pt.
+[2024-03-30 09:24:44,843] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_13-model_00-model_states.pt...
+[2024-03-30 09:24:44,848] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_13-model_00-model_states.pt.
+[2024-03-30 09:24:44,853] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_14-model_00-model_states.pt...
+[2024-03-30 09:24:44,854] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_14-model_00-model_states.pt.
+[2024-03-30 09:24:44,854] [INFO] [torch_checkpoint_engine.py:27:load] [Torch] Loading checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_14-model_00-model_states.pt...
+[2024-03-30 09:24:44,855] [INFO] [torch_checkpoint_engine.py:29:load] [Torch] Loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1600/layer_14-model_00-model_states.pt.
+ > overriding learning rate value to 0.0006
+ > overriding minimum learning rate value to 1e-06
+ > overriding warmup iterations value to 0
+ > overriding warmup tokens value to 3000000000
+ > overriding total number of iterations value to 292968750
+ > overriding decay tokens value to 300000000000
+ > overriding learning rate decay style value to cosine
+ > overriding start weight decay value to 0.1
+ > overriding end weight decay value to 0.1
+ > overriding total number of weight decay iterations value to 292968750
+ > overriding weight decay incr style value to constant
+ checkpoint version 3.0
+  successfully loaded checkpoint from /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase at iteration 1600
 (min, max) time across ranks (ms):
-    load-checkpoint ................................: (1.38, 1.38)
-[after model, optimizer, and learning rate scheduler are built] datetime: 2024-03-28 20:57:53 
+    load-checkpoint ................................: (2611.54, 2611.54)
+[after model, optimizer, and learning rate scheduler are built] datetime: 2024-03-30 09:24:45 
 > building train, validation, and test datasets ...
  > datasets target sizes (minimum size):
     train:      292968750
@@ -641,17 +917,83 @@ Single data path provided for train, valid & test
     reading document index...
     creating numpy buffer of mmap...
     creating memory view of numpy buffer...
- > finished creating indexed dataset in 0.013977 seconds
-    number of documents: 10252906
+ > finished creating indexed dataset in 0.002989 seconds
+    number of documents: 206950
  > dataset split:
     train:
-     document indices in [0, 9730008) total of 9730008 documents
+     document indices in [0, 196395) total of 196395 documents
     validation:
-     document indices in [9730008, 10242653) total of 512645 documents
+     document indices in [196395, 206743) total of 10348 documents
     test:
-     document indices in [10242653, 10252906) total of 10253 documents
+     document indices in [206743, 206950) total of 207 documents
  > WARNING: could not find index map files, building the indices on rank 0 ...
- > last epoch number of samples (159367) is smaller than 80% of number of samples per epoch (326431), setting separate_last_epoch to True
-[2024-03-28 20:58:46,401] [INFO] [launch.py:315:sigkill_handler] Killing subprocess 531822
-[2024-03-28 20:58:46,401] [ERROR] [launch.py:321:sigkill_handler] ['/home/ext_u10bei_github_io_gmail_com/miniconda3/envs/.venv_train/bin/python', '-u', '/persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/pretrain_gpt.py', '--local_rank=0', '--override-opt_param-scheduler', '--adam-beta1', '0.9', '--adam-beta2', '0.95', '--tensor-model-parallel-size', '1', '--init-method-std', '0.02', '--lr-decay-tokens', '300000000000', '--lr-warmup-tokens', '3000000000', '--micro-batch-size', '1', '--exit-duration-in-mins', '30000000', '--global-batch-size', '256', '--num-layers', '12', '--hidden-size', '768', '--num-attention-heads', '12', '--seq-length', '2048', '--max-position-embeddings', '2048', '--train-tokens', '300000000000', '--train-samples', '292968750', '--lr', '6.0e-4', '--min-lr', '1.0e-6', '--lr-decay-style', 'cosine', '--split', '949,50,1', '--log-interval', '10', '--eval-interval', '100', '--eval-iters', '10', '--save-interval', '200', '--weight-decay', '0.1', '--clip-grad', '1.0', '--hysteresis', '2', '--num-workers', '0', '--fp16', '--seed', '1234', '--load', '/persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase', '--save', '/persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase', '--no-async-tensor-model-parallel-allreduce', '--use-flash-attn-v2', '--tensorboard-queue-size', '1', '--log-timers-to-tensorboard', '--log-batch-size-to-tensorboard', '--log-validation-ppl-to-tensorboard', '--tensorboard-dir', '/persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/tensorboard/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase_mlpre-g2-ghpc-2_2024.03.28_20.57.30', '--log-optimizer-states-to-tensorboard', '--tokenizer-type', 'SentencePieceTokenizer', '--tokenizer-model', '/persistentshare/storage/team_nakamura/member/horie/tokenizer/JINIAC_V0_1.model', '--data-path', '/persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/dataset/jawiki_text_document', '--data-impl', 'mmap', '--deepspeed', '--deepspeed_config', '/persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/deepspeed_config/ds_config_gbs256_mbs1_log10_zero0.json', '--zero-stage', '0', '--pipeline-model-parallel-size', '1'] exits with return code = -9
-slurmstepd: error: Detected 1 oom_kill event in StepId=1753.batch. Some of the step tasks have been OOM Killed.
+ > last epoch number of samples (21455) is smaller than 80% of number of samples per epoch (44225), setting separate_last_epoch to True
+ > elasped time to build and save doc-idx mapping (seconds): 121.129223
+    using:
+     number of documents:       196395
+     number of epochs:          6625
+     sequence length:           2048
+     total number of samples:   292991521
+ > elasped time to build and save sample-idx mapping (seconds): 23.435961
+ > building shuffle index with split [0, 292947295) and [292947295, 292991521) ...
+ > elasped time to build and save shuffle-idx mapping (seconds): 20.733196
+ > loading doc-idx mapping from /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/dataset/index-cache/b6c5f2ddea1b9825a7217015b1c915a2_doc_idx.npy
+ > loading sample-idx mapping from /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/dataset/index-cache/b6c5f2ddea1b9825a7217015b1c915a2_sample_idx.npy
+ > loading shuffle-idx mapping from /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/dataset/index-cache/b6c5f2ddea1b9825a7217015b1c915a2_shuffle_idx.npy
+    loaded indexed file in 0.624 seconds
+    total number of samples: 292991522
+    total number of epochs: 6625
+ > WARNING: could not find index map files, building the indices on rank 0 ...
+ > last epoch number of samples (1549) is smaller than 80% of number of samples per epoch (2340), setting separate_last_epoch to True
+ > elasped time to build and save doc-idx mapping (seconds): 11.022818
+    using:
+     number of documents:       10348
+     number of epochs:          12519
+     sequence length:           2048
+     total number of samples:   29299992
+ > elasped time to build and save sample-idx mapping (seconds): 1.726679
+ > building shuffle index with split [0, 29297651) and [29297651, 29299992) ...
+ > elasped time to build and save shuffle-idx mapping (seconds): 1.716361
+ > loading doc-idx mapping from /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/dataset/index-cache/0e9c9c7a4964ddb7639143a37ae3c3b9_doc_idx.npy
+ > loading sample-idx mapping from /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/dataset/index-cache/0e9c9c7a4964ddb7639143a37ae3c3b9_sample_idx.npy
+ > loading shuffle-idx mapping from /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/dataset/index-cache/0e9c9c7a4964ddb7639143a37ae3c3b9_shuffle_idx.npy
+    loaded indexed file in 0.086 seconds
+    total number of samples: 29299993
+    total number of epochs: 12519
+ > WARNING: could not find index map files, building the indices on rank 0 ...
+ > last epoch number of samples (19) is smaller than 80% of number of samples per epoch (47), setting separate_last_epoch to True
+ > elasped time to build and save doc-idx mapping (seconds): 0.007301
+    using:
+     number of documents:       207
+     number of epochs:          54
+     sequence length:           2048
+     total number of samples:   2588
+ > elasped time to build and save sample-idx mapping (seconds): 0.006084
+ > building shuffle index with split [0, 2541) and [2541, 2588) ...
+ > elasped time to build and save shuffle-idx mapping (seconds): 0.005410
+ > loading doc-idx mapping from /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/dataset/index-cache/4ff68d54eb02a383b65e732658ba97d7_doc_idx.npy
+ > loading sample-idx mapping from /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/dataset/index-cache/4ff68d54eb02a383b65e732658ba97d7_sample_idx.npy
+ > loading shuffle-idx mapping from /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/dataset/index-cache/4ff68d54eb02a383b65e732658ba97d7_shuffle_idx.npy
+    loaded indexed file in 0.004 seconds
+    total number of samples: 2589
+    total number of epochs: 54
+> finished creating GPT datasets ...
+[after dataloaders are built] datetime: 2024-03-30 09:27:46 
+done with setup ...
+(min, max) time across ranks (ms):
+    model-and-optimizer-setup ......................: (9205.89, 9205.89)
+    train/valid/test-data-iterators-setup ..........: (180678.44, 180678.44)
+training ...
+[before the start of training step] datetime: 2024-03-30 09:27:47 
+/home/ext_u10bei_github_io_gmail_com/miniconda3/envs/.venv_train/lib/python3.9/site-packages/torch/autograd/__init__.py:266: UserWarning: c10d::broadcast_: an autograd kernel was not registered to the Autograd key(s) but we are trying to backprop through it. This may lead to silently incorrect behavior. This behavior is deprecated and will be removed in a future version of PyTorch. If your operator is differentiable, please ensure you have registered an autograd kernel to the correct Autograd key (e.g. DispatchKey::Autograd, DispatchKey::CompositeImplicitAutograd). If your operator is not differentiable, or to squash this warning and use the previous behavior, please register torch::CppFunction::makeFallthrough() to DispatchKey::Autograd. (Triggered internally at /opt/conda/conda-bld/pytorch_1704987277512/work/torch/csrc/autograd/autograd_not_implemented_fallback.cpp:63.)
+  Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+[2024-03-30 09:31:36,498] [INFO] [logging.py:96:log_dist] [Rank 0] step=1610, skipped=0, lr=[0.00016871587839999998, 0.00016871587839999998], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 1610 loss: 5.0649 iter time (s): 22.800 samples/sec: 11.228
+ iteration     1610/ 1144409 | consumed samples:       412160 | consumed tokens:    844103680 | elapsed time per iteration (ms): 22966.3 | learning rate: 1.687E-04 | global batch size:   256 | lm loss: 5.069800E+00 | loss scale: 16384.0 | grad norm: 1.676 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.147 | tokens per gpu per second (tgs): 22828.586 | TFLOPs: 19.40 |
+[Rank 0] (after 1610 iterations) memory (MB) | allocated: 2040.10986328125 | max allocated: 3204.63916015625 | reserved: 4098.0 | max reserved: 4098.0
+/home/ext_u10bei_github_io_gmail_com/miniconda3/envs/.venv_train/lib/python3.9/site-packages/torch/autograd/__init__.py:266: UserWarning: c10d::broadcast_: an autograd kernel was not registered to the Autograd key(s) but we are trying to backprop through it. This may lead to silently incorrect behavior. This behavior is deprecated and will be removed in a future version of PyTorch. If your operator is differentiable, please ensure you have registered an autograd kernel to the correct Autograd key (e.g. DispatchKey::Autograd, DispatchKey::CompositeImplicitAutograd). If your operator is not differentiable, or to squash this warning and use the previous behavior, please register torch::CppFunction::makeFallthrough() to DispatchKey::Autograd. (Triggered internally at /opt/conda/conda-bld/pytorch_1704987277512/work/torch/csrc/autograd/autograd_not_implemented_fallback.cpp:63.)
+  Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+[2024-03-30 09:35:27,159] [INFO] [logging.py:96:log_dist] [Rank 0] step=1620, skipped=0, lr=[0.00016976445439999998, 0.00016976445439999998], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 1620 loss: 5.0642 iter time (s): 22.822 samples/sec: 11.217
+ iteration     1620/ 1144409 | consumed samples:       414720 | consumed tokens:    849346560 | elapsed time per iteration (ms): 23067.0 | learning rate: 1.698E-04 | global batch size:   256 | lm loss: 5.062567E+00 | loss scale: 16384.0 | grad norm: 1.332 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.098 | tokens per gpu per second (tgs): 22728.914 | TFLOPs: 19.31 |
+slurmstepd: error: *** JOB 2025 ON mlpre-g2-ghpc-3 CANCELLED AT 2024-03-30T09:35:54 ***

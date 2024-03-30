@@ -17,6 +17,7 @@ def parse_arguments():
     parser.add_argument("--model_type", type=str, default="unigram", choices=["unigram", "bpe", "word", "char"])
     parser.add_argument("--num_threads", type=int, default=8)
     parser.add_argument("--train_extremely_large_corpus", type=bool, default=True)
+    parser.add_argument("--pretokenization_delimiter", type=str, default="")    
     args = parser.parse_args()
     print(f"{args = }")
     return args
@@ -34,6 +35,7 @@ def main():
         model_type=args.model_type,
         num_threads=args.num_threads,
         train_extremely_large_corpus=args.train_extremely_large_corpus,
+        pretokenization_delimiter=args.pretokenization_delimiter,
         user_defined_symbols=[
             BOS_TOKEN,
             EOS_TOKEN,
@@ -48,7 +50,6 @@ def main():
         split_digits=True,
         allow_whitespace_only_pieces=True,
         remove_extra_whitespaces=False,
-        pretokenization_delimiter="||||",
     )
 
 

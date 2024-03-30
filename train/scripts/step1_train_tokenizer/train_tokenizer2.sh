@@ -12,5 +12,6 @@
 # Command(s) goes here
 python ./train_sentencepiece_tokenizer.py \
     --input /persistentshare/storage/team_nakamura/member/horie/dataset/jawiki_newline_mecab.txt \
-    --model_prefix JINIAC_V0_1 \
-    --vocab_size 32000
+    --model_prefix JINIAC_V0_2 \
+    --vocab_size 32000 \
+    --pretokenization_delimiter "||||"

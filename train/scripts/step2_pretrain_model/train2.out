@@ -1,0 +1,1113 @@
+/bin/bash: /home/ext_u10bei_github_io_gmail_com/miniconda3/envs/.venv_train/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+bash: /home/ext_u10bei_github_io_gmail_com/miniconda3/envs/.venv_train/lib/libtinfo.so.6: no version information available (required by bash)
+
+ucllm_nedo_dev_train_dir = /home/ext_u10bei_github_io_gmail_com/ucllm_nedo_dev/train
+megatron_deepspeed_dir = /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed
+
+input_tokenizer_file = /persistentshare/storage/team_nakamura/member/horie/tokenizer/JINIAC_V0_2.model
+output_model_dir = /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b
+save_interval = 200
+
+Both /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/dataset/mabiki_text_document.bin and /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/dataset/mabiki_text_document.idx already exist.
+
+[2024-03-30 09:41:37,075] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-30 09:41:40,033] [WARNING] [runner.py:203:fetch_hostfile] Unable to find hostfile, will proceed with training with local resources only.
+Detected CUDA_VISIBLE_DEVICES=0: setting --include=localhost:0
+[2024-03-30 09:41:40,043] [INFO] [runner.py:570:main] cmd = /home/ext_u10bei_github_io_gmail_com/miniconda3/envs/.venv_train/bin/python -u -m deepspeed.launcher.launch --world_info=eyJsb2NhbGhvc3QiOiBbMF19 --master_addr=127.0.0.1 --master_port=8131 --enable_each_rank_log=None /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/pretrain_gpt.py --override-opt_param-scheduler --adam-beta1 0.9 --adam-beta2 0.95 --tensor-model-parallel-size 1 --init-method-std 0.02 --lr-decay-tokens 300000000000 --lr-warmup-tokens 3000000000 --micro-batch-size 1 --exit-duration-in-mins 30000000 --global-batch-size 256 --num-layers 12 --hidden-size 768 --num-attention-heads 12 --seq-length 2048 --max-position-embeddings 2048 --train-tokens 300000000000 --train-samples 292968750 --lr 6.0e-4 --min-lr 1.0e-6 --lr-decay-style cosine --split 949,50,1 --log-interval 10 --eval-interval 100 --eval-iters 10 --save-interval 200 --weight-decay 0.1 --clip-grad 1.0 --hysteresis 2 --num-workers 0 --fp16 --seed 1234 --load /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase --save /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase --no-async-tensor-model-parallel-allreduce --use-flash-attn-v2 --tensorboard-queue-size 1 --log-timers-to-tensorboard --log-batch-size-to-tensorboard --log-validation-ppl-to-tensorboard --tensorboard-dir /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/tensorboard/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase_mlpre-g2-ghpc-3_2024.03.30_09.41.34 --log-optimizer-states-to-tensorboard --tokenizer-type SentencePieceTokenizer --tokenizer-model /persistentshare/storage/team_nakamura/member/horie/tokenizer/JINIAC_V0_2.model --data-path /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/dataset/mabiki_text_document --data-impl mmap --deepspeed --deepspeed_config /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/deepspeed_config/ds_config_gbs256_mbs1_log10_zero0.json --zero-stage 0 --pipeline-model-parallel-size 1
+[2024-03-30 09:41:41,860] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-30 09:41:44,056] [INFO] [launch.py:145:main] WORLD INFO DICT: {'localhost': [0]}
+[2024-03-30 09:41:44,057] [INFO] [launch.py:151:main] nnodes=1, num_local_procs=1, node_rank=0
+[2024-03-30 09:41:44,057] [INFO] [launch.py:162:main] global_rank_mapping=defaultdict(<class 'list'>, {'localhost': [0]})
+[2024-03-30 09:41:44,057] [INFO] [launch.py:163:main] dist_world_size=1
+[2024-03-30 09:41:44,057] [INFO] [launch.py:165:main] Setting CUDA_VISIBLE_DEVICES=0
+[2024-03-30 09:41:46,395] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+--------------------------------------------------
+DeepSpeed C++/CUDA extension op report
+--------------------------------------------------
+NOTE: Ops not installed will be just-in-time (JIT) compiled at
+      runtime if needed. Op compatibility means that your system
+      meet the required dependencies to JIT install the op.
+--------------------------------------------------
+JIT compiled ops requires ninja
+ninja .................. [92m[OKAY][0m
+--------------------------------------------------
+op name ................ installed .. compatible
+--------------------------------------------------
+async_io ............... [92m[YES][0m ...... [92m[OKAY][0m
+fused_adam ............. [92m[YES][0m ...... [92m[OKAY][0m
+cpu_adam ............... [92m[YES][0m ...... [92m[OKAY][0m
+cpu_adagrad ............ [92m[YES][0m ...... [92m[OKAY][0m
+cpu_lion ............... [92m[YES][0m ...... [92m[OKAY][0m
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+evoformer_attn ......... [93m[NO][0m ....... [93m[NO][0m
+fused_lamb ............. [92m[YES][0m ...... [92m[OKAY][0m
+fused_lion ............. [92m[YES][0m ...... [92m[OKAY][0m
+inference_core_ops ..... [92m[YES][0m ...... [92m[OKAY][0m
+cutlass_ops ............ [92m[YES][0m ...... [92m[OKAY][0m
+quantizer .............. [92m[YES][0m ...... [92m[OKAY][0m
+ragged_device_ops ...... [92m[YES][0m ...... [92m[OKAY][0m
+ragged_ops ............. [92m[YES][0m ...... [92m[OKAY][0m
+random_ltd ............. [92m[YES][0m ...... [92m[OKAY][0m
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m using untested triton version (2.2.0), only 1.0.0 is known to be compatible
+sparse_attn ............ [93m[NO][0m ....... [93m[NO][0m
+spatial_inference ...... [92m[YES][0m ...... [92m[OKAY][0m
+transformer ............ [92m[YES][0m ...... [92m[OKAY][0m
+stochastic_transformer . [92m[YES][0m ...... [92m[OKAY][0m
+transformer_inference .. [92m[YES][0m ...... [92m[OKAY][0m
+--------------------------------------------------
+DeepSpeed general environment info:
+torch install path ............... ['/home/ext_u10bei_github_io_gmail_com/miniconda3/envs/.venv_train/lib/python3.9/site-packages/torch']
+torch version .................... 2.2.0
+deepspeed install path ........... ['/home/ext_u10bei_github_io_gmail_com/miniconda3/envs/.venv_train/lib/python3.9/site-packages/deepspeed']
+deepspeed info ................... 0.12.4, unknown, unknown
+torch cuda version ............... 11.8
+torch hip version ................ None
+nvcc version ..................... 11.8
+deepspeed wheel compiled w. ...... torch 2.2, cuda 11.8
+shared memory (/dev/shm) size .... 188.94 GB
+**** Git info for Megatron: git_hash=0fbbf83 git_branch=u-10bei ****
+using world size: 1, data-parallel-size: 1, sequence-parallel size: 1, tensor-model-parallel size: 1, pipeline-model-parallel size: 1 
+WARNING: overriding default arguments for tokenizer_type:GPT2BPETokenizer                        with tokenizer_type:SentencePieceTokenizer
+using torch.float16 for parameters ...
+------------------------ arguments ------------------------
+  accumulate_allreduce_grads_in_fp32 .............. False
+  adam_beta1 ...................................... 0.9
+  adam_beta2 ...................................... 0.95
+  adam_eps ........................................ 1e-08
+  add_bias_linear ................................. True
+  add_position_embedding .......................... True
+  adlr_autoresume ................................. False
+  adlr_autoresume_interval ........................ 1000
+  aml_data_download_path .......................... None
+  apply_layernorm_1p .............................. False
+  apply_query_key_layer_scaling ................... True
+  apply_residual_connection_post_layernorm ........ False
+  async_tensor_model_parallel_allreduce ........... False
+  attention_dropout ............................... 0.1
+  attention_softmax_in_fp32 ....................... False
+  barrier_with_L1_time ............................ True
+  bert_binary_head ................................ True
+  bert_embedder_type .............................. megatron
+  bert_load ....................................... None
+  bf16 ............................................ False
+  bias_dropout_fusion ............................. True
+  bias_gelu_fusion ................................ True
+  biencoder_projection_dim ........................ 0
+  biencoder_shared_query_context_model ............ False
+  block_data_path ................................. None
+  checkpoint_activations .......................... False
+  checkpoint_in_cpu ............................... False
+  checkpoint_num_layers ........................... 1
+  classes_fraction ................................ 1.0
+  clip_grad ....................................... 1.0
+  compression_training ............................ False
+  consumed_train_samples .......................... 0
+  consumed_train_tokens ........................... 0
+  consumed_valid_samples .......................... 0
+  contigious_checkpointing ........................ False
+  cpu_optimizer ................................... False
+  cpu_torch_adam .................................. False
+  create_moe_param_group .......................... False
+  curriculum_learning_legacy ...................... False
+  data_cache_path ................................. None
+  data_efficiency_curriculum_learning ............. False
+  data_impl ....................................... mmap
+  data_parallel_random_init ....................... False
+  data_parallel_size .............................. 1
+  data_path ....................................... ['/persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/dataset/mabiki_text_document']
+  data_per_class_fraction ......................... 1.0
+  data_sharding ................................... True
+  dataloader_type ................................. single
+  DDP_impl ........................................ local
+  decoder_num_layers .............................. None
+  decoder_seq_length .............................. None
+  deepscale ....................................... False
+  deepscale_config ................................ None
+  deepspeed ....................................... True
+  deepspeed_activation_checkpointing .............. False
+  deepspeed_config ................................ /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/deepspeed_config/ds_config_gbs256_mbs1_log10_zero0.json
+  deepspeed_mpi ................................... False
+  dino_bottleneck_size ............................ 256
+  dino_freeze_last_layer .......................... 1
+  dino_head_hidden_size ........................... 2048
+  dino_local_crops_number ......................... 10
+  dino_local_img_size ............................. 96
+  dino_norm_last_layer ............................ False
+  dino_teacher_temp ............................... 0.07
+  dino_warmup_teacher_temp ........................ 0.04
+  dino_warmup_teacher_temp_epochs ................. 30
+  distribute_checkpointed_activations ............. False
+  distribute_saved_activations .................... False
+  distributed_backend ............................. nccl
+  distributed_timeout_minutes ..................... 10
+  ds_fused_adam ................................... False
+  ds_inference .................................... False
+  ds_pipeline_enabled ............................. True
+  ds_sequence_parallel_size ....................... 1
+  embedding_path .................................. None
+  embedding_weights_in_fp32 ....................... False
+  empty_unused_memory_level ....................... 0
+  enable_expert_tensor_parallelism ................ False
+  encoder_num_layers .............................. 12
+  encoder_seq_length .............................. 2048
+  end_weight_decay ................................ 0.1
+  eod_mask_loss ................................... False
+  eval_interval ................................... 100
+  eval_iters ...................................... 10
+  evidence_data_path .............................. None
+  exit_duration_in_mins ........................... 30000000
+  exit_interval ................................... None
+  exit_on_missing_checkpoint ...................... False
+  exit_signal_handler ............................. False
+  expert_interval ................................. 2
+  ffn_hidden_size ................................. 3072
+  finetune ........................................ False
+  force_ds_sequence_parallel ...................... False
+  fp16 ............................................ True
+  fp16_lm_cross_entropy ........................... False
+  fp32_residual_connection ........................ False
+  fp8_amax_compute_algo ........................... most_recent
+  fp8_amax_history_len ............................ 1
+  fp8_e4m3 ........................................ False
+  fp8_hybrid ...................................... False
+  fp8_interval .................................... 1
+  fp8_margin ...................................... 0
+  fp8_wgrad ....................................... True
+  global_batch_size ............................... 256
+  gradient_accumulation_fusion .................... True
+  head_lr_mult .................................... 1.0
+  hidden_dropout .................................. 0.1
+  hidden_size ..................................... 768
+  hidden_size_teacher ............................. None
+  hysteresis ...................................... 2
+  ict_head_size ................................... None
+  ict_load ........................................ None
+  img_h ........................................... 224
+  img_w ........................................... 224
+  indexer_batch_size .............................. 128
+  indexer_log_interval ............................ 1000
+  inference ....................................... False
+  inference_batch_times_seqlen_threshold .......... 512
+  init_method_std ................................. 0.02
+  init_method_xavier_uniform ...................... False
+  initial_loss_scale .............................. 4294967296
+  iter_per_epoch .................................. 1250
+  kd .............................................. False
+  kd_alpha_ce ..................................... 1
+  kd_beta_ce ...................................... 1
+  kd_temp ......................................... 1.0
+  kv_channels ..................................... 64
+  layernorm_epsilon ............................... 1e-05
+  lazy_mpu_init ................................... None
+  load ............................................ /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase
+  load_teacher .................................... None
+  local_rank ...................................... 0
+  log_batch_size_to_tensorboard ................... True
+  log_interval .................................... 10
+  log_learning_rate_to_tensorboard ................ True
+  log_loss_scale_to_tensorboard ................... True
+  log_memory_to_tensorboard ....................... False
+  log_num_zeros_in_grad ........................... False
+  log_optimizer_states_to_tensorboard ............. True
+  log_params_norm ................................. False
+  log_timers_to_tensorboard ....................... True
+  log_validation_ppl_to_tensorboard ............... True
+  log_world_size_to_tensorboard ................... False
+  loss_scale ...................................... None
+  loss_scale_window ............................... 1000
+  lr .............................................. 0.0006
+  lr_decay_iters .................................. None
+  lr_decay_samples ................................ None
+  lr_decay_style .................................. cosine
+  lr_decay_tokens ................................. 300000000000
+  lr_warmup_fraction .............................. None
+  lr_warmup_iters ................................. 0
+  lr_warmup_samples ............................... 0
+  lr_warmup_tokens ................................ 3000000000
+  make_vocab_size_divisible_by .................... 128
+  mask_factor ..................................... 1.0
+  mask_prob ....................................... 0.15
+  mask_type ....................................... random
+  masked_softmax_fusion ........................... True
+  max_position_embeddings ......................... 2048
+  max_tokens_to_oom ............................... 12000
+  mem_efficient_ln ................................ True
+  memory_centric_tiled_linear ..................... False
+  merge_file ...................................... None
+  micro_batch_size ................................ 1
+  min_loss_scale .................................. 1.0
+  min_lr .......................................... 1e-06
+  mlp_type ........................................ standard
+  mmap_warmup ..................................... False
+  moe_eval_capacity_factor ........................ 1.0
+  moe_expert_parallel_size ........................ 1
+  moe_loss_coeff .................................. 0.1
+  moe_min_capacity ................................ 4
+  moe_token_dropping .............................. True
+  moe_train_capacity_factor ....................... 1.0
+  mos ............................................. False
+  no_load_lr_state ................................ False
+  no_load_optim ................................... None
+  no_load_rng ..................................... None
+  no_persist_layer_norm ........................... False
+  no_pipeline_parallel ............................ False
+  no_save_optim ................................... None
+  no_save_rng ..................................... None
+  normalization ................................... layernorm
+  num_attention_heads ............................. 12
+  num_attention_heads_teacher ..................... None
+  num_channels .................................... 3
+  num_classes ..................................... 1000
+  num_experts ..................................... [1]
+  num_experts_switch .............................. None
+  num_experts_teacher ............................. [1]
+  num_key_value_heads ............................. 12
+  num_layers ...................................... 12
+  num_layers_per_virtual_pipeline_stage ........... None
+  num_layers_teacher .............................. None
+  num_workers ..................................... 0
+  onnx_safe ....................................... None
+  openai_gelu ..................................... False
+  optimizer ....................................... adam
+  output_bert_embeddings .......................... False
+  overlap_p2p_comm ................................ False
+  override_opt_param_scheduler .................... True
+  params_dtype .................................... torch.float16
+  partition_activations ........................... False
+  patch_dim ....................................... 16
+  perform_initialization .......................... True
+  pipeline_model_parallel_size .................... 1
+  pipeline_model_parallel_split_rank .............. None
+  profile_backward ................................ False
+  query_in_block_prob ............................. 0.1
+  rampup_batch_size ............................... None
+  random_ltd ...................................... False
+  rank ............................................ 0
+  recompute_granularity ........................... None
+  recompute_method ................................ None
+  recompute_num_layers ............................ 1
+  remote_device ................................... none
+  repeated_dataloader ............................. False
+  reset_attention_mask ............................ False
+  reset_iteration ................................. False
+  reset_position_ids .............................. False
+  retriever_report_topk_accuracies ................ []
+  retriever_score_scaling ......................... False
+  retriever_seq_length ............................ 256
+  retro_add_retriever ............................. False
+  retro_cyclic_train_iters ........................ None
+  retro_encoder_attention_dropout ................. 0.1
+  retro_encoder_hidden_dropout .................... 0.1
+  retro_encoder_layers ............................ 2
+  retro_num_neighbors ............................. 2
+  retro_num_retrieved_chunks ...................... 2
+  retro_return_doc_ids ............................ False
+  retro_workdir ................................... None
+  return_data_index ............................... False
+  rotary_percent .................................. 1.0
+  sample_rate ..................................... 1.0
+  save ............................................ /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase
+  save_interval ................................... 200
+  scatter_gather_tensors_in_pipeline .............. True
+  scattered_embeddings ............................ False
+  seed ............................................ 1234
+  seq_length ...................................... 2048
+  sequence_parallel ............................... False
+  sgd_momentum .................................... 0.9
+  short_seq_prob .................................. 0.1
+  skip_train ...................................... False
+  split ........................................... 949,50,1
+  split_transformers .............................. False
+  squared_relu .................................... False
+  standalone_embedding_stage ...................... False
+  start_weight_decay .............................. 0.1
+  swiglu .......................................... False
+  swin_backbone_type .............................. tiny
+  synchronize_each_layer .......................... False
+  tensor_model_parallel_size ...................... 1
+  tensorboard_dir ................................. /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/tensorboard/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase_mlpre-g2-ghpc-3_2024.03.30_09.41.34
+  tensorboard_log_interval ........................ 1
+  tensorboard_queue_size .......................... 1
+  test_data_path .................................. None
+  tile_factor ..................................... 1
+  timing_log_level ................................ 0
+  timing_log_option ............................... minmax
+  titles_data_path ................................ None
+  tokenizer_model ................................. /persistentshare/storage/team_nakamura/member/horie/tokenizer/JINIAC_V0_2.model
+  tokenizer_type .................................. SentencePieceTokenizer
+  topk ............................................ 1
+  train_data_exact_num_epochs ..................... None
+  train_data_path ................................. None
+  train_desc_path ................................. None
+  train_doc_idx_path .............................. None
+  train_idx_path .................................. None
+  train_iters ..................................... None
+  train_sample_idx_path ........................... None
+  train_samples ................................... 292968750
+  train_shuffle_idx_path .......................... None
+  train_tokens .................................... 300000000000
+  transformer_impl ................................ local
+  transformer_pipeline_model_parallel_size ........ 1
+  universal_checkpoint ............................ False
+  untie_embeddings_and_output_weights ............. False
+  use_checkpoint_args ............................. False
+  use_checkpoint_opt_param_scheduler .............. False
+  use_contiguous_buffers_in_local_ddp ............. True
+  use_cpu_initialization .......................... None
+  use_dataset_only ................................ False
+  use_distributed_optimizer ....................... False
+  use_flash_attn .................................. True
+  use_flash_attn_triton ........................... False
+  use_flash_attn_v1 ............................... False
+  use_flash_attn_v2 ............................... True
+  use_one_sent_docs ............................... False
+  use_pin_memory .................................. False
+  use_ring_exchange_p2p ........................... False
+  use_rotary_position_embeddings .................. False
+  use_tutel ....................................... False
+  valid_data_path ................................. None
+  variable_seq_lengths ............................ False
+  virtual_pipeline_model_parallel_size ............ None
+  vision_backbone_type ............................ vit
+  vision_pretraining .............................. False
+  vision_pretraining_type ......................... classify
+  vocab_extra_ids ................................. 0
+  vocab_file ...................................... None
+  vocab_size ...................................... None
+  weight_decay .................................... 0.1
+  weight_decay_incr_style ......................... constant
+  world_size ...................................... 1
+  zero_allgather_bucket_size ...................... 0.0
+  zero_contigious_gradients ....................... False
+  zero_reduce_bucket_size ......................... 0.0
+  zero_reduce_scatter ............................. False
+  zero_stage ...................................... 0
+-------------------- end of arguments ---------------------
+setting number of micro-batches to constant 256
+> building SentencePieceTokenizer tokenizer ...
+ > padded vocab (size: 32003) with 125 dummy tokens (new size: 32128)
+> setting tensorboard ...
+> initializing torch distributed ...
+[2024-03-30 09:41:50,136] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-30 09:41:50,136] [INFO] [comm.py:668:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+> initialized tensor model parallel with size 1
+> initialized pipeline model parallel with size 1
+> setting random seeds to 1234 ...
+> initializing model parallel cuda seeds on global rank 0, model parallel rank 0, and data parallel rank 0 with model parallel seed: 3952 and data parallel seed: 1234
+> compiling dataset index builder ...
+make: Entering directory '/persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/megatron/data'
+make: Nothing to be done for 'default'.
+make: Leaving directory '/persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/megatron/data'
+>>> done with dataset index builder. Compilation time: 0.050 seconds
+> compiling and loading fused kernels ...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/megatron/fused_kernels/build/build.ninja...
+Building extension module scaled_upper_triang_masked_softmax_cuda...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module scaled_upper_triang_masked_softmax_cuda...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/megatron/fused_kernels/build/build.ninja...
+Building extension module scaled_masked_softmax_cuda...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module scaled_masked_softmax_cuda...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/megatron/fused_kernels/build/build.ninja...
+Building extension module scaled_softmax_cuda...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module scaled_softmax_cuda...
+>>> done with compiling and loading fused kernels. Compilation time: 1.833 seconds
+[rank0]:[W init.cpp:767] Warning: nvfuser is no longer supported in torch script, use _jit_set_nvfuser_enabled is deprecated and a no-op (function operator())
+/persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/megatron/training.py:136: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /opt/conda/conda-bld/pytorch_1704987277512/work/torch/csrc/tensor/python_tensor.cpp:83.)
+  start_time_tensor = get_accelerator().DoubleTensor([_TRAIN_START_TIME])
+time to initialize megatron (seconds): 3.461
+[after megatron is initialized] datetime: 2024-03-30 09:41:52 
+building GPT model ...
+[2024-03-30 09:41:52,295] [INFO] [utils.py:795:see_memory_usage] Before Building Model
+[2024-03-30 09:41:52,296] [INFO] [utils.py:796:see_memory_usage] MA 0.0 GB         Max_MA 0.2 GB         CA 0.0 GB         Max_CA 0 GB 
+[2024-03-30 09:41:52,296] [INFO] [utils.py:803:see_memory_usage] CPU Virtual Memory:  used = 8.18 GB, percent = 2.2%
+SEED_LAYERS=False BASE_SEED=1234 SEED_FN=None
+Using topology: {ProcessCoord(pipe=0, data=0, model=0): 0}
+[2024-03-30 09:41:52,300] [INFO] [module.py:375:_partition_layers] Partitioning pipeline stages with method type:transformer
+stage=0 layers=17
+     0: _to_float16
+     1: EmbeddingPipe
+     2: ParallelTransformerLayerPipe
+     3: ParallelTransformerLayerPipe
+     4: ParallelTransformerLayerPipe
+     5: ParallelTransformerLayerPipe
+     6: ParallelTransformerLayerPipe
+     7: ParallelTransformerLayerPipe
+     8: ParallelTransformerLayerPipe
+     9: ParallelTransformerLayerPipe
+    10: ParallelTransformerLayerPipe
+    11: ParallelTransformerLayerPipe
+    12: ParallelTransformerLayerPipe
+    13: ParallelTransformerLayerPipe
+    14: MixedFusedLayerNorm
+    15: EmbeddingPipe
+    16: float16_to_fp32
+  loss: CrossEntropy
+[2024-03-30 09:41:52,474] [INFO] [utils.py:795:see_memory_usage] After Building Model
+[2024-03-30 09:41:52,475] [INFO] [utils.py:796:see_memory_usage] MA 0.23 GB         Max_MA 0.25 GB         CA 0.26 GB         Max_CA 0 GB 
+[2024-03-30 09:41:52,475] [INFO] [utils.py:803:see_memory_usage] CPU Virtual Memory:  used = 8.2 GB, percent = 2.2%
+ > number of parameters on (tensor, pipeline) model parallel rank (0, 0): 111303168
+setting training iterations to 1144409
+> learning rate decay style: cosine
+DeepSpeed is enabled.
+[2024-03-30 09:41:52,478] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed info: version=0.12.4, git-hash=unknown, git-branch=unknown
+wandb: Currently logged in as: u10bei-github-io. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.16.5
+wandb: Run data is saved locally in /home/ext_u10bei_github_io_gmail_com/ucllm_nedo_dev/train/scripts/step2_pretrain_model/wandb/run-20240330_094154-ymroi33l
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run stilted-vortex-29
+wandb: ⭐️ View project at https://wandb.ai/u10bei-github-io/my_project
+wandb: 🚀 View run at https://wandb.ai/u10bei-github-io/my_project/runs/ymroi33l/workspace
+[2024-03-30 09:41:58,537] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2024-03-30 09:41:58,538] [INFO] [logging.py:96:log_dist] [Rank 0] Using client Optimizer as basic optimizer
+[2024-03-30 09:41:58,538] [INFO] [logging.py:96:log_dist] [Rank 0] Removing param_group that has no 'params' in the basic Optimizer
+[2024-03-30 09:41:58,542] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Basic Optimizer = FusedAdam
+[2024-03-30 09:41:58,542] [INFO] [logging.py:96:log_dist] [Rank 0] Creating fp16 optimizer with dynamic loss scale
+[2024-03-30 09:41:58,564] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Final Optimizer = FusedAdam
+[2024-03-30 09:41:58,565] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed using client LR scheduler
+[2024-03-30 09:41:58,565] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed LR Scheduler = <megatron.optimizer_param_scheduler.OptimizerParamScheduler object at 0x7f07d7b92ee0>
+[2024-03-30 09:41:58,565] [INFO] [logging.py:96:log_dist] [Rank 0] step=0, skipped=0, lr=[0.0, 0.0], mom=[(0.9, 0.95), (0.9, 0.95)]
+[2024-03-30 09:41:58,566] [INFO] [config.py:979:print] DeepSpeedEngine configuration:
+[2024-03-30 09:41:58,566] [INFO] [config.py:983:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2024-03-30 09:41:58,566] [INFO] [config.py:983:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2024-03-30 09:41:58,566] [INFO] [config.py:983:print]   amp_enabled .................. False
+[2024-03-30 09:41:58,567] [INFO] [config.py:983:print]   amp_params ................... False
+[2024-03-30 09:41:58,567] [INFO] [config.py:983:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2024-03-30 09:41:58,567] [INFO] [config.py:983:print]   bfloat16_enabled ............. False
+[2024-03-30 09:41:58,567] [INFO] [config.py:983:print]   checkpoint_parallel_write_pipeline  False
+[2024-03-30 09:41:58,567] [INFO] [config.py:983:print]   checkpoint_tag_validation_enabled  True
+[2024-03-30 09:41:58,567] [INFO] [config.py:983:print]   checkpoint_tag_validation_fail  False
+[2024-03-30 09:41:58,567] [INFO] [config.py:983:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f07d0059d30>
+[2024-03-30 09:41:58,567] [INFO] [config.py:983:print]   communication_data_type ...... None
+[2024-03-30 09:41:58,568] [INFO] [config.py:983:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2024-03-30 09:41:58,568] [INFO] [config.py:983:print]   curriculum_enabled_legacy .... False
+[2024-03-30 09:41:58,568] [INFO] [config.py:983:print]   curriculum_params_legacy ..... False
+[2024-03-30 09:41:58,568] [INFO] [config.py:983:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2024-03-30 09:41:58,568] [INFO] [config.py:983:print]   data_efficiency_enabled ...... False
+[2024-03-30 09:41:58,568] [INFO] [config.py:983:print]   dataloader_drop_last ......... False
+[2024-03-30 09:41:58,568] [INFO] [config.py:983:print]   disable_allgather ............ False
+[2024-03-30 09:41:58,568] [INFO] [config.py:983:print]   dump_state ................... False
+[2024-03-30 09:41:58,568] [INFO] [config.py:983:print]   dynamic_loss_scale_args ...... {'init_scale': 2048, 'scale_window': 500, 'delayed_shift': 2, 'consecutive_hysteresis': False, 'min_scale': 1}
+[2024-03-30 09:41:58,568] [INFO] [config.py:983:print]   eigenvalue_enabled ........... False
+[2024-03-30 09:41:58,568] [INFO] [config.py:983:print]   eigenvalue_gas_boundary_resolution  1
+[2024-03-30 09:41:58,568] [INFO] [config.py:983:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2024-03-30 09:41:58,569] [INFO] [config.py:983:print]   eigenvalue_layer_num ......... 0
+[2024-03-30 09:41:58,569] [INFO] [config.py:983:print]   eigenvalue_max_iter .......... 100
+[2024-03-30 09:41:58,569] [INFO] [config.py:983:print]   eigenvalue_stability ......... 1e-06
+[2024-03-30 09:41:58,569] [INFO] [config.py:983:print]   eigenvalue_tol ............... 0.01
+[2024-03-30 09:41:58,569] [INFO] [config.py:983:print]   eigenvalue_verbose ........... False
+[2024-03-30 09:41:58,569] [INFO] [config.py:983:print]   elasticity_enabled ........... False
+[2024-03-30 09:41:58,569] [INFO] [config.py:983:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2024-03-30 09:41:58,569] [INFO] [config.py:983:print]   fp16_auto_cast ............... False
+[2024-03-30 09:41:58,569] [INFO] [config.py:983:print]   fp16_enabled ................. True
+[2024-03-30 09:41:58,569] [INFO] [config.py:983:print]   fp16_master_weights_and_gradients  False
+[2024-03-30 09:41:58,569] [INFO] [config.py:983:print]   global_rank .................. 0
+[2024-03-30 09:41:58,569] [INFO] [config.py:983:print]   grad_accum_dtype ............. None
+[2024-03-30 09:41:58,570] [INFO] [config.py:983:print]   gradient_accumulation_steps .. 256
+[2024-03-30 09:41:58,570] [INFO] [config.py:983:print]   gradient_clipping ............ 1.0
+[2024-03-30 09:41:58,570] [INFO] [config.py:983:print]   gradient_predivide_factor .... 1.0
+[2024-03-30 09:41:58,570] [INFO] [config.py:983:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2024-03-30 09:41:58,570] [INFO] [config.py:983:print]   initial_dynamic_scale ........ 2048
+[2024-03-30 09:41:58,570] [INFO] [config.py:983:print]   load_universal_checkpoint .... False
+[2024-03-30 09:41:58,570] [INFO] [config.py:983:print]   loss_scale ................... 0
+[2024-03-30 09:41:58,570] [INFO] [config.py:983:print]   memory_breakdown ............. False
+[2024-03-30 09:41:58,570] [INFO] [config.py:983:print]   mics_hierarchial_params_gather  False
+[2024-03-30 09:41:58,570] [INFO] [config.py:983:print]   mics_shard_size .............. -1
+[2024-03-30 09:41:58,570] [INFO] [config.py:983:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=True, group=None, team=None, project='my_project') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=True
+[2024-03-30 09:41:58,571] [INFO] [config.py:983:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2024-03-30 09:41:58,571] [INFO] [config.py:983:print]   optimizer_legacy_fusion ...... False
+[2024-03-30 09:41:58,571] [INFO] [config.py:983:print]   optimizer_name ............... None
+[2024-03-30 09:41:58,571] [INFO] [config.py:983:print]   optimizer_params ............. None
+[2024-03-30 09:41:58,571] [INFO] [config.py:983:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0, 'pipe_partitioned': True, 'grad_partitioned': True}
+[2024-03-30 09:41:58,571] [INFO] [config.py:983:print]   pld_enabled .................. False
+[2024-03-30 09:41:58,571] [INFO] [config.py:983:print]   pld_params ................... False
+[2024-03-30 09:41:58,571] [INFO] [config.py:983:print]   prescale_gradients ........... True
+[2024-03-30 09:41:58,571] [INFO] [config.py:983:print]   scheduler_name ............... None
+[2024-03-30 09:41:58,571] [INFO] [config.py:983:print]   scheduler_params ............. None
+[2024-03-30 09:41:58,571] [INFO] [config.py:983:print]   seq_parallel_communication_data_type  torch.float32
+[2024-03-30 09:41:58,571] [INFO] [config.py:983:print]   sparse_attention ............. None
+[2024-03-30 09:41:58,572] [INFO] [config.py:983:print]   sparse_gradients_enabled ..... False
+[2024-03-30 09:41:58,572] [INFO] [config.py:983:print]   steps_per_print .............. 10
+[2024-03-30 09:41:58,572] [INFO] [config.py:983:print]   train_batch_size ............. 256
+[2024-03-30 09:41:58,572] [INFO] [config.py:983:print]   train_micro_batch_size_per_gpu  1
+[2024-03-30 09:41:58,572] [INFO] [config.py:983:print]   use_data_before_expert_parallel_  False
+[2024-03-30 09:41:58,572] [INFO] [config.py:983:print]   use_node_local_storage ....... False
+[2024-03-30 09:41:58,572] [INFO] [config.py:983:print]   wall_clock_breakdown ......... False
+[2024-03-30 09:41:58,572] [INFO] [config.py:983:print]   weight_quantization_config ... None
+[2024-03-30 09:41:58,572] [INFO] [config.py:983:print]   world_size ................... 1
+[2024-03-30 09:41:58,572] [INFO] [config.py:983:print]   zero_allow_untested_optimizer  False
+[2024-03-30 09:41:58,572] [INFO] [config.py:983:print]   zero_config .................. stage=0 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 use_multi_rank_bucket_allreduce=True allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True pipeline_loading_checkpoint=False override_module_apply=True
+[2024-03-30 09:41:58,573] [INFO] [config.py:983:print]   zero_enabled ................. False
+[2024-03-30 09:41:58,573] [INFO] [config.py:983:print]   zero_force_ds_cpu_optimizer .. True
+[2024-03-30 09:41:58,573] [INFO] [config.py:983:print]   zero_optimization_stage ...... 0
+[2024-03-30 09:41:58,573] [INFO] [config.py:969:print_user_config]   json = {
+    "train_batch_size": 256, 
+    "train_micro_batch_size_per_gpu": 1, 
+    "steps_per_print": 10, 
+    "zero_optimization": {
+        "stage": 0
+    }, 
+    "gradient_clipping": 1.0, 
+    "prescale_gradients": true, 
+    "fp16": {
+        "enabled": true, 
+        "loss_scale": 0, 
+        "loss_scale_window": 500, 
+        "hysteresis": 2, 
+        "min_loss_scale": 1, 
+        "initial_scale_power": 11
+    }, 
+    "wandb": {
+        "enabled": true, 
+        "project": "my_project"
+    }, 
+    "wall_clock_breakdown": false
+}
+[2024-03-30 09:41:58,573] [INFO] [engine.py:99:__init__] CONFIG: micro_batches=256 micro_batch_size=1
+[2024-03-30 09:41:58,573] [INFO] [engine.py:139:__init__] is_pipe_partitioned= False is_grad_partitioned= False
+[2024-03-30 09:41:58,635] [INFO] [engine.py:158:__init__] RANK=0 STAGE=0 LAYERS=17 [0, 17) STAGE_PARAMS=111303168 (111.303M) TOTAL_PARAMS=111303168 (111.303M) UNIQUE_PARAMS=111303168 (111.303M)
+[2024-03-30 09:41:58,636] [WARNING] [engine.py:2703:load_checkpoint] Unable to find latest file at /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/latest, if trying to load latest checkpoint please ensure this file exists or pass an explicit checkpoint tag when loading a checkpoint.
+WARNING: could not find the metadata file /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase 
+    will not load any checkpoints and will start from random
+(min, max) time across ranks (ms):
+    load-checkpoint ................................: (0.81, 0.81)
+[after model, optimizer, and learning rate scheduler are built] datetime: 2024-03-30 09:41:58 
+> building train, validation, and test datasets ...
+ > datasets target sizes (minimum size):
+    train:      292968750
+    validation: 29299200
+    test:       2560
+> building train, validation, and test datasets for GPT ...
+Single data path provided for train, valid & test
+ > building dataset index ...
+    reading sizes...
+    reading pointers...
+    reading document index...
+    creating numpy buffer of mmap...
+    creating memory view of numpy buffer...
+ > finished creating indexed dataset in 0.027214 seconds
+    number of documents: 206950
+ > dataset split:
+    train:
+     document indices in [0, 196395) total of 196395 documents
+    validation:
+     document indices in [196395, 206743) total of 10348 documents
+    test:
+     document indices in [206743, 206950) total of 207 documents
+ > WARNING: could not find index map files, building the indices on rank 0 ...
+ > last epoch number of samples (5728) is smaller than 80% of number of samples per epoch (55866), setting separate_last_epoch to True
+ > elasped time to build and save doc-idx mapping (seconds): 92.339133
+    using:
+     number of documents:       196395
+     number of epochs:          5245
+     sequence length:           2048
+     total number of samples:   293018888
+ > elasped time to build and save sample-idx mapping (seconds): 20.209157
+ > building shuffle index with split [0, 292963022) and [292963022, 293018888) ...
+ > elasped time to build and save shuffle-idx mapping (seconds): 21.022799
+ > loading doc-idx mapping from /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/dataset/index-cache/88f8ac0494409221548f80b5789f2d82_doc_idx.npy
+ > loading sample-idx mapping from /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/dataset/index-cache/88f8ac0494409221548f80b5789f2d82_sample_idx.npy
+ > loading shuffle-idx mapping from /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/dataset/index-cache/88f8ac0494409221548f80b5789f2d82_shuffle_idx.npy
+    loaded indexed file in 0.525 seconds
+    total number of samples: 293018889
+    total number of epochs: 5245
+ > WARNING: could not find index map files, building the indices on rank 0 ...
+ > last epoch number of samples (2310) is smaller than 80% of number of samples per epoch (2961), setting separate_last_epoch to True
+ > elasped time to build and save doc-idx mapping (seconds): 8.673159
+    using:
+     number of documents:       10348
+     number of epochs:          9892
+     sequence length:           2048
+     total number of samples:   29299852
+ > elasped time to build and save sample-idx mapping (seconds): 1.698562
+ > building shuffle index with split [0, 29296890) and [29296890, 29299852) ...
+ > elasped time to build and save shuffle-idx mapping (seconds): 1.762599
+ > loading doc-idx mapping from /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/dataset/index-cache/e79a17bc29d500ea5205264c0faa9f23_doc_idx.npy
+ > loading sample-idx mapping from /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/dataset/index-cache/e79a17bc29d500ea5205264c0faa9f23_sample_idx.npy
+ > loading shuffle-idx mapping from /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/dataset/index-cache/e79a17bc29d500ea5205264c0faa9f23_shuffle_idx.npy
+    loaded indexed file in 0.027 seconds
+    total number of samples: 29299853
+    total number of epochs: 9892
+ > WARNING: could not find index map files, building the indices on rank 0 ...
+ > last epoch number of samples (8) is smaller than 80% of number of samples per epoch (59), setting separate_last_epoch to True
+ > elasped time to build and save doc-idx mapping (seconds): 0.006677
+    using:
+     number of documents:       207
+     number of epochs:          44
+     sequence length:           2048
+     total number of samples:   2611
+ > elasped time to build and save sample-idx mapping (seconds): 0.005848
+ > building shuffle index with split [0, 2552) and [2552, 2611) ...
+ > elasped time to build and save shuffle-idx mapping (seconds): 0.007371
+ > loading doc-idx mapping from /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/dataset/index-cache/461b7dcf5716df58d1e3f313b7a83553_doc_idx.npy
+ > loading sample-idx mapping from /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/dataset/index-cache/461b7dcf5716df58d1e3f313b7a83553_sample_idx.npy
+ > loading shuffle-idx mapping from /persistentshare/storage/team_nakamura/member/horie/Megatron-DeepSpeed/dataset/index-cache/461b7dcf5716df58d1e3f313b7a83553_shuffle_idx.npy
+    loaded indexed file in 0.003 seconds
+    total number of samples: 2612
+    total number of epochs: 44
+> finished creating GPT datasets ...
+[after dataloaders are built] datetime: 2024-03-30 09:44:25 
+done with setup ...
+(min, max) time across ranks (ms):
+    model-and-optimizer-setup ......................: (6518.85, 6518.85)
+    train/valid/test-data-iterators-setup ..........: (146482.15, 146482.15)
+training ...
+[before the start of training step] datetime: 2024-03-30 09:44:25 
+/home/ext_u10bei_github_io_gmail_com/miniconda3/envs/.venv_train/lib/python3.9/site-packages/torch/autograd/__init__.py:266: UserWarning: c10d::broadcast_: an autograd kernel was not registered to the Autograd key(s) but we are trying to backprop through it. This may lead to silently incorrect behavior. This behavior is deprecated and will be removed in a future version of PyTorch. If your operator is differentiable, please ensure you have registered an autograd kernel to the correct Autograd key (e.g. DispatchKey::Autograd, DispatchKey::CompositeImplicitAutograd). If your operator is not differentiable, or to squash this warning and use the previous behavior, please register torch::CppFunction::makeFallthrough() to DispatchKey::Autograd. (Triggered internally at /opt/conda/conda-bld/pytorch_1704987277512/work/torch/csrc/autograd/autograd_not_implemented_fallback.cpp:63.)
+  Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+[2024-03-30 09:48:13,044] [INFO] [logging.py:96:log_dist] [Rank 0] step=10, skipped=0, lr=[9.437183999999999e-07, 9.437183999999999e-07], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 10 loss: 10.4401 iter time (s): 22.559 samples/sec: 11.348
+ iteration       10/ 1144409 | consumed samples:         2560 | consumed tokens:      5242880 | elapsed time per iteration (ms): 22725.3 | learning rate: 9.437E-07 | global batch size:   256 | lm loss: 1.053401E+01 | loss scale: 2048.0 | grad norm: 13.370 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.265 | tokens per gpu per second (tgs): 23070.662 | TFLOPs: 19.54 |
+[Rank 0] (after 10 iterations) memory (MB) | allocated: 2018.42236328125 | max allocated: 3176.57861328125 | reserved: 3766.0 | max reserved: 3766.0
+/home/ext_u10bei_github_io_gmail_com/miniconda3/envs/.venv_train/lib/python3.9/site-packages/torch/autograd/__init__.py:266: UserWarning: c10d::broadcast_: an autograd kernel was not registered to the Autograd key(s) but we are trying to backprop through it. This may lead to silently incorrect behavior. This behavior is deprecated and will be removed in a future version of PyTorch. If your operator is differentiable, please ensure you have registered an autograd kernel to the correct Autograd key (e.g. DispatchKey::Autograd, DispatchKey::CompositeImplicitAutograd). If your operator is not differentiable, or to squash this warning and use the previous behavior, please register torch::CppFunction::makeFallthrough() to DispatchKey::Autograd. (Triggered internally at /opt/conda/conda-bld/pytorch_1704987277512/work/torch/csrc/autograd/autograd_not_implemented_fallback.cpp:63.)
+  Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+[2024-03-30 09:52:02,653] [INFO] [logging.py:96:log_dist] [Rank 0] step=20, skipped=0, lr=[1.9922943999999996e-06, 1.9922943999999996e-06], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 20 loss: 9.8971 iter time (s): 22.744 samples/sec: 11.256
+ iteration       20/ 1144409 | consumed samples:         5120 | consumed tokens:     10485760 | elapsed time per iteration (ms): 22962.1 | learning rate: 1.992E-06 | global batch size:   256 | lm loss: 1.014571E+01 | loss scale: 2048.0 | grad norm: 7.847 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.149 | tokens per gpu per second (tgs): 22832.787 | TFLOPs: 19.34 |
+[2024-03-30 09:55:51,089] [INFO] [logging.py:96:log_dist] [Rank 0] step=30, skipped=0, lr=[3.0408703999999997e-06, 3.0408703999999997e-06], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 30 loss: 9.4923 iter time (s): 22.683 samples/sec: 11.286
+ iteration       30/ 1144409 | consumed samples:         7680 | consumed tokens:     15728640 | elapsed time per iteration (ms): 22842.7 | learning rate: 3.041E-06 | global batch size:   256 | lm loss: 9.655904E+00 | loss scale: 2048.0 | grad norm: 3.801 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.207 | tokens per gpu per second (tgs): 22952.071 | TFLOPs: 19.44 |
+[2024-03-30 09:59:39,341] [INFO] [logging.py:96:log_dist] [Rank 0] step=40, skipped=0, lr=[4.089446399999999e-06, 4.089446399999999e-06], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 40 loss: 9.2684 iter time (s): 22.662 samples/sec: 11.297
+ iteration       40/ 1144409 | consumed samples:        10240 | consumed tokens:     20971520 | elapsed time per iteration (ms): 22828.0 | learning rate: 4.089E-06 | global batch size:   256 | lm loss: 9.355103E+00 | loss scale: 2048.0 | grad norm: 2.250 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.214 | tokens per gpu per second (tgs): 22966.875 | TFLOPs: 19.46 |
+[2024-03-30 10:03:27,343] [INFO] [logging.py:96:log_dist] [Rank 0] step=50, skipped=0, lr=[5.1380224e-06, 5.1380224e-06], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 50 loss: 9.1537 iter time (s): 22.637 samples/sec: 11.309
+ iteration       50/ 1144409 | consumed samples:        12800 | consumed tokens:     26214400 | elapsed time per iteration (ms): 22797.8 | learning rate: 5.138E-06 | global batch size:   256 | lm loss: 9.198716E+00 | loss scale: 2048.0 | grad norm: 1.969 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.229 | tokens per gpu per second (tgs): 22997.299 | TFLOPs: 19.48 |
+[2024-03-30 10:07:15,303] [INFO] [logging.py:96:log_dist] [Rank 0] step=60, skipped=0, lr=[6.186598399999999e-06, 6.186598399999999e-06], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 60 loss: 9.0797 iter time (s): 22.641 samples/sec: 11.307
+ iteration       60/ 1144409 | consumed samples:        15360 | consumed tokens:     31457280 | elapsed time per iteration (ms): 22800.0 | learning rate: 6.187E-06 | global batch size:   256 | lm loss: 9.117577E+00 | loss scale: 2048.0 | grad norm: 1.929 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.228 | tokens per gpu per second (tgs): 22995.062 | TFLOPs: 19.48 |
+[2024-03-30 10:11:02,977] [INFO] [logging.py:96:log_dist] [Rank 0] step=70, skipped=0, lr=[7.2351744e-06, 7.2351744e-06], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 70 loss: 8.9887 iter time (s): 22.605 samples/sec: 11.325
+ iteration       70/ 1144409 | consumed samples:        17920 | consumed tokens:     36700160 | elapsed time per iteration (ms): 22764.2 | learning rate: 7.235E-06 | global batch size:   256 | lm loss: 9.036197E+00 | loss scale: 2048.0 | grad norm: 1.903 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.246 | tokens per gpu per second (tgs): 23031.266 | TFLOPs: 19.51 |
+[2024-03-30 10:14:50,758] [INFO] [logging.py:96:log_dist] [Rank 0] step=80, skipped=0, lr=[8.2837504e-06, 8.2837504e-06], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 80 loss: 8.8809 iter time (s): 22.616 samples/sec: 11.319
+ iteration       80/ 1144409 | consumed samples:        20480 | consumed tokens:     41943040 | elapsed time per iteration (ms): 22776.2 | learning rate: 8.284E-06 | global batch size:   256 | lm loss: 8.938788E+00 | loss scale: 2048.0 | grad norm: 1.828 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.240 | tokens per gpu per second (tgs): 23019.082 | TFLOPs: 19.50 |
+[2024-03-30 10:18:40,631] [INFO] [logging.py:96:log_dist] [Rank 0] step=90, skipped=0, lr=[9.3323264e-06, 9.3323264e-06], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 90 loss: 8.7270 iter time (s): 22.625 samples/sec: 11.315
+ iteration       90/ 1144409 | consumed samples:        23040 | consumed tokens:     47185920 | elapsed time per iteration (ms): 22988.2 | learning rate: 9.332E-06 | global batch size:   256 | lm loss: 8.793378E+00 | loss scale: 2048.0 | grad norm: 1.760 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.136 | tokens per gpu per second (tgs): 22806.830 | TFLOPs: 19.32 |
+[2024-03-30 10:22:28,861] [INFO] [logging.py:96:log_dist] [Rank 0] step=100, skipped=0, lr=[1.03809024e-05, 1.03809024e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 100 loss: 8.5766 iter time (s): 22.659 samples/sec: 11.298
+ iteration      100/ 1144409 | consumed samples:        25600 | consumed tokens:     52428800 | elapsed time per iteration (ms): 22823.6 | learning rate: 1.038E-05 | global batch size:   256 | lm loss: 8.645064E+00 | loss scale: 2048.0 | grad norm: 1.640 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.216 | tokens per gpu per second (tgs): 22971.263 | TFLOPs: 19.46 |
+wandb: WARNING Step only supports monotonically increasing values, use define_metric to set a custom x axis. For details see: https://wandb.me/define-metric
+wandb: WARNING (User provided step: 25600 is less than current step: 25601. Dropping entry: {'Train/Samples/eval_loss': 8.524062156677246, '_timestamp': 1711794158.629826}).
+wandb: WARNING (User provided step: 25600 is less than current step: 25601. Dropping entry: {'Train/Samples/eval_loss': 8.517448425292969, '_timestamp': 1711794168.1793344}).
+wandb: WARNING (User provided step: 25600 is less than current step: 25601. Dropping entry: {'Train/Samples/eval_loss': 8.518844604492188, '_timestamp': 1711794177.7486587}).
+wandb: WARNING (User provided step: 25600 is less than current step: 25601. Dropping entry: {'Train/Samples/eval_loss': 8.5100736618042, '_timestamp': 1711794187.225652}).
+wandb: WARNING (User provided step: 25600 is less than current step: 25601. Dropping entry: {'Train/Samples/eval_loss': 8.525142669677734, '_timestamp': 1711794196.6778047}).
+wandb: WARNING (User provided step: 25600 is less than current step: 25601. Dropping entry: {'Train/Samples/eval_loss': 8.523676872253418, '_timestamp': 1711794206.2147386}).
+wandb: WARNING (User provided step: 25600 is less than current step: 25601. Dropping entry: {'Train/Samples/eval_loss': 8.52525520324707, '_timestamp': 1711794215.6947486}).
+wandb: WARNING (User provided step: 25600 is less than current step: 25601. Dropping entry: {'Train/Samples/eval_loss': 8.523567199707031, '_timestamp': 1711794225.149481}).
+wandb: WARNING (User provided step: 25600 is less than current step: 25601. Dropping entry: {'Train/Samples/eval_loss': 8.52442741394043, '_timestamp': 1711794234.6330454}).
+-----------------------------------------------------------------------------------------------
+ validation loss at iteration 100 | lm loss value: 8.521514E+00 | lm loss PPL: 5.021650E+03 | 
+-----------------------------------------------------------------------------------------------
+wandb: WARNING (User provided step: 25600 is less than current step: 25601. Dropping entry: {'Train/Samples/eval_loss': 8.522163391113281, '_timestamp': 1711794244.0729964}).
+[2024-03-30 10:27:51,607] [INFO] [logging.py:96:log_dist] [Rank 0] step=110, skipped=0, lr=[1.14294784e-05, 1.14294784e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 110 loss: 8.4313 iter time (s): 22.621 samples/sec: 11.317
+ iteration      110/ 1144409 | consumed samples:        28160 | consumed tokens:     57671680 | elapsed time per iteration (ms): 32277.2 | learning rate: 1.143E-05 | global batch size:   256 | lm loss: 8.491441E+00 | loss scale: 2048.0 | grad norm: 1.559 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 7.931 | tokens per gpu per second (tgs): 16243.286 | TFLOPs: 13.76 |
+[2024-03-30 10:31:39,407] [INFO] [logging.py:96:log_dist] [Rank 0] step=120, skipped=0, lr=[1.2478054399999999e-05, 1.2478054399999999e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 120 loss: 8.2830 iter time (s): 22.609 samples/sec: 11.323
+ iteration      120/ 1144409 | consumed samples:        30720 | consumed tokens:     62914560 | elapsed time per iteration (ms): 22780.1 | learning rate: 1.248E-05 | global batch size:   256 | lm loss: 8.346828E+00 | loss scale: 2048.0 | grad norm: 1.517 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.238 | tokens per gpu per second (tgs): 23015.222 | TFLOPs: 19.50 |
+[2024-03-30 10:35:27,167] [INFO] [logging.py:96:log_dist] [Rank 0] step=130, skipped=0, lr=[1.3526630399999999e-05, 1.3526630399999999e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 130 loss: 8.1411 iter time (s): 22.609 samples/sec: 11.323
+ iteration      130/ 1144409 | consumed samples:        33280 | consumed tokens:     68157440 | elapsed time per iteration (ms): 22772.3 | learning rate: 1.353E-05 | global batch size:   256 | lm loss: 8.202671E+00 | loss scale: 2048.0 | grad norm: 1.417 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.242 | tokens per gpu per second (tgs): 23023.058 | TFLOPs: 19.50 |
+[2024-03-30 10:39:14,912] [INFO] [logging.py:96:log_dist] [Rank 0] step=140, skipped=0, lr=[1.4575206399999998e-05, 1.4575206399999998e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 140 loss: 7.9897 iter time (s): 22.624 samples/sec: 11.316
+ iteration      140/ 1144409 | consumed samples:        35840 | consumed tokens:     73400320 | elapsed time per iteration (ms): 22774.6 | learning rate: 1.458E-05 | global batch size:   256 | lm loss: 8.061516E+00 | loss scale: 2048.0 | grad norm: 1.365 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.241 | tokens per gpu per second (tgs): 23020.701 | TFLOPs: 19.50 |
+[2024-03-30 10:43:02,548] [INFO] [logging.py:96:log_dist] [Rank 0] step=150, skipped=0, lr=[1.5623782399999998e-05, 1.5623782399999998e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 150 loss: 7.8494 iter time (s): 22.612 samples/sec: 11.322
+ iteration      150/ 1144409 | consumed samples:        38400 | consumed tokens:     78643200 | elapsed time per iteration (ms): 22762.8 | learning rate: 1.562E-05 | global batch size:   256 | lm loss: 7.921587E+00 | loss scale: 2048.0 | grad norm: 1.478 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.246 | tokens per gpu per second (tgs): 23032.669 | TFLOPs: 19.51 |
+[2024-03-30 10:46:50,077] [INFO] [logging.py:96:log_dist] [Rank 0] step=160, skipped=0, lr=[1.6672358399999998e-05, 1.6672358399999998e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 160 loss: 7.7229 iter time (s): 22.594 samples/sec: 11.331
+ iteration      160/ 1144409 | consumed samples:        40960 | consumed tokens:     83886080 | elapsed time per iteration (ms): 22751.4 | learning rate: 1.667E-05 | global batch size:   256 | lm loss: 7.785664E+00 | loss scale: 2048.0 | grad norm: 1.343 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.252 | tokens per gpu per second (tgs): 23044.240 | TFLOPs: 19.52 |
+[2024-03-30 10:50:38,363] [INFO] [logging.py:96:log_dist] [Rank 0] step=170, skipped=0, lr=[1.7720934399999998e-05, 1.7720934399999998e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 170 loss: 7.5860 iter time (s): 22.538 samples/sec: 11.359
+ iteration      170/ 1144409 | consumed samples:        43520 | consumed tokens:     89128960 | elapsed time per iteration (ms): 22830.2 | learning rate: 1.772E-05 | global batch size:   256 | lm loss: 7.649880E+00 | loss scale: 2048.0 | grad norm: 1.538 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.213 | tokens per gpu per second (tgs): 22964.693 | TFLOPs: 19.45 |
+[2024-03-30 10:54:23,762] [INFO] [logging.py:96:log_dist] [Rank 0] step=180, skipped=0, lr=[1.8769510399999998e-05, 1.8769510399999998e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 180 loss: 7.4481 iter time (s): 22.388 samples/sec: 11.435
+ iteration      180/ 1144409 | consumed samples:        46080 | consumed tokens:     94371840 | elapsed time per iteration (ms): 22679.9 | learning rate: 1.877E-05 | global batch size:   256 | lm loss: 7.514515E+00 | loss scale: 2048.0 | grad norm: 1.181 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.288 | tokens per gpu per second (tgs): 23116.900 | TFLOPs: 19.58 |
+[2024-03-30 10:58:10,396] [INFO] [logging.py:96:log_dist] [Rank 0] step=190, skipped=0, lr=[1.9818086399999997e-05, 1.9818086399999997e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 190 loss: 7.3248 iter time (s): 22.360 samples/sec: 11.449
+ iteration      190/ 1144409 | consumed samples:        48640 | consumed tokens:     99614720 | elapsed time per iteration (ms): 22522.7 | learning rate: 1.982E-05 | global batch size:   256 | lm loss: 7.378778E+00 | loss scale: 2048.0 | grad norm: 1.198 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.366 | tokens per gpu per second (tgs): 23278.157 | TFLOPs: 19.72 |
+[2024-03-30 11:01:56,035] [INFO] [logging.py:96:log_dist] [Rank 0] step=200, skipped=0, lr=[2.0866662399999997e-05, 2.0866662399999997e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 200 loss: 7.1927 iter time (s): 22.390 samples/sec: 11.434
+ iteration      200/ 1144409 | consumed samples:        51200 | consumed tokens:    104857600 | elapsed time per iteration (ms): 22563.0 | learning rate: 2.087E-05 | global batch size:   256 | lm loss: 7.253544E+00 | loss scale: 2048.0 | grad norm: 1.057 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.346 | tokens per gpu per second (tgs): 23236.593 | TFLOPs: 19.68 |
+wandb: WARNING (User provided step: 51200 is less than current step: 51201. Dropping entry: {'Train/Samples/eval_loss': 7.1346330642700195, '_timestamp': 1711796525.605337}).
+wandb: WARNING (User provided step: 51200 is less than current step: 51201. Dropping entry: {'Train/Samples/eval_loss': 7.126474857330322, '_timestamp': 1711796535.030724}).
+wandb: WARNING (User provided step: 51200 is less than current step: 51201. Dropping entry: {'Train/Samples/eval_loss': 7.134893417358398, '_timestamp': 1711796544.5856757}).
+wandb: WARNING (User provided step: 51200 is less than current step: 51201. Dropping entry: {'Train/Samples/eval_loss': 7.12977409362793, '_timestamp': 1711796554.049597}).
+wandb: WARNING (User provided step: 51200 is less than current step: 51201. Dropping entry: {'Train/Samples/eval_loss': 7.140634059906006, '_timestamp': 1711796563.4912338}).
+wandb: WARNING (User provided step: 51200 is less than current step: 51201. Dropping entry: {'Train/Samples/eval_loss': 7.138908863067627, '_timestamp': 1711796573.0527}).
+wandb: WARNING (User provided step: 51200 is less than current step: 51201. Dropping entry: {'Train/Samples/eval_loss': 7.1252851486206055, '_timestamp': 1711796582.5407414}).
+wandb: WARNING (User provided step: 51200 is less than current step: 51201. Dropping entry: {'Train/Samples/eval_loss': 7.1314568519592285, '_timestamp': 1711796592.0518346}).
+wandb: WARNING (User provided step: 51200 is less than current step: 51201. Dropping entry: {'Train/Samples/eval_loss': 7.135836601257324, '_timestamp': 1711796601.5951345}).
+-----------------------------------------------------------------------------------------------
+ validation loss at iteration 200 | lm loss value: 7.133053E+00 | lm loss PPL: 1.252695E+03 | 
+-----------------------------------------------------------------------------------------------
+saving checkpoint at iteration     200 to /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase
+[2024-03-30 11:03:31,133] [INFO] [logging.py:96:log_dist] [Rank 0] [Torch] Checkpoint global_step200 is about to be saved!
+[2024-03-30 11:03:31,187] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/layer_01-model_00-model_states.pt...
+[2024-03-30 11:03:31,368] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/layer_01-model_00-model_states.pt.
+[2024-03-30 11:03:31,375] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/layer_02-model_00-model_states.pt...
+[2024-03-30 11:03:31,425] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/layer_02-model_00-model_states.pt.
+[2024-03-30 11:03:31,430] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/layer_03-model_00-model_states.pt...
+[2024-03-30 11:03:31,482] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/layer_03-model_00-model_states.pt.
+[2024-03-30 11:03:31,486] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/layer_04-model_00-model_states.pt...
+[2024-03-30 11:03:31,541] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/layer_04-model_00-model_states.pt.
+[2024-03-30 11:03:31,546] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/layer_05-model_00-model_states.pt...
+[2024-03-30 11:03:31,593] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/layer_05-model_00-model_states.pt.
+[2024-03-30 11:03:31,598] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/layer_06-model_00-model_states.pt...
+[2024-03-30 11:03:31,649] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/layer_06-model_00-model_states.pt.
+[2024-03-30 11:03:31,653] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/layer_07-model_00-model_states.pt...
+[2024-03-30 11:03:31,702] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/layer_07-model_00-model_states.pt.
+[2024-03-30 11:03:31,706] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/layer_08-model_00-model_states.pt...
+[2024-03-30 11:03:31,756] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/layer_08-model_00-model_states.pt.
+[2024-03-30 11:03:31,760] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/layer_09-model_00-model_states.pt...
+[2024-03-30 11:03:31,807] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/layer_09-model_00-model_states.pt.
+[2024-03-30 11:03:31,811] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/layer_10-model_00-model_states.pt...
+[2024-03-30 11:03:31,860] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/layer_10-model_00-model_states.pt.
+[2024-03-30 11:03:31,865] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/layer_11-model_00-model_states.pt...
+[2024-03-30 11:03:31,911] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/layer_11-model_00-model_states.pt.
+[2024-03-30 11:03:31,916] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/layer_12-model_00-model_states.pt...
+[2024-03-30 11:03:31,965] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/layer_12-model_00-model_states.pt.
+[2024-03-30 11:03:31,969] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/layer_13-model_00-model_states.pt...
+[2024-03-30 11:03:32,014] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/layer_13-model_00-model_states.pt.
+[2024-03-30 11:03:32,015] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/layer_14-model_00-model_states.pt...
+[2024-03-30 11:03:32,021] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/layer_14-model_00-model_states.pt.
+[2024-03-30 11:03:32,024] [INFO] [logging.py:96:log_dist] [Rank 0] Saving model checkpoint: /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/mp_rank_00_model_states.pt
+[2024-03-30 11:03:32,024] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/mp_rank_00_model_states.pt...
+[2024-03-30 11:03:36,951] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step200/mp_rank_00_model_states.pt.
+[2024-03-30 11:03:36,951] [INFO] [torch_checkpoint_engine.py:33:commit] [Torch] Checkpoint global_step200 is ready now!
+  successfully saved checkpoint at iteration     200 to /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase
+Checkpoint Save GB: 1.558, GB/Sec: 0.27, Latency(second): 5.831
+(min, max) time across ranks (ms):
+    save-checkpoint ................................: (5831.07, 5831.07)
+wandb: WARNING (User provided step: 51200 is less than current step: 51201. Dropping entry: {'Train/Samples/eval_loss': 7.132999420166016, '_timestamp': 1711796611.1086113}).
+[2024-03-30 11:07:23,805] [INFO] [logging.py:96:log_dist] [Rank 0] step=210, skipped=0, lr=[2.1915238399999997e-05, 2.1915238399999997e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 210 loss: 7.0751 iter time (s): 22.549 samples/sec: 11.353
+ iteration      210/ 1144409 | consumed samples:        53760 | consumed tokens:    110100480 | elapsed time per iteration (ms): 32781.1 | learning rate: 2.192E-05 | global batch size:   256 | lm loss: 7.125167E+00 | loss scale: 2048.0 | grad norm: 0.947 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 7.809 | tokens per gpu per second (tgs): 15993.618 | TFLOPs: 13.55 |
+[2024-03-30 11:11:10,922] [INFO] [logging.py:96:log_dist] [Rank 0] step=220, skipped=0, lr=[2.2963814399999997e-05, 2.2963814399999997e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 220 loss: 6.9739 iter time (s): 22.547 samples/sec: 11.354
+ iteration      220/ 1144409 | consumed samples:        56320 | consumed tokens:    115343360 | elapsed time per iteration (ms): 22707.6 | learning rate: 2.296E-05 | global batch size:   256 | lm loss: 7.014802E+00 | loss scale: 2048.0 | grad norm: 0.853 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.274 | tokens per gpu per second (tgs): 23088.652 | TFLOPs: 19.56 |
+[2024-03-30 11:14:58,164] [INFO] [logging.py:96:log_dist] [Rank 0] step=230, skipped=0, lr=[2.40123904e-05, 2.40123904e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 230 loss: 6.8737 iter time (s): 22.572 samples/sec: 11.342
+ iteration      230/ 1144409 | consumed samples:        58880 | consumed tokens:    120586240 | elapsed time per iteration (ms): 22725.5 | learning rate: 2.401E-05 | global batch size:   256 | lm loss: 6.908424E+00 | loss scale: 2048.0 | grad norm: 0.762 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.265 | tokens per gpu per second (tgs): 23070.445 | TFLOPs: 19.54 |
+[2024-03-30 11:18:45,353] [INFO] [logging.py:96:log_dist] [Rank 0] step=240, skipped=0, lr=[2.50609664e-05, 2.50609664e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 240 loss: 6.7861 iter time (s): 22.557 samples/sec: 11.349
+ iteration      240/ 1144409 | consumed samples:        61440 | consumed tokens:    125829120 | elapsed time per iteration (ms): 22722.6 | learning rate: 2.506E-05 | global batch size:   256 | lm loss: 6.814536E+00 | loss scale: 2048.0 | grad norm: 0.712 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.266 | tokens per gpu per second (tgs): 23073.410 | TFLOPs: 19.55 |
+[2024-03-30 11:22:32,377] [INFO] [logging.py:96:log_dist] [Rank 0] step=250, skipped=0, lr=[2.6109542399999996e-05, 2.6109542399999996e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 250 loss: 6.6952 iter time (s): 22.544 samples/sec: 11.356
+ iteration      250/ 1144409 | consumed samples:        64000 | consumed tokens:    131072000 | elapsed time per iteration (ms): 22699.4 | learning rate: 2.611E-05 | global batch size:   256 | lm loss: 6.730808E+00 | loss scale: 2048.0 | grad norm: 0.742 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.278 | tokens per gpu per second (tgs): 23096.996 | TFLOPs: 19.57 |
+[2024-03-30 11:31:32,535] [INFO] [logging.py:96:log_dist] [Rank 0] step=260, skipped=0, lr=[2.7158118399999996e-05, 2.7158118399999996e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 260 loss: 6.6255 iter time (s): 22.885 samples/sec: 11.186
+ iteration      260/ 1144409 | consumed samples:        66560 | consumed tokens:    136314880 | elapsed time per iteration (ms): 54014.9 | learning rate: 2.716E-05 | global batch size:   256 | lm loss: 6.649455E+00 | loss scale: 2048.0 | grad norm: 0.701 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 4.739 | tokens per gpu per second (tgs): 9706.357 | TFLOPs: 8.22 |
+[2024-03-30 11:35:23,334] [INFO] [logging.py:96:log_dist] [Rank 0] step=270, skipped=0, lr=[2.82066944e-05, 2.82066944e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 270 loss: 6.5584 iter time (s): 22.910 samples/sec: 11.174
+ iteration      270/ 1144409 | consumed samples:        69120 | consumed tokens:    141557760 | elapsed time per iteration (ms): 23080.0 | learning rate: 2.821E-05 | global batch size:   256 | lm loss: 6.582980E+00 | loss scale: 2048.0 | grad norm: 0.835 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.092 | tokens per gpu per second (tgs): 22716.119 | TFLOPs: 19.24 |
+[2024-03-30 11:39:11,812] [INFO] [logging.py:96:log_dist] [Rank 0] step=280, skipped=0, lr=[2.92552704e-05, 2.92552704e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 280 loss: 6.4965 iter time (s): 22.687 samples/sec: 11.284
+ iteration      280/ 1144409 | consumed samples:        71680 | consumed tokens:    146800640 | elapsed time per iteration (ms): 22856.6 | learning rate: 2.926E-05 | global batch size:   256 | lm loss: 6.523745E+00 | loss scale: 2048.0 | grad norm: 0.824 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.200 | tokens per gpu per second (tgs): 22938.139 | TFLOPs: 19.43 |
+[2024-03-30 11:42:59,457] [INFO] [logging.py:96:log_dist] [Rank 0] step=290, skipped=0, lr=[3.03038464e-05, 3.03038464e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 290 loss: 6.4349 iter time (s): 22.595 samples/sec: 11.330
+ iteration      290/ 1144409 | consumed samples:        74240 | consumed tokens:    152043520 | elapsed time per iteration (ms): 22756.8 | learning rate: 3.030E-05 | global batch size:   256 | lm loss: 6.458748E+00 | loss scale: 2048.0 | grad norm: 0.822 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.249 | tokens per gpu per second (tgs): 23038.702 | TFLOPs: 19.52 |
+[2024-03-30 11:46:46,923] [INFO] [logging.py:96:log_dist] [Rank 0] step=300, skipped=0, lr=[3.1352422399999995e-05, 3.1352422399999995e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 300 loss: 6.3881 iter time (s): 22.589 samples/sec: 11.333
+ iteration      300/ 1144409 | consumed samples:        76800 | consumed tokens:    157286400 | elapsed time per iteration (ms): 22744.0 | learning rate: 3.135E-05 | global batch size:   256 | lm loss: 6.405960E+00 | loss scale: 2048.0 | grad norm: 0.677 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.256 | tokens per gpu per second (tgs): 23051.682 | TFLOPs: 19.53 |
+wandb: WARNING (User provided step: 76800 is less than current step: 76801. Dropping entry: {'Train/Samples/eval_loss': 6.302370548248291, '_timestamp': 1711799216.6020513}).
+wandb: WARNING (User provided step: 76800 is less than current step: 76801. Dropping entry: {'Train/Samples/eval_loss': 6.327415466308594, '_timestamp': 1711799226.13159}).
+wandb: WARNING (User provided step: 76800 is less than current step: 76801. Dropping entry: {'Train/Samples/eval_loss': 6.339168071746826, '_timestamp': 1711799235.5725062}).
+wandb: WARNING (User provided step: 76800 is less than current step: 76801. Dropping entry: {'Train/Samples/eval_loss': 6.318884372711182, '_timestamp': 1711799245.1667256}).
+wandb: WARNING (User provided step: 76800 is less than current step: 76801. Dropping entry: {'Train/Samples/eval_loss': 6.323775768280029, '_timestamp': 1711799254.6699357}).
+wandb: WARNING (User provided step: 76800 is less than current step: 76801. Dropping entry: {'Train/Samples/eval_loss': 6.341365337371826, '_timestamp': 1711799264.181664}).
+wandb: WARNING (User provided step: 76800 is less than current step: 76801. Dropping entry: {'Train/Samples/eval_loss': 6.318484306335449, '_timestamp': 1711799273.8015342}).
+wandb: WARNING (User provided step: 76800 is less than current step: 76801. Dropping entry: {'Train/Samples/eval_loss': 6.3214545249938965, '_timestamp': 1711799283.266148}).
+-----------------------------------------------------------------------------------------------
+ validation loss at iteration 300 | lm loss value: 6.325411E+00 | lm loss PPL: 5.585875E+02 | 
+-----------------------------------------------------------------------------------------------
+wandb: WARNING (User provided step: 76800 is less than current step: 76801. Dropping entry: {'Train/Samples/eval_loss': 6.32749605178833, '_timestamp': 1711799292.7972453}).
+wandb: WARNING (User provided step: 76800 is less than current step: 76801. Dropping entry: {'Train/Samples/eval_loss': 6.333770751953125, '_timestamp': 1711799302.340189}).
+[2024-03-30 11:52:09,706] [INFO] [logging.py:96:log_dist] [Rank 0] step=310, skipped=0, lr=[3.24009984e-05, 3.24009984e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 310 loss: 6.3398 iter time (s): 22.599 samples/sec: 11.328
+ iteration      310/ 1144409 | consumed samples:        79360 | consumed tokens:    162529280 | elapsed time per iteration (ms): 32278.8 | learning rate: 3.240E-05 | global batch size:   256 | lm loss: 6.358007E+00 | loss scale: 2048.0 | grad norm: 0.930 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 7.931 | tokens per gpu per second (tgs): 16242.467 | TFLOPs: 13.76 |
+[2024-03-30 11:55:57,491] [INFO] [logging.py:96:log_dist] [Rank 0] step=320, skipped=0, lr=[3.34495744e-05, 3.34495744e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 320 loss: 6.2841 iter time (s): 22.613 samples/sec: 11.321
+ iteration      320/ 1144409 | consumed samples:        81920 | consumed tokens:    167772160 | elapsed time per iteration (ms): 22781.4 | learning rate: 3.345E-05 | global batch size:   256 | lm loss: 6.311397E+00 | loss scale: 2048.0 | grad norm: 0.512 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.237 | tokens per gpu per second (tgs): 23013.873 | TFLOPs: 19.50 |
+[2024-03-30 11:59:46,379] [INFO] [logging.py:96:log_dist] [Rank 0] step=330, skipped=0, lr=[3.44981504e-05, 3.44981504e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 330 loss: 6.2521 iter time (s): 22.588 samples/sec: 11.334
+ iteration      330/ 1144409 | consumed samples:        84480 | consumed tokens:    173015040 | elapsed time per iteration (ms): 22886.0 | learning rate: 3.450E-05 | global batch size:   256 | lm loss: 6.266784E+00 | loss scale: 2048.0 | grad norm: 0.670 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.186 | tokens per gpu per second (tgs): 22908.635 | TFLOPs: 19.41 |
+[2024-03-30 12:03:34,001] [INFO] [logging.py:96:log_dist] [Rank 0] step=340, skipped=0, lr=[3.5546726399999994e-05, 3.5546726399999994e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 340 loss: 6.2130 iter time (s): 22.601 samples/sec: 11.327
+ iteration      340/ 1144409 | consumed samples:        87040 | consumed tokens:    178257920 | elapsed time per iteration (ms): 22766.0 | learning rate: 3.555E-05 | global batch size:   256 | lm loss: 6.221230E+00 | loss scale: 2048.0 | grad norm: 0.726 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.245 | tokens per gpu per second (tgs): 23029.445 | TFLOPs: 19.51 |
+[2024-03-30 12:07:21,681] [INFO] [logging.py:96:log_dist] [Rank 0] step=350, skipped=0, lr=[3.65953024e-05, 3.65953024e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 350 loss: 6.1789 iter time (s): 22.605 samples/sec: 11.325
+ iteration      350/ 1144409 | consumed samples:        89600 | consumed tokens:    183500800 | elapsed time per iteration (ms): 22765.9 | learning rate: 3.660E-05 | global batch size:   256 | lm loss: 6.189179E+00 | loss scale: 2048.0 | grad norm: 0.760 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.245 | tokens per gpu per second (tgs): 23029.505 | TFLOPs: 19.51 |
+[2024-03-30 12:11:09,526] [INFO] [logging.py:96:log_dist] [Rank 0] step=360, skipped=0, lr=[3.764387839999999e-05, 3.764387839999999e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 360 loss: 6.1336 iter time (s): 22.623 samples/sec: 11.316
+ iteration      360/ 1144409 | consumed samples:        92160 | consumed tokens:    188743680 | elapsed time per iteration (ms): 22787.1 | learning rate: 3.764E-05 | global batch size:   256 | lm loss: 6.141578E+00 | loss scale: 2048.0 | grad norm: 0.480 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.234 | tokens per gpu per second (tgs): 23008.106 | TFLOPs: 19.49 |
+[2024-03-30 12:14:57,211] [INFO] [logging.py:96:log_dist] [Rank 0] step=370, skipped=0, lr=[3.8692454399999996e-05, 3.8692454399999996e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 370 loss: 6.0949 iter time (s): 22.605 samples/sec: 11.325
+ iteration      370/ 1144409 | consumed samples:        94720 | consumed tokens:    193986560 | elapsed time per iteration (ms): 22764.5 | learning rate: 3.869E-05 | global batch size:   256 | lm loss: 6.103344E+00 | loss scale: 2048.0 | grad norm: 0.632 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.246 | tokens per gpu per second (tgs): 23030.899 | TFLOPs: 19.51 |
+[2024-03-30 12:18:44,759] [INFO] [logging.py:96:log_dist] [Rank 0] step=380, skipped=0, lr=[3.97410304e-05, 3.97410304e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 380 loss: 6.0566 iter time (s): 22.598 samples/sec: 11.328
+ iteration      380/ 1144409 | consumed samples:        97280 | consumed tokens:    199229440 | elapsed time per iteration (ms): 22757.0 | learning rate: 3.974E-05 | global batch size:   256 | lm loss: 6.071860E+00 | loss scale: 2048.0 | grad norm: 0.960 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.249 | tokens per gpu per second (tgs): 23038.503 | TFLOPs: 19.52 |
+[2024-03-30 12:22:32,402] [INFO] [logging.py:96:log_dist] [Rank 0] step=390, skipped=0, lr=[4.0789606399999996e-05, 4.0789606399999996e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 390 loss: 6.0199 iter time (s): 22.609 samples/sec: 11.323
+ iteration      390/ 1144409 | consumed samples:        99840 | consumed tokens:    204472320 | elapsed time per iteration (ms): 22762.2 | learning rate: 4.079E-05 | global batch size:   256 | lm loss: 6.037183E+00 | loss scale: 2048.0 | grad norm: 0.901 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.247 | tokens per gpu per second (tgs): 23033.310 | TFLOPs: 19.51 |
+[2024-03-30 12:26:20,144] [INFO] [logging.py:96:log_dist] [Rank 0] step=400, skipped=0, lr=[4.183818239999999e-05, 4.183818239999999e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 400 loss: 5.9962 iter time (s): 22.625 samples/sec: 11.315
+ iteration      400/ 1144409 | consumed samples:       102400 | consumed tokens:    209715200 | elapsed time per iteration (ms): 22773.2 | learning rate: 4.184E-05 | global batch size:   256 | lm loss: 6.008846E+00 | loss scale: 2048.0 | grad norm: 0.514 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.241 | tokens per gpu per second (tgs): 23022.134 | TFLOPs: 19.50 |
+wandb: WARNING (User provided step: 102400 is less than current step: 102401. Dropping entry: {'Train/Samples/eval_loss': 5.947327136993408, '_timestamp': 1711801589.800286}).
+wandb: WARNING (User provided step: 102400 is less than current step: 102401. Dropping entry: {'Train/Samples/eval_loss': 5.947348594665527, '_timestamp': 1711801599.2712452}).
+wandb: WARNING (User provided step: 102400 is less than current step: 102401. Dropping entry: {'Train/Samples/eval_loss': 5.94888973236084, '_timestamp': 1711801608.8265195}).
+wandb: WARNING (User provided step: 102400 is less than current step: 102401. Dropping entry: {'Train/Samples/eval_loss': 5.938776016235352, '_timestamp': 1711801618.3337023}).
+wandb: WARNING (User provided step: 102400 is less than current step: 102401. Dropping entry: {'Train/Samples/eval_loss': 5.940577030181885, '_timestamp': 1711801627.855897}).
+wandb: WARNING (User provided step: 102400 is less than current step: 102401. Dropping entry: {'Train/Samples/eval_loss': 5.941051006317139, '_timestamp': 1711801637.4973443}).
+wandb: WARNING (User provided step: 102400 is less than current step: 102401. Dropping entry: {'Train/Samples/eval_loss': 5.932034492492676, '_timestamp': 1711801646.9974604}).
+wandb: WARNING (User provided step: 102400 is less than current step: 102401. Dropping entry: {'Train/Samples/eval_loss': 5.942417621612549, '_timestamp': 1711801656.544805}).
+wandb: WARNING (User provided step: 102400 is less than current step: 102401. Dropping entry: {'Train/Samples/eval_loss': 5.941278457641602, '_timestamp': 1711801666.0926144}).
+-----------------------------------------------------------------------------------------------
+ validation loss at iteration 400 | lm loss value: 5.941123E+00 | lm loss PPL: 3.803620E+02 | 
+-----------------------------------------------------------------------------------------------
+saving checkpoint at iteration     400 to /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase
+[2024-03-30 12:27:55,672] [INFO] [logging.py:96:log_dist] [Rank 0] [Torch] Checkpoint global_step400 is about to be saved!
+[2024-03-30 12:27:55,712] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/layer_01-model_00-model_states.pt...
+[2024-03-30 12:27:55,884] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/layer_01-model_00-model_states.pt.
+[2024-03-30 12:27:55,892] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/layer_02-model_00-model_states.pt...
+[2024-03-30 12:27:55,943] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/layer_02-model_00-model_states.pt.
+[2024-03-30 12:27:55,947] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/layer_03-model_00-model_states.pt...
+[2024-03-30 12:27:55,999] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/layer_03-model_00-model_states.pt.
+[2024-03-30 12:27:56,003] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/layer_04-model_00-model_states.pt...
+[2024-03-30 12:27:56,057] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/layer_04-model_00-model_states.pt.
+[2024-03-30 12:27:56,061] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/layer_05-model_00-model_states.pt...
+[2024-03-30 12:27:56,114] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/layer_05-model_00-model_states.pt.
+[2024-03-30 12:27:56,119] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/layer_06-model_00-model_states.pt...
+[2024-03-30 12:27:56,171] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/layer_06-model_00-model_states.pt.
+[2024-03-30 12:27:56,175] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/layer_07-model_00-model_states.pt...
+[2024-03-30 12:27:56,237] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/layer_07-model_00-model_states.pt.
+[2024-03-30 12:27:56,241] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/layer_08-model_00-model_states.pt...
+[2024-03-30 12:27:56,333] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/layer_08-model_00-model_states.pt.
+[2024-03-30 12:27:56,338] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/layer_09-model_00-model_states.pt...
+[2024-03-30 12:27:56,432] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/layer_09-model_00-model_states.pt.
+[2024-03-30 12:27:56,436] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/layer_10-model_00-model_states.pt...
+[2024-03-30 12:27:56,529] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/layer_10-model_00-model_states.pt.
+[2024-03-30 12:27:56,533] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/layer_11-model_00-model_states.pt...
+[2024-03-30 12:27:56,602] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/layer_11-model_00-model_states.pt.
+[2024-03-30 12:27:56,606] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/layer_12-model_00-model_states.pt...
+[2024-03-30 12:27:56,662] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/layer_12-model_00-model_states.pt.
+[2024-03-30 12:27:56,667] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/layer_13-model_00-model_states.pt...
+[2024-03-30 12:27:56,715] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/layer_13-model_00-model_states.pt.
+[2024-03-30 12:27:56,716] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/layer_14-model_00-model_states.pt...
+[2024-03-30 12:27:56,723] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/layer_14-model_00-model_states.pt.
+[2024-03-30 12:27:56,725] [INFO] [logging.py:96:log_dist] [Rank 0] Saving model checkpoint: /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/mp_rank_00_model_states.pt
+[2024-03-30 12:27:56,725] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/mp_rank_00_model_states.pt...
+[2024-03-30 12:28:03,467] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step400/mp_rank_00_model_states.pt.
+[2024-03-30 12:28:03,467] [INFO] [torch_checkpoint_engine.py:33:commit] [Torch] Checkpoint global_step400 is ready now!
+  successfully saved checkpoint at iteration     400 to /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase
+Checkpoint Save GB: 1.558, GB/Sec: 0.2, Latency(second): 7.812
+(min, max) time across ranks (ms):
+    save-checkpoint ................................: (7811.68, 7811.68)
+wandb: WARNING (User provided step: 102400 is less than current step: 102401. Dropping entry: {'Train/Samples/eval_loss': 5.931549549102783, '_timestamp': 1711801675.6450021}).
+[2024-03-30 12:31:50,903] [INFO] [logging.py:96:log_dist] [Rank 0] step=410, skipped=0, lr=[4.2886758399999996e-05, 4.2886758399999996e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 410 loss: 5.9764 iter time (s): 22.605 samples/sec: 11.325
+ iteration      410/ 1144409 | consumed samples:       104960 | consumed tokens:    214958080 | elapsed time per iteration (ms): 33078.1 | learning rate: 4.289E-05 | global batch size:   256 | lm loss: 5.981849E+00 | loss scale: 2048.0 | grad norm: 0.743 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 7.739 | tokens per gpu per second (tgs): 15850.004 | TFLOPs: 13.43 |
+[2024-03-30 12:35:38,321] [INFO] [logging.py:96:log_dist] [Rank 0] step=420, skipped=0, lr=[4.393533439999999e-05, 4.393533439999999e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 420 loss: 5.9261 iter time (s): 22.584 samples/sec: 11.335
+ iteration      420/ 1144409 | consumed samples:       107520 | consumed tokens:    220200960 | elapsed time per iteration (ms): 22739.4 | learning rate: 4.394E-05 | global batch size:   256 | lm loss: 5.948161E+00 | loss scale: 2048.0 | grad norm: 0.809 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.258 | tokens per gpu per second (tgs): 23056.350 | TFLOPs: 19.53 |
+[2024-03-30 12:39:25,756] [INFO] [logging.py:96:log_dist] [Rank 0] step=430, skipped=0, lr=[4.4983910399999995e-05, 4.4983910399999995e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 430 loss: 5.9036 iter time (s): 22.604 samples/sec: 11.325
+ iteration      430/ 1144409 | consumed samples:       110080 | consumed tokens:    225443840 | elapsed time per iteration (ms): 22742.6 | learning rate: 4.498E-05 | global batch size:   256 | lm loss: 5.923561E+00 | loss scale: 2048.0 | grad norm: 0.975 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.256 | tokens per gpu per second (tgs): 23053.085 | TFLOPs: 19.53 |
+[2024-03-30 12:43:13,150] [INFO] [logging.py:96:log_dist] [Rank 0] step=440, skipped=0, lr=[4.603248639999999e-05, 4.603248639999999e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 440 loss: 5.8908 iter time (s): 22.605 samples/sec: 11.325
+ iteration      440/ 1144409 | consumed samples:       112640 | consumed tokens:    230686720 | elapsed time per iteration (ms): 22739.8 | learning rate: 4.603E-05 | global batch size:   256 | lm loss: 5.905045E+00 | loss scale: 2048.0 | grad norm: 0.730 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.258 | tokens per gpu per second (tgs): 23055.985 | TFLOPs: 19.53 |
+[2024-03-30 12:47:00,369] [INFO] [logging.py:96:log_dist] [Rank 0] step=450, skipped=0, lr=[4.7081062399999995e-05, 4.7081062399999995e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 450 loss: 5.8667 iter time (s): 22.590 samples/sec: 11.332
+ iteration      450/ 1144409 | consumed samples:       115200 | consumed tokens:    235929600 | elapsed time per iteration (ms): 22722.1 | learning rate: 4.708E-05 | global batch size:   256 | lm loss: 5.874073E+00 | loss scale: 2048.0 | grad norm: 1.136 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.267 | tokens per gpu per second (tgs): 23073.962 | TFLOPs: 19.55 |
+[2024-03-30 12:50:47,647] [INFO] [logging.py:96:log_dist] [Rank 0] step=460, skipped=0, lr=[4.81296384e-05, 4.81296384e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 460 loss: 5.8421 iter time (s): 22.595 samples/sec: 11.330
+ iteration      460/ 1144409 | consumed samples:       117760 | consumed tokens:    241172480 | elapsed time per iteration (ms): 22728.1 | learning rate: 4.813E-05 | global batch size:   256 | lm loss: 5.854276E+00 | loss scale: 2048.0 | grad norm: 0.658 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.264 | tokens per gpu per second (tgs): 23067.825 | TFLOPs: 19.54 |
+[2024-03-30 12:54:35,181] [INFO] [logging.py:96:log_dist] [Rank 0] step=470, skipped=0, lr=[4.9178214399999994e-05, 4.9178214399999994e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 470 loss: 5.8253 iter time (s): 22.620 samples/sec: 11.318
+ iteration      470/ 1144409 | consumed samples:       120320 | consumed tokens:    246415360 | elapsed time per iteration (ms): 22753.0 | learning rate: 4.918E-05 | global batch size:   256 | lm loss: 5.831116E+00 | loss scale: 2048.0 | grad norm: 1.123 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.251 | tokens per gpu per second (tgs): 23042.596 | TFLOPs: 19.52 |
+[2024-03-30 12:58:30,456] [INFO] [logging.py:96:log_dist] [Rank 0] step=480, skipped=0, lr=[5.02267904e-05, 5.02267904e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 480 loss: 5.7890 iter time (s): 23.104 samples/sec: 11.081
+ iteration      480/ 1144409 | consumed samples:       122880 | consumed tokens:    251658240 | elapsed time per iteration (ms): 23527.8 | learning rate: 5.023E-05 | global batch size:   256 | lm loss: 5.806986E+00 | loss scale: 2048.0 | grad norm: 0.941 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 10.881 | tokens per gpu per second (tgs): 22283.776 | TFLOPs: 18.88 |
+[2024-03-30 13:02:24,956] [INFO] [logging.py:96:log_dist] [Rank 0] step=490, skipped=0, lr=[5.12753664e-05, 5.12753664e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 490 loss: 5.7653 iter time (s): 23.126 samples/sec: 11.070
+ iteration      490/ 1144409 | consumed samples:       125440 | consumed tokens:    256901120 | elapsed time per iteration (ms): 23449.8 | learning rate: 5.128E-05 | global batch size:   256 | lm loss: 5.786764E+00 | loss scale: 2048.0 | grad norm: 0.763 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 10.917 | tokens per gpu per second (tgs): 22357.871 | TFLOPs: 18.94 |
+[2024-03-30 13:06:17,588] [INFO] [logging.py:96:log_dist] [Rank 0] step=500, skipped=0, lr=[5.23239424e-05, 5.23239424e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 500 loss: 5.7582 iter time (s): 22.744 samples/sec: 11.256
+ iteration      500/ 1144409 | consumed samples:       128000 | consumed tokens:    262144000 | elapsed time per iteration (ms): 23262.9 | learning rate: 5.232E-05 | global batch size:   256 | lm loss: 5.760870E+00 | loss scale: 2048.0 | grad norm: 0.728 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.005 | tokens per gpu per second (tgs): 22537.554 | TFLOPs: 19.09 |
+wandb: WARNING (User provided step: 128000 is less than current step: 128001. Dropping entry: {'Train/Samples/eval_loss': 5.7027482986450195, '_timestamp': 1711803987.3005464}).
+wandb: WARNING (User provided step: 128000 is less than current step: 128001. Dropping entry: {'Train/Samples/eval_loss': 5.703572750091553, '_timestamp': 1711803996.811554}).
+wandb: WARNING (User provided step: 128000 is less than current step: 128001. Dropping entry: {'Train/Samples/eval_loss': 5.686156272888184, '_timestamp': 1711804006.4091604}).
+wandb: WARNING (User provided step: 128000 is less than current step: 128001. Dropping entry: {'Train/Samples/eval_loss': 5.709203243255615, '_timestamp': 1711804015.9338193}).
+wandb: WARNING (User provided step: 128000 is less than current step: 128001. Dropping entry: {'Train/Samples/eval_loss': 5.709379196166992, '_timestamp': 1711804025.4760003}).
+wandb: WARNING (User provided step: 128000 is less than current step: 128001. Dropping entry: {'Train/Samples/eval_loss': 5.716825008392334, '_timestamp': 1711804035.0108564}).
+wandb: WARNING (User provided step: 128000 is less than current step: 128001. Dropping entry: {'Train/Samples/eval_loss': 5.701272010803223, '_timestamp': 1711804044.497789}).
+wandb: WARNING (User provided step: 128000 is less than current step: 128001. Dropping entry: {'Train/Samples/eval_loss': 5.687737941741943, '_timestamp': 1711804053.9909728}).
+-----------------------------------------------------------------------------------------------
+ validation loss at iteration 500 | lm loss value: 5.704407E+00 | lm loss PPL: 3.001873E+02 | 
+-----------------------------------------------------------------------------------------------
+wandb: WARNING (User provided step: 128000 is less than current step: 128001. Dropping entry: {'Train/Samples/eval_loss': 5.712602138519287, '_timestamp': 1711804063.5037346}).
+wandb: WARNING (User provided step: 128000 is less than current step: 128001. Dropping entry: {'Train/Samples/eval_loss': 5.714892864227295, '_timestamp': 1711804073.0606806}).
+[2024-03-30 13:08:15,732] [INFO] [fused_optimizer.py:352:_update_scale] No Grad overflow for 500 iterations
+[2024-03-30 13:08:15,733] [INFO] [fused_optimizer.py:353:_update_scale] Increasing dynamic loss scale from 2048 to 4096
+[2024-03-30 13:11:41,085] [INFO] [logging.py:96:log_dist] [Rank 0] step=510, skipped=0, lr=[5.337251839999999e-05, 5.337251839999999e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 510 loss: 5.7396 iter time (s): 22.682 samples/sec: 11.287
+ iteration      510/ 1144409 | consumed samples:       130560 | consumed tokens:    267386880 | elapsed time per iteration (ms): 32349.4 | learning rate: 5.337E-05 | global batch size:   256 | lm loss: 5.746087E+00 | loss scale: 4096.0 | grad norm: 1.062 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 7.914 | tokens per gpu per second (tgs): 16207.017 | TFLOPs: 13.73 |
+[2024-03-30 13:15:28,965] [INFO] [logging.py:96:log_dist] [Rank 0] step=520, skipped=0, lr=[5.442109439999999e-05, 5.442109439999999e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 520 loss: 5.7084 iter time (s): 22.655 samples/sec: 11.300
+ iteration      520/ 1144409 | consumed samples:       133120 | consumed tokens:    272629760 | elapsed time per iteration (ms): 22788.3 | learning rate: 5.442E-05 | global batch size:   256 | lm loss: 5.733350E+00 | loss scale: 4096.0 | grad norm: 0.741 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.234 | tokens per gpu per second (tgs): 23006.872 | TFLOPs: 19.49 |
+[2024-03-30 13:19:16,817] [INFO] [logging.py:96:log_dist] [Rank 0] step=530, skipped=0, lr=[5.546967039999999e-05, 5.546967039999999e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 530 loss: 5.7035 iter time (s): 22.652 samples/sec: 11.301
+ iteration      530/ 1144409 | consumed samples:       135680 | consumed tokens:    277872640 | elapsed time per iteration (ms): 22785.3 | learning rate: 5.547E-05 | global batch size:   256 | lm loss: 5.707796E+00 | loss scale: 4096.0 | grad norm: 0.910 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.235 | tokens per gpu per second (tgs): 23009.883 | TFLOPs: 19.49 |
+[2024-03-30 13:23:04,808] [INFO] [logging.py:96:log_dist] [Rank 0] step=540, skipped=0, lr=[5.6518246399999996e-05, 5.6518246399999996e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 540 loss: 5.6616 iter time (s): 22.668 samples/sec: 11.294
+ iteration      540/ 1144409 | consumed samples:       138240 | consumed tokens:    283115520 | elapsed time per iteration (ms): 22798.7 | learning rate: 5.652E-05 | global batch size:   256 | lm loss: 5.682003E+00 | loss scale: 4096.0 | grad norm: 0.953 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.229 | tokens per gpu per second (tgs): 22996.389 | TFLOPs: 19.48 |
+[2024-03-30 13:26:52,631] [INFO] [logging.py:96:log_dist] [Rank 0] step=550, skipped=0, lr=[5.756682239999999e-05, 5.756682239999999e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 550 loss: 5.6494 iter time (s): 22.649 samples/sec: 11.303
+ iteration      550/ 1144409 | consumed samples:       140800 | consumed tokens:    288358400 | elapsed time per iteration (ms): 22782.7 | learning rate: 5.757E-05 | global batch size:   256 | lm loss: 5.668739E+00 | loss scale: 4096.0 | grad norm: 0.969 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.237 | tokens per gpu per second (tgs): 23012.522 | TFLOPs: 19.49 |
+[2024-03-30 13:30:40,692] [INFO] [logging.py:96:log_dist] [Rank 0] step=560, skipped=0, lr=[5.8615398399999995e-05, 5.8615398399999995e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 560 loss: 5.6406 iter time (s): 22.671 samples/sec: 11.292
+ iteration      560/ 1144409 | consumed samples:       143360 | consumed tokens:    293601280 | elapsed time per iteration (ms): 22806.0 | learning rate: 5.862E-05 | global batch size:   256 | lm loss: 5.654528E+00 | loss scale: 4096.0 | grad norm: 1.281 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.225 | tokens per gpu per second (tgs): 22988.992 | TFLOPs: 19.47 |
+[2024-03-30 13:34:40,789] [INFO] [logging.py:96:log_dist] [Rank 0] step=570, skipped=0, lr=[5.96639744e-05, 5.96639744e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 570 loss: 5.6229 iter time (s): 22.842 samples/sec: 11.207
+ iteration      570/ 1144409 | consumed samples:       145920 | consumed tokens:    298844160 | elapsed time per iteration (ms): 24010.5 | learning rate: 5.966E-05 | global batch size:   256 | lm loss: 5.631094E+00 | loss scale: 4096.0 | grad norm: 1.083 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 10.662 | tokens per gpu per second (tgs): 21835.746 | TFLOPs: 18.50 |
+[2024-03-30 13:38:28,930] [INFO] [logging.py:96:log_dist] [Rank 0] step=580, skipped=0, lr=[6.0712550399999995e-05, 6.0712550399999995e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 580 loss: 5.5984 iter time (s): 22.658 samples/sec: 11.298
+ iteration      580/ 1144409 | consumed samples:       148480 | consumed tokens:    304087040 | elapsed time per iteration (ms): 22813.3 | learning rate: 6.071E-05 | global batch size:   256 | lm loss: 5.613064E+00 | loss scale: 4096.0 | grad norm: 1.339 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.222 | tokens per gpu per second (tgs): 22981.692 | TFLOPs: 19.47 |
+[2024-03-30 13:42:17,169] [INFO] [logging.py:96:log_dist] [Rank 0] step=590, skipped=0, lr=[6.17611264e-05, 6.17611264e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 590 loss: 5.5982 iter time (s): 22.690 samples/sec: 11.282
+ iteration      590/ 1144409 | consumed samples:       151040 | consumed tokens:    309329920 | elapsed time per iteration (ms): 22823.7 | learning rate: 6.176E-05 | global batch size:   256 | lm loss: 5.599326E+00 | loss scale: 4096.0 | grad norm: 1.163 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.216 | tokens per gpu per second (tgs): 22971.185 | TFLOPs: 19.46 |
+[2024-03-30 13:46:05,481] [INFO] [logging.py:96:log_dist] [Rank 0] step=600, skipped=0, lr=[6.28097024e-05, 6.28097024e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 600 loss: 5.5698 iter time (s): 22.697 samples/sec: 11.279
+ iteration      600/ 1144409 | consumed samples:       153600 | consumed tokens:    314572800 | elapsed time per iteration (ms): 22830.9 | learning rate: 6.281E-05 | global batch size:   256 | lm loss: 5.577259E+00 | loss scale: 4096.0 | grad norm: 1.202 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.213 | tokens per gpu per second (tgs): 22963.955 | TFLOPs: 19.45 |
+wandb: WARNING (User provided step: 153600 is less than current step: 153601. Dropping entry: {'Train/Samples/eval_loss': 5.518138408660889, '_timestamp': 1711806375.165993}).
+wandb: WARNING (User provided step: 153600 is less than current step: 153601. Dropping entry: {'Train/Samples/eval_loss': 5.529972076416016, '_timestamp': 1711806384.681693}).
+wandb: WARNING (User provided step: 153600 is less than current step: 153601. Dropping entry: {'Train/Samples/eval_loss': 5.532877445220947, '_timestamp': 1711806394.1897285}).
+wandb: WARNING (User provided step: 153600 is less than current step: 153601. Dropping entry: {'Train/Samples/eval_loss': 5.524093151092529, '_timestamp': 1711806403.7548327}).
+wandb: WARNING (User provided step: 153600 is less than current step: 153601. Dropping entry: {'Train/Samples/eval_loss': 5.506400108337402, '_timestamp': 1711806413.3560646}).
+wandb: WARNING (User provided step: 153600 is less than current step: 153601. Dropping entry: {'Train/Samples/eval_loss': 5.520244121551514, '_timestamp': 1711806422.8811946}).
+wandb: WARNING (User provided step: 153600 is less than current step: 153601. Dropping entry: {'Train/Samples/eval_loss': 5.525508880615234, '_timestamp': 1711806432.4473453}).
+wandb: WARNING (User provided step: 153600 is less than current step: 153601. Dropping entry: {'Train/Samples/eval_loss': 5.511570930480957, '_timestamp': 1711806441.9380214}).
+wandb: WARNING (User provided step: 153600 is less than current step: 153601. Dropping entry: {'Train/Samples/eval_loss': 5.533178329467773, '_timestamp': 1711806451.4164848}).
+-----------------------------------------------------------------------------------------------
+ validation loss at iteration 600 | lm loss value: 5.524088E+00 | lm loss PPL: 2.506576E+02 | 
+-----------------------------------------------------------------------------------------------
+saving checkpoint at iteration     600 to /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase
+[2024-03-30 13:47:41,024] [INFO] [logging.py:96:log_dist] [Rank 0] [Torch] Checkpoint global_step600 is about to be saved!
+[2024-03-30 13:47:41,038] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/layer_01-model_00-model_states.pt...
+[2024-03-30 13:47:41,195] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/layer_01-model_00-model_states.pt.
+[2024-03-30 13:47:41,201] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/layer_02-model_00-model_states.pt...
+[2024-03-30 13:47:41,256] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/layer_02-model_00-model_states.pt.
+[2024-03-30 13:47:41,260] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/layer_03-model_00-model_states.pt...
+[2024-03-30 13:47:41,305] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/layer_03-model_00-model_states.pt.
+[2024-03-30 13:47:41,310] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/layer_04-model_00-model_states.pt...
+[2024-03-30 13:47:41,355] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/layer_04-model_00-model_states.pt.
+[2024-03-30 13:47:41,360] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/layer_05-model_00-model_states.pt...
+[2024-03-30 13:47:41,405] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/layer_05-model_00-model_states.pt.
+[2024-03-30 13:47:41,410] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/layer_06-model_00-model_states.pt...
+[2024-03-30 13:47:41,455] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/layer_06-model_00-model_states.pt.
+[2024-03-30 13:47:41,460] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/layer_07-model_00-model_states.pt...
+[2024-03-30 13:47:41,505] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/layer_07-model_00-model_states.pt.
+[2024-03-30 13:47:41,509] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/layer_08-model_00-model_states.pt...
+[2024-03-30 13:47:41,557] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/layer_08-model_00-model_states.pt.
+[2024-03-30 13:47:41,561] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/layer_09-model_00-model_states.pt...
+[2024-03-30 13:47:41,612] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/layer_09-model_00-model_states.pt.
+[2024-03-30 13:47:41,617] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/layer_10-model_00-model_states.pt...
+[2024-03-30 13:47:41,665] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/layer_10-model_00-model_states.pt.
+[2024-03-30 13:47:41,670] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/layer_11-model_00-model_states.pt...
+[2024-03-30 13:47:41,721] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/layer_11-model_00-model_states.pt.
+[2024-03-30 13:47:41,726] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/layer_12-model_00-model_states.pt...
+[2024-03-30 13:47:41,778] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/layer_12-model_00-model_states.pt.
+[2024-03-30 13:47:41,782] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/layer_13-model_00-model_states.pt...
+[2024-03-30 13:47:41,836] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/layer_13-model_00-model_states.pt.
+[2024-03-30 13:47:41,836] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/layer_14-model_00-model_states.pt...
+[2024-03-30 13:47:41,841] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/layer_14-model_00-model_states.pt.
+[2024-03-30 13:47:41,843] [INFO] [logging.py:96:log_dist] [Rank 0] Saving model checkpoint: /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/mp_rank_00_model_states.pt
+[2024-03-30 13:47:41,843] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/mp_rank_00_model_states.pt...
+[2024-03-30 13:47:47,126] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step600/mp_rank_00_model_states.pt.
+[2024-03-30 13:47:47,127] [INFO] [torch_checkpoint_engine.py:33:commit] [Torch] Checkpoint global_step600 is ready now!
+  successfully saved checkpoint at iteration     600 to /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase
+Checkpoint Save GB: 1.558, GB/Sec: 0.25, Latency(second): 6.115
+(min, max) time across ranks (ms):
+    save-checkpoint ................................: (6115.00, 6115.00)
+wandb: WARNING (User provided step: 153600 is less than current step: 153601. Dropping entry: {'Train/Samples/eval_loss': 5.539036273956299, '_timestamp': 1711806461.0018308}).
+[2024-03-30 13:51:34,972] [INFO] [logging.py:96:log_dist] [Rank 0] step=610, skipped=0, lr=[6.385827839999999e-05, 6.385827839999999e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 610 loss: 5.5519 iter time (s): 22.666 samples/sec: 11.294
+ iteration      610/ 1144409 | consumed samples:       156160 | consumed tokens:    319815680 | elapsed time per iteration (ms): 32949.4 | learning rate: 6.386E-05 | global batch size:   256 | lm loss: 5.562973E+00 | loss scale: 4096.0 | grad norm: 1.252 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 7.769 | tokens per gpu per second (tgs): 15911.893 | TFLOPs: 13.48 |
+[2024-03-30 13:55:22,992] [INFO] [logging.py:96:log_dist] [Rank 0] step=620, skipped=0, lr=[6.490685439999999e-05, 6.490685439999999e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 620 loss: 5.5445 iter time (s): 22.670 samples/sec: 11.293
+ iteration      620/ 1144409 | consumed samples:       158720 | consumed tokens:    325058560 | elapsed time per iteration (ms): 22802.3 | learning rate: 6.491E-05 | global batch size:   256 | lm loss: 5.540914E+00 | loss scale: 4096.0 | grad norm: 1.556 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.227 | tokens per gpu per second (tgs): 22992.729 | TFLOPs: 19.48 |
+[2024-03-30 13:59:11,024] [INFO] [logging.py:96:log_dist] [Rank 0] step=630, skipped=0, lr=[6.59554304e-05, 6.59554304e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 630 loss: 5.5250 iter time (s): 22.670 samples/sec: 11.292
+ iteration      630/ 1144409 | consumed samples:       161280 | consumed tokens:    330301440 | elapsed time per iteration (ms): 22802.8 | learning rate: 6.596E-05 | global batch size:   256 | lm loss: 5.522365E+00 | loss scale: 4096.0 | grad norm: 1.764 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.227 | tokens per gpu per second (tgs): 22992.264 | TFLOPs: 19.48 |
+[2024-03-30 14:02:59,143] [INFO] [logging.py:96:log_dist] [Rank 0] step=640, skipped=0, lr=[6.70040064e-05, 6.70040064e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 640 loss: 5.5016 iter time (s): 22.677 samples/sec: 11.289
+ iteration      640/ 1144409 | consumed samples:       163840 | consumed tokens:    335544320 | elapsed time per iteration (ms): 22812.0 | learning rate: 6.700E-05 | global batch size:   256 | lm loss: 5.500503E+00 | loss scale: 4096.0 | grad norm: 2.052 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.222 | tokens per gpu per second (tgs): 22983.040 | TFLOPs: 19.47 |
+[2024-03-30 14:06:47,317] [INFO] [logging.py:96:log_dist] [Rank 0] step=650, skipped=0, lr=[6.805258239999999e-05, 6.805258239999999e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 650 loss: 5.4798 iter time (s): 22.681 samples/sec: 11.287
+ iteration      650/ 1144409 | consumed samples:       166400 | consumed tokens:    340787200 | elapsed time per iteration (ms): 22817.2 | learning rate: 6.805E-05 | global batch size:   256 | lm loss: 5.483259E+00 | loss scale: 4096.0 | grad norm: 1.908 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.220 | tokens per gpu per second (tgs): 22977.788 | TFLOPs: 19.47 |
+[2024-03-30 14:10:35,728] [INFO] [logging.py:96:log_dist] [Rank 0] step=660, skipped=0, lr=[6.91011584e-05, 6.91011584e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 660 loss: 5.4723 iter time (s): 22.689 samples/sec: 11.283
+ iteration      660/ 1144409 | consumed samples:       168960 | consumed tokens:    346030080 | elapsed time per iteration (ms): 22842.4 | learning rate: 6.910E-05 | global batch size:   256 | lm loss: 5.469948E+00 | loss scale: 4096.0 | grad norm: 2.042 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.207 | tokens per gpu per second (tgs): 22952.356 | TFLOPs: 19.44 |
+[2024-03-30 14:14:25,292] [INFO] [logging.py:96:log_dist] [Rank 0] step=670, skipped=0, lr=[7.01497344e-05, 7.01497344e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 670 loss: 5.4228 iter time (s): 22.726 samples/sec: 11.265
+ iteration      670/ 1144409 | consumed samples:       171520 | consumed tokens:    351272960 | elapsed time per iteration (ms): 22955.7 | learning rate: 7.015E-05 | global batch size:   256 | lm loss: 5.447948E+00 | loss scale: 4096.0 | grad norm: 2.533 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.152 | tokens per gpu per second (tgs): 22839.130 | TFLOPs: 19.35 |
+[2024-03-30 14:18:13,374] [INFO] [logging.py:96:log_dist] [Rank 0] step=680, skipped=0, lr=[7.119831039999999e-05, 7.119831039999999e-05], mom=[(0.9, 0.95), (0.9, 0.95)]
+steps: 680 loss: 5.4266 iter time (s): 22.673 samples/sec: 11.291
+ iteration      680/ 1144409 | consumed samples:       174080 | consumed tokens:    356515840 | elapsed time per iteration (ms): 22806.9 | learning rate: 7.120E-05 | global batch size:   256 | lm loss: 5.424818E+00 | loss scale: 4096.0 | grad norm: 1.956 | num zeros: 0.0 | actual seqlen:  2048 | number of skipped iterations:   0 | number of nan iterations:   0 | samples per second: 11.225 | tokens per gpu per second (tgs): 22988.091 | TFLOPs: 19.47 |
