@@ -59,6 +59,13 @@ $ python -m wikiextractor.WikiExtractor -o /persistentshare/storage/team_nakamur
 
 splitに指定可能な値は[wikipedia dumpのindex](https://dumps.wikimedia.org/jawiki/)に指定されているディレクトリ
 
+### [lawdata](https://elaws.e-gov.go.jp/download/)
+
+
+```sh
+$ python -m preprocessing.download_dataset --dataset=lawdata --output_base=/persistentshare/storage/team_nakamura/member/horie/dataset
+```
+
 
 ### [Redpajama-1T](https://huggingface.co/datasets/togethercomputer/RedPajama-Data-1T)
 

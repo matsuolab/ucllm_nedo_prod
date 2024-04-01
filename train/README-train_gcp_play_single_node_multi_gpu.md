@@ -239,7 +239,7 @@ $ conda install pytorch==2.2.0 torchvision==0.17.0 torchaudio==2.2.0 pytorch-cud
 LIBEXT = $(shell python3-config --extension-suffix)
 
 # After
-LIBEXT = $(shell /absolute/path/to/python3-config --extension-suffix)
+LIBEXT = $(shell /home/ext_u10bei_github_io_gmail_com/miniconda3/envs/.venv_train/bin/python3-config --extension-suffix)
 """
 
 # ~/ucllm_nedo_dev/train/Megatron-DeepSpeed/megatron/data/にてmakeコマンドを実行。
@@ -278,9 +278,9 @@ LIBEXT = $(shell /absolute/path/to/python3-config --extension-suffix)
 
 # 変換スクリプトを実行。
 (.venv_train) $ bash ./convert_tokenizer_and_pretrained_model_to_huggingface_transformers.sh \
-    --input_tokenizer_file /persistentshare/storage/team_nakamura/member/horie/tokenizer/JINIAC_V0_1.model \
-    --input_model_dir /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/wiki_1.9b_0.084b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step1000 \
-    --output_tokenizer_and_model_dir /persistentshare/storage/team_nakamura/member/horie/output/step3_upload_pretrained_model/gpt_0.1119B_global_step1000
+    --input_tokenizer_file /persistentshare/storage/team_nakamura/member/horie/tokenizer/JINIAC_V0_2.model \
+    --input_model_dir /persistentshare/storage/team_nakamura/member/horie/output/step2_pretrain_model/mabiki_0.119b/checkpoint/gpt_0.125B_tok300B_lr6.0e-4_min1.0e-6_w3000M_d300B_cosine_gbs256_mbs1_g1_pp1_seed1234_rebase/global_step4000 \
+    --output_tokenizer_and_model_dir /persistentshare/storage/team_nakamura/member/horie/output/step3_upload_pretrained_model/JINIAC_v0_2_gpt_0.1113B_global_step4000
 ```
 
 ### Step 3-2. トークナイザーと事前学習済みモデルのHuggingFace Hubへのアップロード
@@ -297,9 +297,26 @@ LIBEXT = $(shell /absolute/path/to/python3-config --extension-suffix)
 
 # アップロードスクリプトを実行。
 (.venv_train) $ python ./upload_tokenizer_and_pretrained_model_to_huggingface_hub.py \
-    --input_tokenizer_and_model_dir /persistentshare/storage/team_nakamura/member/horie/output/step3_upload_pretrained_model/gpt_0.1119B_global_step1000 \
-    --output_model_name gpt_0.1119B_global_step1000 \
-    --test_prompt_text "官民共創とは、,"
+    --input_tokenizer_and_model_dir /persistentshare/storage/team_nakamura/member/horie/output/step3_upload_pretrained_model/JINIAC_v0_2_gpt_0.1113B_global_step4000 \
+    --output_model_name gpt_0.1113B_JINIAC_0_1_step4000
+```
+
+### Step 3-2-1. トークナイザーのHuggingFace Hubへのアップロード
+
+```sh
+(.venv_train) $ cd ~/ucllm_nedo_dev/train/scripts/step3_upload_pretrained_model/
+
+# HuggingFaceにログイン。
+# https://huggingface.co/settings/tokens --> 書き込み権限ありのAPIキーをコピペ。
+(.venv_train) $ huggingface-cli login
+
+# HuggingFaceにログインしていることを確認。
+(.venv_train) $ huggingface-cli whoami
+
+# アップロードスクリプトを実行。
+(.venv_train) $ python ./upload_tokenizer_to_huggingface_hub.py \
+    --input_tokenizer_dir /persistentshare/storage/team_nakamura/member/horie/output/step3_upload_pretrained_model/JINIAC_v0_2_gpt_0.1113B_global_step2000 \
+    --output_model_name JINIAC_tokenizer_v0.2
 ```
 
 ## Step 4. モデルのファインチューニング
