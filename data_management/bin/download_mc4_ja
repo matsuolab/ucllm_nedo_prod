@@ -1,0 +1,13 @@
+#!/bin/bash
+
+output=$1
+
+python -m preprocessing.download_dataset --dataset=c4 --output_base=$output --index_from=0 --index_to=128 --split=train
+python -m preprocessing.download_dataset --dataset=c4 --output_base=$output --index_from=128 --index_to=256 --split=train
+python -m preprocessing.download_dataset --dataset=c4 --output_base=$output --index_from=256 --index_to=384 --split=train
+python -m preprocessing.download_dataset --dataset=c4 --output_base=$output --index_from=384 --index_to=512 --split=train
+python -m preprocessing.download_dataset --dataset=c4 --output_base=$output --index_from=512 --index_to=640 --split=train
+python -m preprocessing.download_dataset --dataset=c4 --output_base=$output --index_from=640 --index_to=768 --split=train
+python -m preprocessing.download_dataset --dataset=c4 --output_base=$output --index_from=768 --index_to=896 --split=train
+python -m preprocessing.download_dataset --dataset=c4 --output_base=$output --index_from=896 --index_to=1024 --split=train
+python -m preprocessing.download_dataset --dataset=c4 --output_base=$output --index_from=0 --index_to=8 --split=valid

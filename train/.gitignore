@@ -1,0 +1,18 @@
+# python related
+__pycache__/
+.venv/
+.venv*/
+
+# git repository
+apex/
+flash-attention/
+llm-jp-sft/
+Megatron-DeepSpeed/
+triton/
+
+# artifact
+hostfile
+hostfile*
+output/*
+!output/.gitkeep
+wandb/
