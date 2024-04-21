@@ -1,0 +1,14 @@
+# python related
+__pycache__/
+.venv/
+.venv*/
+
+# artifact
+hostfile
+hostfile*
+output/
+wandb/
+
+*.out
+*.sh
+JINIAC_V0_9*
