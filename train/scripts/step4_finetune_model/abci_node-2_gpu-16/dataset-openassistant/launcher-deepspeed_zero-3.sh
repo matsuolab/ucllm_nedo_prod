@@ -12,18 +12,22 @@ echo ""
 
 # Initializes the arguments.
 input_model_name_or_path=""
+input_max_seq_length=""
 output_tokenizer_and_model_dir=""
 wandb_entity=""
 wandb_project=""
+wandb_tag=""  # Optional argument.
 
 # Parses the arguments.
 while [[ ${#} -gt 0 ]]; do
     case ${1} in
         # Shifts twice for option that takes an argument.
         --input_model_name_or_path) input_model_name_or_path=${2}; shift ;;
+        --input_max_seq_length) input_max_seq_length=${2}; shift ;;
         --output_tokenizer_and_model_dir) output_tokenizer_and_model_dir=${2}; shift ;;
         --wandb_entity) wandb_entity=${2}; shift ;;
         --wandb_project) wandb_project=${2}; shift ;;
+        --wandb_tag) wandb_tag=${2}; shift ;;
         *) echo "Unknown parameter passed: ${1}"; exit 1 ;;
     esac
     # Shifts once per loop to move to the next key/value.
@@ -31,17 +35,19 @@ while [[ ${#} -gt 0 ]]; do
 done
 
 # Checks the required arguments.
-if [[ -z ${input_model_name_or_path} ]] || [[ -z ${output_tokenizer_and_model_dir} ]] || [[ -z ${wandb_entity} ]] || [[ -z ${wandb_project} ]]; then
+if [[ -z ${input_model_name_or_path} ]] || [[ -z ${input_max_seq_length} ]] || [[ -z ${output_tokenizer_and_model_dir} ]] || [[ -z ${wandb_entity} ]] || [[ -z ${wandb_project} ]]; then
     echo "Error: Missing required arguments."
-    echo "Usage: ${0} --input_model_name_or_path <input_model_name_or_path> --output_tokenizer_and_model_dir <output_tokenizer_and_model_dir> --wandb_entity <wandb_entity> --wandb_project <wandb_project>"
+    echo "Usage: ${0} --input_model_name_or_path <input_model_name_or_path> --input_max_seq_length <input_max_seq_length> --output_tokenizer_and_model_dir <output_tokenizer_and_model_dir> --wandb_entity <wandb_entity> --wandb_project <wandb_project>"
     exit 1
 fi
 
 # Prints the arguments.
 echo "input_model_name_or_path = ${input_model_name_or_path}"
+echo "input_max_seq_length = ${input_max_seq_length}"
 echo "output_tokenizer_and_model_dir = ${output_tokenizer_and_model_dir}"
 echo "wandb_entity = ${wandb_entity}"
 echo "wandb_project = ${wandb_project}"
+echo "wandb_tag = ${wandb_tag}"
 echo ""
 
 mkdir -p ${output_tokenizer_and_model_dir}
@@ -77,6 +83,13 @@ wandb_options=" \
     --wandb_entity ${wandb_entity} \
     --wandb_project ${wandb_project} \
     --wandb_group finetune_${input_model_name}_${host}_${current_time}"
+if [[ -n "${wandb_tag}" ]]; then
+wandb_options="${wandb_options} \
+    --wandb_tag ${wandb_tag}"
+fi
+
+# Sets the master port number to a unique number.
+master_port=$((10000 + (${JOB_ID} % 50000)))
 
 # Creates a hostfile.
 script_dir=$(dirname "$0")
@@ -90,7 +103,7 @@ cat ${hostfile}
 echo ""
 
 # Finetunes the pretrained model.
-deepspeed --hostfile ${hostfile} \
+deepspeed --master_port ${master_port} --hostfile ${hostfile} \
     ${ucllm_nedo_dev_train_dir}/llm-jp-sft/train.py \
     --num_train_epochs 2 \
     --per_device_train_batch_size 1 \
@@ -99,7 +112,7 @@ deepspeed --hostfile ${hostfile} \
     --warmup_ratio 0.1 \
     --lr_scheduler_type cosine \
     --bf16 \
-    --max_seq_length 2048 \
+    --max_seq_length ${input_max_seq_length} \
     --gradient_checkpointing \
     --logging_steps 1 \
     --data_files ${dataset_file} \

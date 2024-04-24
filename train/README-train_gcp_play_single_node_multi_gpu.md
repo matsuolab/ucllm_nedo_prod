@@ -12,7 +12,8 @@
 ```sh
 $ cd ~/
 
-# このレポジトリをucllm_nedo_devという名前でクローンする。
+# 本レポジトリをucllm_nedo_devという名前でクローン。
+# https://github.com/matsuolab/ucllm_nedo_prod/pull/6 by https://github.com/awakia
 $ git clone https://github.com/matsuolab/ucllm_nedo_prod.git ucllm_nedo_dev
 
 # ~/ucllm_nedo_dev/train以下のファイル一覧が表示されるか確認。
@@ -115,7 +116,7 @@ $ conda activate .venv_train
 (.venv_train) $ git clone https://github.com/hotsuyuki/Megatron-DeepSpeed.git
 
 # mainブランチではエラーが起きる場合があるため、指定のタグにチェックアウト。
-(.venv_train) $ cd ~/ucllm_nedo_dev/train/Megatron-DeepSpeed/ && git fetch origin && git checkout refs/tags/ucllm_nedo_dev_v20240411.1.0
+(.venv_train) $ cd ~/ucllm_nedo_dev/train/Megatron-DeepSpeed/ && git fetch origin && git checkout refs/tags/ucllm_nedo_dev_v20240415.1.0
 
 # Megatron-DeepSpeedをインストール。
 (.venv_train) $ cd ~/ucllm_nedo_dev/train/Megatron-DeepSpeed/ && python setup.py install
@@ -146,8 +147,8 @@ $ conda activate .venv_train
 # apexがインストールされていることを確認。
 (.venv_train) $ pip list | grep "apex"
 
-# apex_C.cpython-311-x86_64-linux-gnu.soが作成されていることを確認。
-(.venv_train) $ find ~/ucllm_nedo_dev/train/apex/build/lib.linux-x86_64-cpython-311/ -name apex_C.cpython-311-x86_64-linux-gnu.so
+# apex_C.cpython-39-x86_64-linux-gnu.soが作成されていることを確認。
+(.venv_train) $ find ~/ucllm_nedo_dev/train/apex/build/lib.linux-x86_64-cpython-39/ -name apex_C.cpython-39-x86_64-linux-gnu.so
 ```
 
 ### Step 0-6. Flash Attention 2のインストール
@@ -174,7 +175,7 @@ $ conda activate .venv_train
 (.venv_train) $ git clone https://github.com/hotsuyuki/llm-jp-sft.git
 
 # mainブランチではエラーが起きる場合があるため、指定のタグにチェックアウト。
-(.venv_train) $ cd ~/ucllm_nedo_dev/train/llm-jp-sft/ && git fetch origin && git checkout refs/tags/ucllm_nedo_dev_v20240407.1.0
+(.venv_train) $ cd ~/ucllm_nedo_dev/train/llm-jp-sft/ && git fetch origin && git checkout refs/tags/ucllm_nedo_dev_v20240415.1.0
 ```
 
 ## Step 1. トークナイザーの学習
@@ -186,12 +187,16 @@ $ conda activate .venv_train
 
 # 学習スクリプトを実行。
 (.venv_train) $ python ./train_sentencepiece_tokenizer.py \
-    --input ./dataset/botchan.txt \
-    --model_prefix botchan \
-    --vocab_size 2000
+    --input /path/to/dataset1.jsonl,/path/to/dataset2.jsonl,/path/to/dataset3.jsonl \
+    --model_prefix ${YOUR_TOKENIZER_NAME} \
+    --vocab_size 32000 \
+    --input_sentence_size 3000000 \
+    --shuffle_input_sentence True \
+    --num_threads 16
 
 # 出力された学習済みトークナイザーを出力ディレクトリへ移動。
-(.venv_train) $ mkdir -p ~/ucllm_nedo_dev/train/output/step1_train_tokenizer/botchan/ && mv ./botchan.model ./botchan.vocab --target-directory ~/ucllm_nedo_dev/train/output/step1_train_tokenizer/botchan/
+(.venv_train) $ mkdir -p ~/ucllm_nedo_dev/train/output/step1_train_tokenizer/${YOUR_TOKENIZER_NAME}/ && \
+    mv ./${YOUR_TOKENIZER_NAME}.model ./${YOUR_TOKENIZER_NAME}.vocab --target-directory ~/ucllm_nedo_dev/train/output/step1_train_tokenizer/${YOUR_TOKENIZER_NAME}/
 ```
 
 ## Step 2. モデルの事前学習
@@ -208,21 +213,39 @@ $ conda activate .venv_train
 # W&Bにログインしていることを確認。
 (.venv_train) $ cat ~/.netrc
 
-# 事前学習スクリプトを実行。
-(.venv_train) $ bash ./gcp_node-1_gpu/dataset-arxiv_tokenizer-sentencepiece_model-gpt_0.125B/zero-0_dp-1_pp-1_tp-1_flashattn2-on.sh \
-    --input_tokenizer_file ~/ucllm_nedo_dev/train/output/step1_train_tokenizer/botchan/botchan.model \
+# 事前学習スクリプトを実行。 (GENIACで提供しているGPUを使用している場合は `--wandb_tag` オプションを付ける必要はない)
+(.venv_train) $ bash ./gcp_play_node-1_gpu-2/dataset-arxiv_tokenizer-sentencepiece_model-gpt_0.125B/zero-0_dp-2_pp-1_tp-1_flashattn2-on.sh \
+    --input_tokenizer_file ~/ucllm_nedo_dev/train/output/step1_train_tokenizer/${YOUR_TOKENIZER_NAME}/${YOUR_TOKENIZER_NAME}.model \
     --output_model_dir ~/ucllm_nedo_dev/train/output/step2_pretrain_model/ \
     --save_interval 1000 \
     --wandb_entity ${YOUR_WANDB_ENTITY_OR_TEAM_NAME} \
     --wandb_project ${YOUR_WANDB_PROJECT_NAME}
+
+# 事前学習スクリプトを実行。 (GENIACで提供していないGPUを使用している場合は `--wandb_tag other_gpu` を付ける必要がある)
+(.venv_train) $ bash ./gcp_play_node-1_gpu-2/dataset-arxiv_tokenizer-sentencepiece_model-gpt_0.125B/zero-0_dp-2_pp-1_tp-1_flashattn2-on.sh \
+    --input_tokenizer_file ~/ucllm_nedo_dev/train/output/step1_train_tokenizer/${YOUR_TOKENIZER_NAME}/${YOUR_TOKENIZER_NAME}.model \
+    --output_model_dir ~/ucllm_nedo_dev/train/output/step2_pretrain_model/ \
+    --save_interval 1000 \
+    --wandb_entity ${YOUR_WANDB_ENTITY_OR_TEAM_NAME} \
+    --wandb_project ${YOUR_WANDB_PROJECT_NAME} \
+    --wandb_tag other_gpu
 ```
+
+※W&Bタグは、W&BサイトのウェブUIから後付けすることも可能です。
+
+参考リンク: <br/>
+* https://docs.wandb.ai/ja/guides/app/features/tags#%E3%82%BF%E3%82%B0%E3%81%AE%E8%BF%BD%E5%8A%A0%E6%96%B9%E6%B3%95
+
+| Project page から後付けする方法 | Run page から後付けする方法 |
+| :---: | :---: |
+| ![./assets/wandb_add_tag_in_project_page.png](./assets/wandb_add_tag_in_project_page.png) | ![./assets/wandb_add_tag_in_run_page.png](./assets/wandb_add_tag_in_run_page.png) |
 
 ### Step 2. でのトラブルシューティング
 
 ##### 1. "ImportError: cannot import name 'helpers' from 'megatron.data' (Megatron-DeepSpeed/megatron/data/__init__.py)" というエラーが出た場合
 
 原因: <br/>
-`~/ucllm_nedo_dev/train/Megatron-DeepSpeed/megatron/data/helpers.cpython-311-x86_64-linux-gnu.so` が正しく作成されていないことが原因と考えられます。
+`~/ucllm_nedo_dev/train/Megatron-DeepSpeed/megatron/data/helpers.cpython-39-x86_64-linux-gnu.so` が正しく作成されていないことが原因と考えられます。
 
 解決策: <br/>
 `~/ucllm_nedo_dev/train/Megatron-DeepSpeed/megatron/data/Makefile` 内に記載されている `python3-config` のパスを `$ which python3-config` で出力された絶対パスに変更してから、 `~/ucllm_nedo_dev/train/Megatron-DeepSpeed/megatron/data/` にて `make` コマンドを実行してみて下さい。
@@ -244,8 +267,8 @@ LIBEXT = $(shell /absolute/path/to/python3-config --extension-suffix)
 # ~/ucllm_nedo_dev/train/Megatron-DeepSpeed/megatron/data/にてmakeコマンドを実行。
 (.venv_train) $ cd ~/ucllm_nedo_dev/train/Megatron-DeepSpeed/megatron/data/ && make
 
-# helpers.cpython-311-x86_64-linux-gnu.soが作成されていることを確認。
-(.venv_train) $ find ~/ucllm_nedo_dev/train/Megatron-DeepSpeed/megatron/data/ -name helpers.cpython-311-x86_64-linux-gnu.so
+# helpers.cpython-39-x86_64-linux-gnu.soが作成されていることを確認。
+(.venv_train) $ find ~/ucllm_nedo_dev/train/Megatron-DeepSpeed/megatron/data/ -name helpers.cpython-39-x86_64-linux-gnu.so
 ```
 
 参考リンク: <br/>
@@ -276,9 +299,11 @@ LIBEXT = $(shell /absolute/path/to/python3-config --extension-suffix)
 (.venv_train) $ cd ~/ucllm_nedo_dev/train/scripts/step3_upload_pretrained_model/
 
 # 変換スクリプトを実行。
+# ${YOUR_MODEL_SEQUENCE_LENGTH} は、事前学習スクリプトで設定した sequence length/context window と同じ値 (例: 2048) に設定。
 (.venv_train) $ bash ./convert_tokenizer_and_pretrained_model_to_huggingface_transformers.sh \
-    --input_tokenizer_file ~/ucllm_nedo_dev/train/output/step1_train_tokenizer/botchan/botchan.model \
-    --input_model_dir ~/ucllm_nedo_dev/train/output/step2_pretrain_model/checkpoint/gpt_0.125B_${YOUR_JOBNAME}/global_step1000/ \
+    --input_tokenizer_file ~/ucllm_nedo_dev/train/output/step1_train_tokenizer/${YOUR_TOKENIZER_NAME}/${YOUR_TOKENIZER_NAME}.model \
+    --input_model_max_length ${YOUR_MODEL_SEQUENCE_LENGTH} \
+    --input_model_dir ~/ucllm_nedo_dev/train/output/step2_pretrain_model/checkpoint/gpt_0.125B_${YOUR_JOB_NAME}/global_step1000/ \
     --output_tokenizer_and_model_dir ~/ucllm_nedo_dev/train/output/step3_upload_pretrained_model/gpt_0.125B_global_step1000/
 ```
 
@@ -308,20 +333,32 @@ LIBEXT = $(shell /absolute/path/to/python3-config --extension-suffix)
 ```sh
 (.venv_train) $ cd ~/ucllm_nedo_dev/train/scripts/step4_finetune_model/
 
-# ファインチューニングスクリプトを実行。 (HuggingFaceにアップロードした事前学習モデルをダウンロードして使用する場合)
-(.venv_train) $ bash ./gcp_play_node-1_gpu/dataset-openassistant/launcher-none_zero-none.sh \
-    --input_model_name_or_path ${YOUR_HUGGINGFACE_USERNAME}/gpt_0.125B_global_step1000 \
+# ファインチューニングスクリプトを実行。 (GENIACで提供しているGPU使用時にW&Bアカウントを用いる場合は `--wandb_tag` オプションを付ける必要はない)
+(.venv_train) $ bash ./gcp_play_node-1_gpu-2/dataset-openassistant/launcher-none_zero-none.sh \
+    --input_model_name_or_path ${YOUR_HUGGINGFACE_USER_NAME}/gpt_0.125B_global_step1000 \
+    --input_max_seq_length ${YOUR_MODEL_SEQUENCE_LENGTH} \
     --output_tokenizer_and_model_dir ~/ucllm_nedo_dev/train/output/step4_finetune_model/gpt_0.125B_global_step1000_openassistant/ \
     --wandb_entity ${YOUR_WANDB_ENTITY_OR_TEAM_NAME} \
     --wandb_project ${YOUR_WANDB_PROJECT_NAME}
 
-# ファインチューニングスクリプトを実行。 (ローカルに保存してある事前学習モデルをそのまま使用する場合)
-(.venv_train) $ bash ./gcp_play_node-1_gpu/dataset-openassistant/launcher-none_zero-none.sh \
-    --input_model_name_or_path ~/ucllm_nedo_dev/train/output/step3_upload_pretrained_model/gpt_0.125B_global_step1000/ \
+# ファインチューニングスクリプトを実行。 (GENIACで提供していないGPU使用時にW&Bアカウントを用いる場合は `--wandb_tag other_gpu` を付ける必要がある)
+(.venv_train) $ bash ./gcp_play_node-1_gpu-2/dataset-openassistant/launcher-none_zero-none.sh \
+    --input_model_name_or_path ${YOUR_HUGGINGFACE_USER_NAME}/gpt_0.125B_global_step1000 \
+    --input_max_seq_length ${YOUR_MODEL_SEQUENCE_LENGTH} \
     --output_tokenizer_and_model_dir ~/ucllm_nedo_dev/train/output/step4_finetune_model/gpt_0.125B_global_step1000_openassistant/ \
     --wandb_entity ${YOUR_WANDB_ENTITY_OR_TEAM_NAME} \
-    --wandb_project ${YOUR_WANDB_PROJECT_NAME}
+    --wandb_project ${YOUR_WANDB_PROJECT_NAME} \
+    --wandb_tag other_gpu
 ```
+
+※W&Bタグは、W&BサイトのウェブUIから後付けすることも可能です。
+
+参考リンク: <br/>
+* https://docs.wandb.ai/ja/guides/app/features/tags#%E3%82%BF%E3%82%B0%E3%81%AE%E8%BF%BD%E5%8A%A0%E6%96%B9%E6%B3%95
+
+| Project page から後付けする方法 | Run page から後付けする方法 |
+| :---: | :---: |
+| ![./assets/wandb_add_tag_in_project_page.png](./assets/wandb_add_tag_in_project_page.png) | ![./assets/wandb_add_tag_in_run_page.png](./assets/wandb_add_tag_in_run_page.png) |
 
 ## Step 5. ファインチューニング済みモデルのアップロード
 

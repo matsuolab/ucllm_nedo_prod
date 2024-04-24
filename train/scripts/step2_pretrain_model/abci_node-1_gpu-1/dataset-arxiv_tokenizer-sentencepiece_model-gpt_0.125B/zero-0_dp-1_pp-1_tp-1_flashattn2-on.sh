@@ -16,6 +16,7 @@ output_model_dir=""
 save_interval=1000
 wandb_entity=""
 wandb_project=""
+wandb_tag=""  # Optional argument.
 
 # Parses the arguments.
 while [[ ${#} -gt 0 ]]; do
@@ -26,6 +27,7 @@ while [[ ${#} -gt 0 ]]; do
         --save_interval) save_interval=${2}; shift ;;
         --wandb_entity) wandb_entity=${2}; shift ;;
         --wandb_project) wandb_project=${2}; shift ;;
+        --wandb_tag) wandb_tag=${2}; shift ;;
         *) echo "Unknown parameter passed: ${1}"; exit 1 ;;
     esac
     # Shifts once per loop to move to the next key/value.
@@ -48,6 +50,7 @@ echo "output_model_dir = ${output_model_dir}"
 echo "save_interval = ${save_interval}"
 echo "wandb_entity = ${wandb_entity}"
 echo "wandb_project = ${wandb_project}"
+echo "wandb_tag = ${wandb_tag}"
 echo ""
 
 ###############################################################################
@@ -398,8 +401,16 @@ wandb_options=" \
     --wandb_entity ${wandb_entity} \
     --wandb_project ${wandb_project} \
     --wandb_group pretrain_gpt_${model_size}B_${host}_${current_time}"
+if [[ -n "${wandb_tag}" ]]; then
+wandb_options="${wandb_options} \
+    --wandb_tag ${wandb_tag}"
+fi
 
-deepspeed ${megatron_deepspeed_dir}/pretrain_gpt.py \
+# Sets the master port number to a unique number.
+master_port=$((10000 + (${JOB_ID} % 50000)))
+
+deepspeed --master_port ${master_port} \
+    ${megatron_deepspeed_dir}/pretrain_gpt.py \
     ${megatron_options} \
     ${data_options} \
     ${deepspeed_options} \

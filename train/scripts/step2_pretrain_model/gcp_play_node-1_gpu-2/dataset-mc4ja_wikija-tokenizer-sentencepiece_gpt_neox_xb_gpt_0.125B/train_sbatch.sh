@@ -1,5 +1,17 @@
 #!/bin/bash
 
+#SBATCH --partition=g2
+#SBATCH --time=06:00:00
+#SBATCH --nodes=1
+#SBATCH --job-name=train_gpt_neox_xb
+#SBATCH --output=pt_gpt_neox_xb.125B.out
+#SBATCH --gpus-per-node=8
+#SBATCH -c 48
+#SBATCH --mem=370G
+
+source ~/miniconda3/etc/profile.d/conda.sh
+conda activate .venv
+
 set -e
 echo ""
 
@@ -189,7 +201,7 @@ mp_size=1
 ## Pipeline parallelism. To disable PP, set pp_size to 1 and no_pp to true.
 ## Note that currently both curriculum learning and random-LTD are NOT
 ## compatible with pipeline parallelism.
-pp_size=2
+pp_size=1
 
 # If you plan to use Megatron-DeepSpeed's deepspeed_to_transformers.py to convert
 # the checkpoint from Megatron-DeepSpeed format to Hugging Face Transformers format,
@@ -201,11 +213,13 @@ pp_size=2
 no_pp="false"
 
 ## ZeRO-based data parallelism, stage=0 will disable ZeRO
-zero_stage=1
+zero_stage=0
 
 ## Total number of GPUs.
 num_gpus_pernode=$(nvidia-smi --query-gpu=name --format=csv,noheader | wc -l)
-num_node="${NHOSTS}"
+echo "Number of GPUs per node: $num_gpus_pernode"
+num_node="${SLURM_JOB_NUM_NODES}"
+
 num_gpus=$((${num_gpus_pernode} * ${num_node}))
 
 ## Data parallel size.
@@ -214,13 +228,15 @@ dp_size=$(( ${num_gpus} / ${pp_size} / ${mp_size} ))
 ## Micro batch size per GPU
 ## Make sure that batch_size <= global_batch_size*pp_size*mp_size/num_gpus
 ## Reduce it manually if GPU OOM
-# batch_size=$(( ${global_batch_size} / ${dp_size} ))
-batch_size=1
+#batch_size=$(( ${global_batch_size} / ${dp_size} ))
+batch_size=8
+
+
 ###############################################################################
 ### Misc configs
 log_interval=10
-eval_iters=10
-eval_interval=100
+eval_iters=100
+eval_interval=1000
 # num_save controls how frequent to save checkpoint. num_save=20 means that a
 # checkpoint will be saved every 5% of training. For longer training you would
 # want larger num_save to save more frequently, and vice versa.
@@ -242,25 +258,37 @@ host="${HOSTNAME}"
 seed=1234
 num_workers=0
 
-# If either arxiv_text_document.bin or arxiv_text_document.idx doesn't exist yet,
-# then downloads arxiv.jsonl and preprocesses the data.
-data_path="${megatron_deepspeed_dir}/dataset/arxiv_text_document"
-if [ ! -f "${data_path}.bin" ] || [ ! -f "${data_path}.idx" ]; then
-    echo "Either ${data_path}.bin or ${data_path}.idx doesn't exist yet, so download arxiv.jsonl and preprocess the data."
-    wget https://data.together.xyz/redpajama-data-1T/v1.0.0/arxiv/arxiv_024de5df-1b7f-447c-8c3a-51407d8d6732.jsonl \
-        --directory-prefix ${megatron_deepspeed_dir}/dataset/
-    mv ${megatron_deepspeed_dir}/dataset/arxiv_024de5df-1b7f-447c-8c3a-51407d8d6732.jsonl ${megatron_deepspeed_dir}/dataset/arxiv.jsonl
-    python ${megatron_deepspeed_dir}/tools/preprocess_data.py \
-        --tokenizer-type SentencePieceTokenizer \
-        --tokenizer-model ${input_tokenizer_file} \
-        --input ${megatron_deepspeed_dir}/dataset/arxiv.jsonl \
-        --output-prefix ${megatron_deepspeed_dir}/dataset/arxiv \
-        --dataset-impl mmap \
-        --workers 64 \
-        --append-eod
-else
-    echo "Both ${data_path}.bin and ${data_path}.idx already exist."
-fi
+# Initialize the data_path variable
+data_path=""
+
+# Define the list of directories to calculate file sizes
+directories=(
+    "/persistentshare/storage/team_dev_YU/tokenized_data/mc4"
+    "/persistentshare/storage/team_dev_YU/tokenized_data/wikipedia_ja"
+)
+
+# Loop through the directories
+for dir in "${directories[@]}"; do
+    echo "Checking directory: $dir"
+    for bin_file in "${dir}"/*_text_document.bin; do
+        if [[ -f "$bin_file" ]]; then
+            found_files=true
+            idx_file="${bin_file%.bin}.idx"
+            if [[ -f "$idx_file" ]]; then
+                # Calculate the total size of both files
+                total_size=$(($(stat -c %s "$bin_file") + $(stat -c %s "$idx_file")))
+                echo "$total_size : ${bin_file%.bin}"
+                data_path="${data_path} ${total_size} ${bin_file%.bin}"
+            fi
+        else 
+            echo "not found ${file}.bin or ${file}.idx"
+        fi
+    done
+done
+
+# Output the final content of the data_path variable
+echo "${data_path}"
+
 echo ""
 
 prescale_grad="true"
@@ -407,20 +435,9 @@ wandb_options="${wandb_options} \
 fi
 
 # Sets the master port number to a unique number.
-master_port=$((10000 + (${JOB_ID} % 50000)))
+master_port=$((10000 + (${SLURM_JOB_ID} % 50000)))
 
-# Creates a hostfile.
-script_dir=$(dirname "$0")
-hostfile="${script_dir}/hostfile_jobid-${JOB_ID}"
-while read -r line
-do
-  echo "${line} slots=$(nvidia-smi --query-gpu=name --format=csv,noheader | wc -l)"
-done < "${SGE_JOB_HOSTLIST}" > "${hostfile}"
-echo "hostfile = ${hostfile}"
-cat ${hostfile}
-echo ""
-
-deepspeed --master_port ${master_port} --hostfile ${hostfile} \
+deepspeed --master_port ${master_port} \
     ${megatron_deepspeed_dir}/pretrain_gpt.py \
     ${megatron_options} \
     ${data_options} \

@@ -8,9 +8,15 @@ download_file() {
     local dload_loc=$1
     local datadir=$2
     local line=$3
-    echo "Downloading $dload_loc"
-    mkdir -p "${datadir}/$(dirname "$dload_loc")"
-    wget "$line" -O "${datadir}/${dload_loc}"
+    local target="${datadir}/${dload_loc}"
+   
+    if [ -f "$target" ]; then
+        echo "File $target already exists, skipping download."
+    else
+        echo "Downloading $dload_loc"
+        mkdir -p "$(dirname "$target")"
+        wget -c "$line" -O "$target"
+    fi
 }
 
 

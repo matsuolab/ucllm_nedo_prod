@@ -88,21 +88,45 @@ wandb_options="${wandb_options} \
     --wandb_tag ${wandb_tag}"
 fi
 
+# Sets the master port number to a unique number.
+master_port=$((10000 + (${SLURM_JOB_ID} % 50000)))
+
+# Creates a hostfile.
+script_dir=$(dirname "$0")
+hostfile="${script_dir}/hostfile_jobid-${SLURM_JOB_ID}"
+nodes=$(scontrol show hostnames $SLURM_JOB_NODELIST)
+
+for node in $nodes
+do
+  gpu_count=$(ssh ${node} "nvidia-smi --query-gpu=name --format=csv,noheader | wc -l")
+
+  echo "${node} slots=${gpu_count}"
+done > "${hostfile}"
+
+echo "hostfile = ${hostfile}"
+cat ${hostfile}
+echo ""
+
 # Finetunes the pretrained model.
-python ${ucllm_nedo_dev_train_dir}/llm-jp-sft/train.py \
-    --num_train_epochs 1 \
+deepspeed --master_port ${master_port} --hostfile ${hostfile} \
+    ${ucllm_nedo_dev_train_dir}/llm-jp-sft/train.py \
+    --num_train_epochs 2 \
     --per_device_train_batch_size 1 \
+    --gradient_accumulation_steps 32 \
     --learning_rate 1e-5 \
     --warmup_ratio 0.1 \
     --lr_scheduler_type cosine \
     --bf16 \
     --max_seq_length ${input_max_seq_length} \
+    --gradient_checkpointing \
+    --logging_steps 1 \
     --data_files ${dataset_file} \
     --model_name_or_path ${input_model_name_or_path} \
     --output_dir ${output_tokenizer_and_model_dir} \
     --use_fast False \
     --instruction_template "### Human:" \
     --response_template "### Assistant:" \
+    --deepspeed ${script_dir}/deepspeed_config/ds_config_zero3.json \
     ${wandb_options} \
     2>&1 | tee ${log_path}/${host}_${current_time}.log
 

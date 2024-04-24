@@ -189,7 +189,7 @@ mp_size=1
 ## Pipeline parallelism. To disable PP, set pp_size to 1 and no_pp to true.
 ## Note that currently both curriculum learning and random-LTD are NOT
 ## compatible with pipeline parallelism.
-pp_size=2
+pp_size=1
 
 # If you plan to use Megatron-DeepSpeed's deepspeed_to_transformers.py to convert
 # the checkpoint from Megatron-DeepSpeed format to Hugging Face Transformers format,
@@ -214,7 +214,7 @@ dp_size=$(( ${num_gpus} / ${pp_size} / ${mp_size} ))
 ## Micro batch size per GPU
 ## Make sure that batch_size <= global_batch_size*pp_size*mp_size/num_gpus
 ## Reduce it manually if GPU OOM
-# batch_size=$(( ${global_batch_size} / ${dp_size} ))
+#batch_size=$(( ${global_batch_size} / ${dp_size} ))
 batch_size=1
 ###############################################################################
 ### Misc configs
@@ -256,7 +256,7 @@ if [ ! -f "${data_path}.bin" ] || [ ! -f "${data_path}.idx" ]; then
         --input ${megatron_deepspeed_dir}/dataset/arxiv.jsonl \
         --output-prefix ${megatron_deepspeed_dir}/dataset/arxiv \
         --dataset-impl mmap \
-        --workers 64 \
+        --workers $(grep -c ^processor /proc/cpuinfo) \
         --append-eod
 else
     echo "Both ${data_path}.bin and ${data_path}.idx already exist."
@@ -407,15 +407,21 @@ wandb_options="${wandb_options} \
 fi
 
 # Sets the master port number to a unique number.
-master_port=$((10000 + (${JOB_ID} % 50000)))
+master_port=$((10000 + (${SLURM_JOB_ID} % 50000)))
 
 # Creates a hostfile.
 script_dir=$(dirname "$0")
-hostfile="${script_dir}/hostfile_jobid-${JOB_ID}"
-while read -r line
+hostfile="${script_dir}/hostfile_jobid-${SLURM_JOB_ID}"
+nodes=$(scontrol show hostnames $SLURM_JOB_NODELIST)
+
+for node in $nodes
 do
-  echo "${line} slots=$(nvidia-smi --query-gpu=name --format=csv,noheader | wc -l)"
-done < "${SGE_JOB_HOSTLIST}" > "${hostfile}"
+  gpu_count=$(ssh ${node} "nvidia-smi --query-gpu=name --format=csv,noheader | wc -l")
+  echo "${node} slots=${gpu_count}"
+  ssh $node "source ~/.bashrc"
+  ssh $node 'source ~/miniconda3/etc/profile.d/conda.sh && conda activate .venv'
+done > "${hostfile}"
+
 echo "hostfile = ${hostfile}"
 cat ${hostfile}
 echo ""

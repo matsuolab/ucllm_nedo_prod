@@ -16,7 +16,7 @@ def parse_arguments():
 
 
 def load_tokenizer_and_model(input_tokenizer_and_model_dir: str):
-    tokenizer = AutoTokenizer.from_pretrained(input_tokenizer_and_model_dir)
+    tokenizer = AutoTokenizer.from_pretrained(input_tokenizer_and_model_dir, use_fast=False)
     model = AutoModelForCausalLM.from_pretrained(input_tokenizer_and_model_dir, device_map="auto")
     return tokenizer, model
 
@@ -32,39 +32,24 @@ def test_tokenizer_and_model(tokenizer, model, prompt_text: str) -> str:
 def main() -> None:
     args = parse_arguments()
 
-    # Loads and tests the local tokenizer and the local model.
-    local_tokenizer, local_model = load_tokenizer_and_model(args.input_tokenizer_and_model_dir)
-    local_decoded_generation_text = test_tokenizer_and_model(local_tokenizer, local_model, args.test_prompt_text)
+    # Loads and tests the tokenizer and the model.
+    tokenizer, model = load_tokenizer_and_model(args.input_tokenizer_and_model_dir)
+    decoded_generation_text = test_tokenizer_and_model(tokenizer, model, args.test_prompt_text)
 
     # Checks the generated text briefly.
     print()
     print(f"{args.test_prompt_text = }")
-    print(f"{local_decoded_generation_text = }")
+    print(f"{decoded_generation_text = }")
     print()
-    if len(local_decoded_generation_text) <= len(args.test_prompt_text):
+    if len(decoded_generation_text) <= len(args.test_prompt_text):
         print("Error: The generated text should not be shorter than the prompt text."
-              " Something went wrong, so please check either the local tokenizer or the local model."
+              " Something went wrong, so please check either the tokenizer or the model."
               " This program will exit without uploading the tokenizer and the model to HuggingFace Hub.")
         return
 
-    # Uploads the local tokenizer and the local model to HuggingFace Hub.
-    local_tokenizer.push_to_hub(args.output_model_name)
-    local_model.push_to_hub(args.output_model_name)
-
-    # Loads and tests the remote tokenizer and the remote model.
-    huggingface_username = HfApi().whoami()["name"]
-    remote_tokenizer, remote_model = load_tokenizer_and_model(os.path.join(huggingface_username, args.output_model_name))
-    remote_decoded_generation_text = test_tokenizer_and_model(remote_tokenizer, remote_model, args.test_prompt_text)
-
-    # Checks the generated text briefly.
-    print()
-    print(f"{args.test_prompt_text = }")
-    print(f"{remote_decoded_generation_text = }")
-    print()
-    if len(remote_decoded_generation_text) <= len(args.test_prompt_text):
-        print("Error: The generated text should not be shorter than the prompt text."
-              " Something went wrong, so please check either the remote tokenizer or the remote model.")
-        return
+    # Uploads the tokenizer and the model to HuggingFace Hub.
+    tokenizer.push_to_hub(args.output_model_name)
+    model.push_to_hub(args.output_model_name)
 
 
 if __name__ == "__main__":

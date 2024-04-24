@@ -6,7 +6,7 @@ import shutil
 import mwxml
 import hashlib
 import requests
-
+logging.basicConfig(level=logging.INFO)
 
 NUM_FILES = os.environ.get('NUM_FILES', 100)
 

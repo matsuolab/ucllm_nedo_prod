@@ -1,8 +1,7 @@
 # Appends a path to import python scripts that are in other directories.
 import os
 import sys
-sys.path.append(os.path.join(os.environ["HOME"], "ucllm_nedo_dev/train/scripts/common/"))
-
+sys.path.append(os.path.join(os.path.dirname(__file__), '../common/'))
 
 import argparse
 from transformers import T5Tokenizer
@@ -12,6 +11,7 @@ from special_token_list import UNK_TOKEN, BOS_TOKEN, EOS_TOKEN, PAD_TOKEN, CLS_T
 def parse_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument("--input_tokenizer_file", type=str, required=True)
+    parser.add_argument("--input_model_max_length", type=int, required=True)
     parser.add_argument("--output_tokenizer_dir", type=str, required=True)
     args = parser.parse_args()
     print(f"{args = }")
@@ -22,10 +22,11 @@ def main() -> None:
     args = parse_arguments()
 
     # Converts the tokenizer from SentencePiece format to HuggingFace Transformers format by loading with `T5Tokenizer`.
-    # Note: `PreTrainedTokenizerFast` (base class) doesn't support byte fallback, but `T5Tokenizer` (derived class) supports byte fallback
+    # Note: `PreTrainedTokenizer` (base class) doesn't support byte fallback, but `T5Tokenizer` (derived class) supports byte fallback
     # https://zenn.dev/selllous/articles/transformers_pretrain_to_ft#tokenizers-t5tokenizer%E5%BD%A2%E5%BC%8F%E3%81%B8%E3%81%AE%E5%A4%89%E6%8F%9B
     output_tokenizer = T5Tokenizer(
         vocab_file=args.input_tokenizer_file,
+        model_max_length=args.input_model_max_length,
         bos_token=BOS_TOKEN,
         eos_token=EOS_TOKEN,
         unk_token=UNK_TOKEN,
@@ -37,7 +38,6 @@ def main() -> None:
             EOD_TOKEN,
         ],  # Note: `NEWLINE_TOKEN` is NOT needed in `additional_special_tokens`.
         extra_ids=0,
-        model_max_length=2048,  # TODO: Remove hard coding and/or magic number.
         split_special_tokens=True,
     )
 
