@@ -17,7 +17,7 @@ huggingface-cli login
 
 ### 評価の設定(llm-leaderboard/configs/config.yaml の編集)
 ※※※※※注意※※※※※  
-モデル名, run_name, max_seq_length, max_new_token以外は編集しないでください
+モデル名, tokenizerの設定(use_fast等), run_name, max_seq_length, max_new_token以外は編集しないでください
 
 ```yaml
 # run_nameの編集
