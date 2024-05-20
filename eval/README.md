@@ -25,21 +25,20 @@ huggingface-cli login
 - run_name(wandbに登録するスコアのrunの名前)  
 - 各タスクのcontext長の設定  
   - max_seq_length, max_new_token  
-- mt_benchの評価に用いる計算資源設定  
-  - num_gpus_total, num_gpus_per_model
 - custom_prompt_template
-  - 事後学習で使用したspecial tokenの追加は認めます、関係ない文字列(デフォルトの設定に含まれない特殊なシステムメッセージ等)の追加は認めません
+  - 事前学習・事後学習で使用したspecial tokenの追加は認めます、関係ない文字列(デフォルトの設定に含まれない特殊なシステムメッセージ等)の追加は認めません
   - 認める例: `<s> [INST] 以下は、タスクを説明する指示と、文脈のある入力の組み合わせです。要求を適切に満たす応答を書きなさい。\n\n### 指示:\n{instruction}\n\n### 入力:\n{input}\n\n### 応答:\n[/INST]`  
     - custom_prompt_templateを指定しなかった場合のデフォルトの設定: https://github.com/llm-jp/llm-jp-eval/blob/bbc03c655a93b244b6951f9549aad7dbf523508a/src/llm_jp_eval/utils.py#L115C28-L118
     - templateを修正する際は"以下は、タスクを説明する指示と、文脈のある入力の組み合わせです。要求を適切に満たす応答を書きなさい。"を必ず含めるようにしてください。
   - 認めない例: `<s> [INST] <<SYS>>\n あなたは誠実で優秀な日本人のアシスタントです。 \n<</SYS>>\n\n {instruction} \n\n {input} [/INST]`
-- mt_benchのtemplate(事後学習で使用したspecial tokenの追加は認めます、関係ない文字列(デフォルトの設定に含まれない特殊なシステムメッセージ等)の追加は認めません)
-  - conv_role_message_separator
-  - conv_role_only_separator
+- mtbenchのtemplate(事前学習・事後学習で使用したspecial tokenの追加は認めます、関係ない文字列(デフォルトの設定に含まれない特殊なシステムメッセージ等)の追加は認めません)
+  - conv_system_message
   - conv_roles
   - conv_sep
-  - conv_stop_str
   - conv_stop_token_ids
+  - conv_stop_str
+  - conv_role_message_separator
+  - conv_role_only_separator
 
 ```yaml
 # run_nameの編集

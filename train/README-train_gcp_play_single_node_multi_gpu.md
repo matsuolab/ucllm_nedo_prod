@@ -113,10 +113,10 @@ $ conda activate .venv_train
 (.venv_train) $ cd ~/ucllm_nedo_dev/train/
 
 # Megatron-DeepSpeedのレポジトリをクローン。
-(.venv_train) $ git clone https://github.com/hotsuyuki/Megatron-DeepSpeed.git
+(.venv_train) $ git clone https://github.com/matsuolab/Megatron-DeepSpeed.git
 
 # mainブランチではエラーが起きる場合があるため、指定のタグにチェックアウト。
-(.venv_train) $ cd ~/ucllm_nedo_dev/train/Megatron-DeepSpeed/ && git fetch origin && git checkout refs/tags/ucllm_nedo_dev_v20240415.1.0
+(.venv_train) $ cd ~/ucllm_nedo_dev/train/Megatron-DeepSpeed/ && git fetch origin && git checkout refs/tags/ucllm_nedo_v20240415.1.0
 
 # Megatron-DeepSpeedをインストール。
 (.venv_train) $ cd ~/ucllm_nedo_dev/train/Megatron-DeepSpeed/ && python setup.py install
@@ -172,10 +172,10 @@ $ conda activate .venv_train
 (.venv_train) $ cd ~/ucllm_nedo_dev/train/
 
 # llm-jp-sftのレポジトリをクローン。
-(.venv_train) $ git clone https://github.com/hotsuyuki/llm-jp-sft.git
+(.venv_train) $ git clone https://github.com/matsuolab/llm-jp-sft.git
 
 # mainブランチではエラーが起きる場合があるため、指定のタグにチェックアウト。
-(.venv_train) $ cd ~/ucllm_nedo_dev/train/llm-jp-sft/ && git fetch origin && git checkout refs/tags/ucllm_nedo_dev_v20240415.1.0
+(.venv_train) $ cd ~/ucllm_nedo_dev/train/llm-jp-sft/ && git fetch origin && git checkout refs/tags/ucllm_nedo_v20240415.1.0
 ```
 
 ## Step 1. トークナイザーの学習

@@ -8,3 +8,5 @@
 * GCPプレ環境
   * [README-train_gcp_play_single_node_multi_gpu.md](./README-train_gcp_play_single_node_multi_gpu.md)
   * [README-train_gcp_play_multi_node_multi_gpu.md](./README-train_gcp_play_multi_node_multi_gpu.md)
+* GCP本番環境
+  * [README-train_gcp_honban_multi_node_multi_gpu.md](./README-train_gcp_honban_multi_node_multi_gpu.md)
