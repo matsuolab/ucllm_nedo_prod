@@ -32,6 +32,10 @@ LLM評価手順です。
 @software{ucllm-nedo,
   author       = {Kawanishi, Hotsuyuki and
                   Shinozuka, Fumiya and
+                  Taniguchi, Masachika and
+                  Yamazaki, Yudai and
+                  Yamagiwa, Manami and
+                  Sekioka, Satoshi and
                   Harada, Keno and
                   Alfredo, Solano Martinez and
                   Noumi, Yoshihiro and

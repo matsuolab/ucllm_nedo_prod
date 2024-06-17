@@ -32,7 +32,7 @@ $ cp ~/.bashrc ~/.bashrc.backup
 $ source /etc/profile.d/modules.sh && module purge
 
 # Python, CUDA等を指定のバージョンでロード。
-$ module load python/3.11/3.11.2 cuda/11.8/11.8.0 hpcx/2.12
+$ module load python/3.11 cuda/11.8 hpcx/2.12
 
 # moduleコマンドでロードしたものを確認。
 $ module list
@@ -197,7 +197,7 @@ $ source ~/ucllm_nedo_dev/train/.venv_train/bin/activate
 # また、マルチノード分散学習をする際に発生し得る "Too many open files" エラーの対策として、1つのプロセスが同時に開けるファイル数の上限値を上げるコマンドを~/.bashrcに追加。
 # https://genzouw.com/entry/2019/05/28/090021/1556/
 (.venv_train) $ sed -i "1i source /etc/profile.d/modules.sh && module purge" ~/.bashrc && \
-    sed -i "2i module load python/3.11/3.11.2 cuda/11.8/11.8.0 hpcx/2.12" ~/.bashrc && \
+    sed -i "2i module load python/3.11 cuda/11.8 hpcx/2.12" ~/.bashrc && \
     sed -i "3i source ~/ucllm_nedo_dev/train/.venv_train/bin/activate" ~/.bashrc && \
     sed -i "4i ulimit -n 262144 \n" ~/.bashrc
 ```

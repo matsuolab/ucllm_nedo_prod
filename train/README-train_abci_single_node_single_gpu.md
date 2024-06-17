@@ -32,7 +32,7 @@ $ cp ~/.bashrc ~/.bashrc.backup
 $ source /etc/profile.d/modules.sh && module purge
 
 # Python, CUDA等を指定のバージョンでロード。
-$ module load python/3.11/3.11.2 cuda/11.8/11.8.0 hpcx/2.12
+$ module load python/3.11 cuda/11.8 hpcx/2.12
 
 # moduleコマンドでロードしたものを確認。
 $ module list
